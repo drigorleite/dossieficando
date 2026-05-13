@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { candidates } from '../data/candidates';
+import { candidatesWithImages as candidates } from '../data/candidatesWithImages';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import CandidateGrid from '../components/CandidateGrid';
