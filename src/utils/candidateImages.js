@@ -18,15 +18,17 @@ const aliases = {
   'renan-santos': ['renan', 'renan-mbl', 'renan-do-mbl'],
 };
 
-const imageEntries = Object.entries(candidateImageModules).map(([path, src]) => {
-  const fileName = path.split('/').pop()?.replace(/\.[^.]+$/, '') ?? '';
+const imageEntries = Object.entries(candidateImageModules)
+  .map(([path, src]) => {
+    const fileName = path.split('/').pop()?.replace(/\.[^.]+$/, '') ?? '';
 
-  return {
-    path,
-    src,
-    key: normalize(fileName),
-  };
-});
+    return {
+      path,
+      src: typeof src === 'string' ? src : src?.default,
+      key: normalize(fileName),
+    };
+  })
+  .filter((image) => image.key && image.src);
 
 function findImageByKey(searchKey) {
   if (!searchKey) return null;
@@ -44,6 +46,8 @@ function findImageByKey(searchKey) {
 }
 
 export function getCandidateImage(candidate) {
+  const fallbackImage = candidate?.image ?? candidate?.profile?.image ?? '';
+
   const slugKey = normalize(candidate?.slug);
   const nameKey = normalize(candidate?.name);
 
@@ -56,10 +60,10 @@ export function getCandidateImage(candidate) {
   for (const key of possibleKeys) {
     const image = findImageByKey(normalize(key));
 
-    if (image) {
+    if (typeof image === 'string' && image.length > 0) {
       return image;
     }
   }
 
-  return candidate?.image;
+  return fallbackImage;
 }
