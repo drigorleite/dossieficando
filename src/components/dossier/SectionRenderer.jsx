@@ -1,3 +1,4 @@
+import { ShieldCheck } from 'lucide-react';
 import Card from '../ui/Card';
 import EvidenceBadge from '../EvidenceBadge';
 
@@ -47,6 +48,18 @@ export default function SectionRenderer({ title, description, items = [] }) {
                     {item.status}
                   </span>
                 )}
+              </div>
+            )}
+
+            {item.defense && (
+              <div className="mt-4 flex items-start gap-2.5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4">
+                <ShieldCheck size={15} className="text-emerald-400 mt-0.5 shrink-0" />
+                <div>
+                  <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-emerald-400">
+                    Resposta / Defesa do citado
+                  </p>
+                  <p className="text-sm leading-6 text-neutral-300">{item.defense}</p>
+                </div>
               </div>
             )}
           </article>

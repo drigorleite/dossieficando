@@ -1,4 +1,4 @@
-import { CheckCircle, XCircle, AlertCircle, Info } from 'lucide-react';
+import { CheckCircle, XCircle, AlertCircle, Info, MessageSquareWarning } from 'lucide-react';
 import ProposalDetailBadge from './ProposalDetailBadge';
 
 const feasibilityIcon = (text) => {
@@ -7,7 +7,7 @@ const feasibilityIcon = (text) => {
   if (lower.includes('alto') || lower.includes('viável') || lower.includes('apoio')) {
     return <CheckCircle size={13} className="text-emerald-400 shrink-0" />;
   }
-  if (lower.includes('baixo') || lower.includes('impacto') || lower.includes('exigiria') || lower.includes('depende')) {
+  if (lower.includes('baixo') || lower.includes('impacto') || lower.includes('exigiria') || lower.includes('depende') || lower.includes('enfrenta')) {
     return <AlertCircle size={13} className="text-amber-400 shrink-0" />;
   }
   if (lower.includes('não') || lower.includes('sem fonte') || lower.includes('não detalhado')) {
@@ -16,8 +16,18 @@ const feasibilityIcon = (text) => {
   return <Info size={13} className="text-neutral-400 shrink-0" />;
 };
 
+const feasibilityFields = [
+  { key: 'political', label: 'Viabilidade Política' },
+  { key: 'fiscal', label: 'Viabilidade Fiscal' },
+  { key: 'technical', label: 'Viabilidade Técnica' },
+  { key: 'constitutional', label: 'Impacto Constitucional' },
+];
+
 export default function ProposalCard({ proposal }) {
   const hasImplementation = proposal.implementation && proposal.implementation.trim().length > 0;
+  const activeFeasibility = feasibilityFields.filter(
+    ({ key }) => proposal.feasibility?.[key]
+  );
 
   return (
     <article className="flex flex-col rounded-3xl border border-white/10 bg-neutral-900/80 p-6 gap-5">
@@ -63,34 +73,34 @@ export default function ProposalCard({ proposal }) {
       )}
 
       {/* Feasibility */}
-      {proposal.feasibility && (
+      {activeFeasibility.length > 0 && (
         <div className="grid gap-3 sm:grid-cols-2">
-          {proposal.feasibility.political && (
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+          {activeFeasibility.map(({ key, label }) => (
+            <div key={key} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <span className="mb-2 flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-neutral-500">
-                Viabilidade Política
+                {label}
               </span>
               <div className="flex items-start gap-2">
-                {feasibilityIcon(proposal.feasibility.political)}
+                {feasibilityIcon(proposal.feasibility[key])}
                 <p className="text-sm leading-6 text-neutral-300">
-                  {proposal.feasibility.political}
+                  {proposal.feasibility[key]}
                 </p>
               </div>
             </div>
-          )}
-          {proposal.feasibility.fiscal && (
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <span className="mb-2 flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-neutral-500">
-                Viabilidade Fiscal
-              </span>
-              <div className="flex items-start gap-2">
-                {feasibilityIcon(proposal.feasibility.fiscal)}
-                <p className="text-sm leading-6 text-neutral-300">
-                  {proposal.feasibility.fiscal}
-                </p>
-              </div>
-            </div>
-          )}
+          ))}
+        </div>
+      )}
+
+      {/* Criticism */}
+      {proposal.criticism && (
+        <div className="flex items-start gap-2.5 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4">
+          <MessageSquareWarning size={15} className="text-amber-400 mt-0.5 shrink-0" />
+          <div>
+            <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-amber-400">
+              Críticas e contestações
+            </p>
+            <p className="text-sm leading-6 text-neutral-300">{proposal.criticism}</p>
+          </div>
         </div>
       )}
     </article>
