@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import CandidateGrid from '../components/CandidateGrid';
 import CandidateExpanded from '../components/CandidateExpanded';
+import ProposalsComparisonSection from '../components/ProposalsComparisonSection';
 import PurposeSection from '../components/PurposeSection';
 import MethodSection from '../components/MethodSection';
 import Footer from '../components/Footer';
@@ -32,6 +33,7 @@ export default function Home() {
         filteredCandidates={filteredCandidates}
         setSelectedCandidate={setSelectedCandidate}
       />
+      <ProposalsComparisonSection onOpenCandidate={setSelectedCandidate} />
       <PurposeSection />
       <MethodSection />
       <Footer />

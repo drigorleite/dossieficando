@@ -35,11 +35,18 @@ export default function SectionRenderer({ title, description, items = [] }) {
               {item.description}
             </p>
 
-            {(item.sourceName || item.sourceType || item.status) && (
-              <div className="mt-4 flex flex-wrap gap-2 text-xs text-neutral-500">
-                {item.sourceName && <span>Fonte: {item.sourceName}</span>}
-                {item.sourceType && <span>• {item.sourceType}</span>}
-                {item.status && <span>• {item.status}</span>}
+            {(item.sourceType || item.status) && (
+              <div className="mt-4 flex flex-wrap gap-3 text-xs text-neutral-500">
+                {item.sourceType && (
+                  <span className="rounded-full border border-white/10 px-2 py-0.5">
+                    {item.sourceType}
+                  </span>
+                )}
+                {item.status && (
+                  <span className="rounded-full border border-white/10 px-2 py-0.5">
+                    {item.status}
+                  </span>
+                )}
               </div>
             )}
           </article>

@@ -1,7 +1,20 @@
 import { motion } from 'framer-motion';
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck, Users, FileSearch, Lightbulb } from 'lucide-react';
 import Container from './ui/Container';
 import SearchInput from './ui/SearchInput';
+import { candidates } from '../data/candidates';
+import { modularCandidates } from '../data/candidates/index';
+
+const totalCases = candidates.reduce((sum, c) => sum + (c.cases ?? 0), 0);
+const totalSources = candidates.reduce((sum, c) => sum + (c.sources ?? 0), 0);
+const totalProposals = modularCandidates.reduce((sum, c) => sum + (c.proposals?.length ?? 0), 0);
+
+const stats = [
+  { icon: Users, label: 'Políticos mapeados', value: candidates.length },
+  { icon: FileSearch, label: 'Casos catalogados', value: totalCases },
+  { icon: ShieldCheck, label: 'Fontes verificadas', value: totalSources },
+  { icon: Lightbulb, label: 'Propostas analisadas', value: totalProposals },
+];
 
 export default function Hero({ query, setQuery }) {
   return (
@@ -54,6 +67,25 @@ export default function Hero({ query, setQuery }) {
             />
           </motion.div>
         </div>
+
+        {/* Stats row */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25 }}
+          className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4"
+        >
+          {stats.map(({ icon: Icon, label, value }) => (
+            <div
+              key={label}
+              className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur"
+            >
+              <Icon size={16} className="mb-2 text-neutral-400" aria-hidden="true" />
+              <p className="text-2xl font-bold text-white">{value}</p>
+              <p className="mt-0.5 text-xs text-neutral-500">{label}</p>
+            </div>
+          ))}
+        </motion.div>
       </Container>
     </section>
   );
