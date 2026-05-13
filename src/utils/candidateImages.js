@@ -13,20 +13,53 @@ function normalize(value = '') {
     .replace(/^-+|-+$/g, '');
 }
 
-const candidateImagesByKey = Object.entries(candidateImageModules).reduce((images, [path, src]) => {
+const aliases = {
+  lula: ['luiz-inacio-lula', 'lula-da-silva', 'presidente-lula'],
+  'renan-santos': ['renan', 'renan-mbl', 'renan-do-mbl'],
+};
+
+const imageEntries = Object.entries(candidateImageModules).map(([path, src]) => {
   const fileName = path.split('/').pop()?.replace(/\.[^.]+$/, '') ?? '';
-  const key = normalize(fileName);
 
-  if (key) {
-    images[key] = src;
-  }
+  return {
+    path,
+    src,
+    key: normalize(fileName),
+  };
+});
 
-  return images;
-}, {});
+function findImageByKey(searchKey) {
+  if (!searchKey) return null;
+
+  const exact = imageEntries.find((image) => image.key === searchKey);
+  if (exact) return exact.src;
+
+  const partial = imageEntries.find(
+    (image) => image.key.includes(searchKey) || searchKey.includes(image.key)
+  );
+
+  if (partial) return partial.src;
+
+  return null;
+}
 
 export function getCandidateImage(candidate) {
   const slugKey = normalize(candidate?.slug);
   const nameKey = normalize(candidate?.name);
 
-  return candidateImagesByKey[slugKey] ?? candidateImagesByKey[nameKey] ?? candidate?.image;
+  const possibleKeys = [
+    slugKey,
+    nameKey,
+    ...(aliases[slugKey] ?? []),
+  ].filter(Boolean);
+
+  for (const key of possibleKeys) {
+    const image = findImageByKey(normalize(key));
+
+    if (image) {
+      return image;
+    }
+  }
+
+  return candidate?.image;
 }
