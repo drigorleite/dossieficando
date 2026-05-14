@@ -8,6 +8,7 @@ import CandidateExpanded from '../components/CandidateExpanded';
 import CandidateComparison from '../components/CandidateComparison';
 import ProposalsComparisonSection from '../components/ProposalsComparisonSection';
 import PurposeSection from '../components/PurposeSection';
+import AboutSection from '../components/AboutSection';
 import MethodSection from '../components/MethodSection';
 import Footer from '../components/Footer';
 import GovernorSection from '../components/governors/GovernorSection';
@@ -39,6 +40,7 @@ export default function Home() {
       />
       <GovernorSection />
       <ProposalsComparisonSection onOpenCandidate={setSelectedCandidate} />
+      <AboutSection />
       <PurposeSection />
       <MethodSection />
       <Footer />

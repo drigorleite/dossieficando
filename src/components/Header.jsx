@@ -19,7 +19,7 @@ const STATES_QUICK = [
 const navLinks = [
   { href: '#candidatos', label: 'Presidenciais' },
   { href: '#propostas', label: 'Propostas' },
-  { href: '#proposito', label: 'Propósito' },
+  { href: '#sobre', label: 'Sobre' },
   { href: '#metodo', label: 'Método' },
 ];
 
