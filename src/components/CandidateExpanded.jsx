@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, FileText, Scale, Newspaper, Lightbulb, BookOpen, AlertTriangle, Users, ChevronDown, ChevronUp } from 'lucide-react';
+import { ArrowLeft, FileText, Scale, Newspaper, Lightbulb, BookOpen, AlertTriangle, Users, ChevronDown, ChevronUp, Clock } from 'lucide-react';
 import Container from './ui/Container';
 import Badge from './ui/Badge';
 import Button from './ui/Button';
@@ -12,6 +12,7 @@ import EditorialNotice from './EditorialNotice';
 import LegalNotice from './dossier/LegalNotice';
 import ProposalCard from './dossier/ProposalCard';
 import SectionRenderer from './dossier/SectionRenderer';
+import TrajectorySection from './dossier/TrajectorySection';
 import { modularCandidates } from '../data/candidates/index';
 import { SECTION_TYPES } from '../constants/sectionTypes';
 
@@ -24,6 +25,7 @@ const CATEGORIES = [
 
 const TABS = [
   { id: 'dossie', label: 'Dossiê', icon: BookOpen },
+  { id: 'trajetoria', label: 'Trajetória', icon: Clock },
   { id: 'propostas', label: 'Propostas', icon: Lightbulb },
   { id: 'secoes', label: 'Partido & Contexto', icon: AlertTriangle },
   { id: 'fontes', label: 'Fontes', icon: FileText },
@@ -61,13 +63,17 @@ export default function CandidateExpanded({ candidate, onClose }) {
   const proposals = modular?.proposals ?? [];
   const sections = modular?.sections ?? {};
   const ideology = modular?.profile?.ideology ?? null;
+  const trajectory = modular?.trajectory ?? null;
 
   const hasSections = Object.values(sections).some((arr) => arr?.length > 0);
   const hasProposals = proposals.length > 0;
 
+  const hasTrajectory = trajectory && Object.values(trajectory).some((arr) => arr?.length > 0);
+
   const availableTabs = TABS.filter((tab) => {
     if (tab.id === 'propostas') return hasProposals;
     if (tab.id === 'secoes') return hasSections;
+    if (tab.id === 'trajetoria') return hasTrajectory;
     return true;
   });
 
@@ -280,6 +286,19 @@ export default function CandidateExpanded({ candidate, onClose }) {
                   </Card>
                 )}
               </main>
+            </div>
+          )}
+
+          {/* ── TRAJETÓRIA TAB ── */}
+          {activeTab === 'trajetoria' && (
+            <div className="space-y-6">
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold text-white">Trajetória Política</h3>
+                <p className="mt-2 text-sm leading-6 text-neutral-400">
+                  Cargos exercidos, posições marcantes, investigações, mudanças de discurso e alianças políticas ao longo da carreira.
+                </p>
+              </div>
+              <TrajectorySection trajectory={trajectory} />
             </div>
           )}
 

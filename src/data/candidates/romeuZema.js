@@ -9,6 +9,59 @@ const romeuZema = {
     ideology: 'Direita liberal / Conservador fiscal',
   },
 
+  trajectory: {
+    roles: [
+      {
+        period: 'Antes de 2019',
+        title: 'Empresário — Grupo Zema',
+        description:
+          'Construiu carreira no setor empresarial à frente do Grupo Zema, rede varejista de eletrodomésticos e serviços financeiros com presença em vários estados do Centro-Oeste e Sudeste.',
+      },
+      {
+        period: '2019–2026',
+        title: 'Governador de Minas Gerais (dois mandatos)',
+        description:
+          'Eleito pelo Partido NOVO em 2018 e reeleito em 2022, tornou-se o primeiro governador do estado pelo partido. Implementou política de austeridade fiscal e privatizações em Minas Gerais.',
+      },
+    ],
+    keyPositions: [
+      'Privatizações e redução do tamanho do Estado',
+      'Redução do gasto público e austeridade fiscal',
+      'Agenda liberal econômica com flexibilização trabalhista',
+      'Defesa de reforma da previdência e corte de privilégios do funcionalismo',
+      'Abertura comercial e redução de tarifas de importação',
+    ],
+    investigations: [
+      {
+        title: 'Questionamentos sobre privatizações e gestão da saúde em MG',
+        year: 2022,
+        status: 'Sem grande escândalo nacional até maio de 2026',
+        description:
+          'Recebeu críticas por cortes na saúde pública e questionamentos sobre os critérios de privatizações realizadas durante sua gestão em Minas Gerais.',
+      },
+    ],
+    discourseChanges: [
+      {
+        theme: 'Relação com o bolsonarismo',
+        before: 'Tentou construir imagem mais independente, distanciando-se de Bolsonaro em alguns momentos.',
+        after:
+          'Aproximação maior da direita bolsonarista; defesa pública de anistia/indulto para Bolsonaro e alinhamento com a base conservadora.',
+      },
+      {
+        theme: 'Segurança pública',
+        before: 'Foco quase exclusivo em agenda econômica liberal.',
+        after:
+          'Passou a usar o modelo Bukele/El Salvador como referência para segurança pública, adotando discurso mais duro sobre crime organizado.',
+      },
+    ],
+    politicalAlliances: [
+      'Partido NOVO',
+      'Aproximação com bolsonarismo e Nikolas Ferreira',
+      'Governadores de direita',
+      'Setores liberais econômicos',
+    ],
+  },
+
   proposals: [
     // --- Plano de 5 pilares ---
     {

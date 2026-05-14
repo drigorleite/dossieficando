@@ -9,6 +9,63 @@ const flavioBolsonaro = {
     ideology: 'Direita',
   },
 
+  trajectory: {
+    roles: [
+      {
+        period: 'Décadas de 2000–2018',
+        title: 'Deputado Estadual pelo Rio de Janeiro',
+        description:
+          'Exerceu mandatos como deputado estadual no Rio de Janeiro, período em que surgiram as investigações sobre o caso das “rachadinhas” envolvendo supostos desvios de salários de assessores.',
+      },
+      {
+        period: '2019–presente',
+        title: 'Senador da República',
+        description:
+          'Eleito senador pelo Rio de Janeiro em 2018, tornou-se um dos principais defensores do legado do pai, ex-presidente Jair Bolsonaro, no Congresso Nacional.',
+      },
+    ],
+    keyPositions: [
+      'Redução da maioridade penal',
+      'Endurecimento penal e segurança pública rígida',
+      'Austeridade fiscal e controle de gastos',
+      'Defesa do legado do governo Bolsonaro',
+      'Posições conservadoras em costumes',
+      'Agenda pró-mercado e privatizações',
+      'Anistia aos investigados pelos atos de 8 de janeiro',
+    ],
+    investigations: [
+      {
+        title: 'Caso das “rachadinhas” e Fabrício Queiroz',
+        year: 2019,
+        status: 'Parte dos processos anulada/encerrada por questões processuais',
+        description:
+          'Investigado por suposto desvio de salários de assessores quando era deputado estadual no RJ. Investigações envolvendo Fabrício Queiroz, ex-assessor e amigo da família, também geraram pressão política. Parte dos processos foi anulada ou encerrada por questões processuais; a oposição usa o tema constantemente contra o candidato.',
+      },
+    ],
+    discourseChanges: [
+      {
+        theme: 'Imagem pública',
+        before: 'Alinhamento total ao estilo agressivo e polarizador do pai, Jair Bolsonaro.',
+        after:
+          'Tentativa de construir imagem mais moderada e pragmática, buscando ampliar apelo fora da base bolsonarista tradicional.',
+      },
+      {
+        theme: 'Mulheres e centro político',
+        before: 'Campanha voltada quase exclusivamente para a base conservadora masculina.',
+        after:
+          'Campanha tenta ampliar apelo entre mulheres e eleitores de centro, suavizando o discurso em alguns temas.',
+      },
+    ],
+    politicalAlliances: [
+      'PL',
+      'Valdemar Costa Neto',
+      'Base evangélica',
+      'Conservadores',
+      'Setores liberais econômicos',
+      'Governadores de direita (Zema, Caiado etc.)',
+    ],
+  },
+
   proposals: [
     // --- Segurança Pública ---
     {

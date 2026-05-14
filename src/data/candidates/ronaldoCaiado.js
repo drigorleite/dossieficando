@@ -9,6 +9,67 @@ const ronaldoCaiado = {
     ideology: 'Centro-direita / Conservador',
   },
 
+  trajectory: {
+    roles: [
+      {
+        period: 'Décadas de 1980–1990',
+        title: 'Médico e líder ruralista',
+        description:
+          'Formado em medicina, construiu carreira política ligada ao setor ruralista e à defesa do agronegócio, tornando-se uma das principais lideranças da bancada rural.',
+      },
+      {
+        period: 'Décadas de 1990–2010',
+        title: 'Deputado Federal e Senador da República',
+        description:
+          'Exerceu mandatos como deputado federal e senador, consolidando posições conservadoras em segurança pública, agronegócio e endurecimento penal.',
+      },
+      {
+        period: '2019–presente',
+        title: 'Governador de Goiás',
+        description:
+          'Eleito governador em 2018 e reeleito em 2022. Usa os índices de redução de criminalidade de Goiás como principal cartaz de sua pré-candidatura à presidência.',
+      },
+    ],
+    keyPositions: [
+      'Defesa forte do agronegócio e do setor ruralista',
+      'Endurecimento penal e segurança pública rígida',
+      'Defesa histórica do porte rural de armas',
+      'Posições conservadoras em costumes e valores',
+      'Combate ao crime organizado com uso de tecnologia',
+      'Exploração estratégica de terras raras',
+      'Defesa de anistia aos envolvidos no 8 de janeiro',
+    ],
+    investigations: [
+      {
+        title: 'Histórico de embates com o MST',
+        year: 2019,
+        status: 'Sem condenação criminal nacional até maio de 2026',
+        description:
+          'Acumula histórico de conflitos com o Movimento dos Trabalhadores Rurais Sem Terra (MST) e acusações de radicalismo ruralista, além de críticas sobre postura agressiva na segurança pública.',
+      },
+    ],
+    discourseChanges: [
+      {
+        theme: 'Relação com o bolsonarismo',
+        before: 'Aliado próximo de Bolsonaro durante o governo federal (2019–2022).',
+        after:
+          'Busca construir identidade própria de direita “mais técnica”, mantendo aproximação parcial com o bolsonarismo sem dependência total.',
+      },
+      {
+        theme: 'Economia',
+        before: 'Discurso centrado em agronegócio e pautas conservadoras.',
+        after:
+          'Discurso hoje mais focado em gestão, tecnologia e resultados concretos da administração de Goiás.',
+      },
+    ],
+    politicalAlliances: [
+      'PSD',
+      'Agronegócio e bancada ruralista',
+      'Direita conservadora',
+      'Aproximação parcial com bolsonarismo sem dependência total',
+    ],
+  },
+
   proposals: [
     {
       title: 'Modelo de segurança de Goiás como referência nacional',
