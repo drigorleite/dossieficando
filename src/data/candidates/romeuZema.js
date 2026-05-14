@@ -273,6 +273,20 @@ const romeuZema = {
       },
     ],
   },
+  trustIndex: {
+    score: 46,
+    lastUpdated: 'maio/2026',
+    notes: 'Gestão empresarial reconhecida em MG, mas suspeitas de conflito de interesses com o Grupo Zema e suspensão unilateral da dívida com a União afetam a pontuação.',
+    metrics: {
+      promises: 55,
+      investigations: 60,
+      convictions: 80,
+      discourseCoherence: 45,
+      votingPresence: 50,
+      transparency: 45,
+    },
+  },
+
 };
 
 export default romeuZema;

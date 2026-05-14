@@ -15,12 +15,15 @@ import {
   FileText,
   Star,
   AlertCircle,
+  BarChart2,
 } from "lucide-react";
+import TrustIndex from '../features/TrustIndex';
 
 const TABS = [
   { id: "overview", label: "Visão Geral" },
   { id: "policies", label: "Políticas" },
   { id: "controversies", label: "Polêmicas" },
+  { id: "trust", label: "Índice de Confiabilidade" },
   { id: "sources", label: "Fontes" },
 ];
 
@@ -309,6 +312,20 @@ export default function GovernorExpanded({ candidate, onClose }) {
                   </div>
                 </div>
               ))}
+            </div>
+          )}
+
+          {/* TRUST INDEX TAB */}
+          {activeTab === "trust" && (
+            <div className="space-y-4">
+              {candidate.trustIndex ? (
+                <TrustIndex trustIndex={candidate.trustIndex} />
+              ) : (
+                <div className="text-center py-12 text-zinc-500">
+                  <BarChart2 size={32} className="mx-auto mb-3 opacity-40" />
+                  <p>Índice de confiabilidade ainda não calculado para este candidato.</p>
+                </div>
+              )}
             </div>
           )}
 

@@ -207,6 +207,20 @@ const renanSantos = {
       },
     ],
   },
+  trustIndex: {
+    score: 35,
+    lastUpdated: 'maio/2026',
+    notes: 'Múltiplos inquéritos e processos civis ativos. Candidato novo sem histórico executivo para avaliar promessas cumpridas. Financiamento estrangeiro questionado.',
+    metrics: {
+      promises: 20,
+      investigations: 30,
+      convictions: 65,
+      discourseCoherence: 40,
+      votingPresence: 40,
+      transparency: 35,
+    },
+  },
+
 };
 
 export default renanSantos;

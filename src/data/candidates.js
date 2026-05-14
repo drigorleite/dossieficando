@@ -636,7 +636,20 @@ export const candidates = [
         sourceUrl: null,
       },
     ],
-    sourceLinks: [
+    trustIndex: {
+      score: 44,
+      lastUpdated: 'maio/2026',
+      notes: 'Carreira longa com condenações cíveis e histórico de instabilidade discursiva. Sem condenações criminais.',
+      metrics: {
+        promises: 35,
+        investigations: 70,
+        convictions: 40,
+        discourseCoherence: 30,
+        votingPresence: 55,
+        transparency: 50,
+      },
+    },
+        sourceLinks: [
       {
         title: 'Ciro tem caminhonete penhorada por dívida judicial',
         url: null,
@@ -740,7 +753,20 @@ export const candidates = [
         sourceUrl: null,
       },
     ],
-    sourceLinks: [
+    trustIndex: {
+      score: 48,
+      lastUpdated: 'maio/2026',
+      notes: 'Condenado por caixa dois em 2012 (em recurso). Como ministro da Fazenda, apresenta prestação de contas regular.',
+      metrics: {
+        promises: 50,
+        investigations: 65,
+        convictions: 35,
+        discourseCoherence: 55,
+        votingPresence: 60,
+        transparency: 65,
+      },
+    },
+        sourceLinks: [
       {
         title: 'Haddad condenado por caixa dois na campanha de 2012',
         url: null,
@@ -824,7 +850,20 @@ export const candidates = [
         sourceUrl: null,
       },
     ],
-    sourceLinks: [
+    trustIndex: {
+      score: 55,
+      lastUpdated: 'maio/2026',
+      notes: 'Sem processos judiciais, mas posições polêmicas sobre anistia e clima. Carreira longa com poucos escândalos pessoais.',
+      metrics: {
+        promises: 50,
+        investigations: 90,
+        convictions: 90,
+        discourseCoherence: 45,
+        votingPresence: 65,
+        transparency: 55,
+      },
+    },
+        sourceLinks: [
       {
         title: 'Aldo Rebelo defende anistia para condenados de 8 de janeiro',
         url: null,
@@ -1053,7 +1092,20 @@ export const candidates = [
         sourceUrl: null,
       },
     ],
-    sourceLinks: [
+    trustIndex: {
+      score: 38,
+      lastUpdated: 'maio/2026',
+      notes: 'Inquérito por peculato em aberto. Histórico de expulsão do PSOL e liderança de greve irregular.',
+      metrics: {
+        promises: 30,
+        investigations: 40,
+        convictions: 70,
+        discourseCoherence: 35,
+        votingPresence: 45,
+        transparency: 40,
+      },
+    },
+        sourceLinks: [
       {
         title: 'STF autoriza inquérito por peculato contra Daciolo',
         url: null,
@@ -1118,7 +1170,20 @@ export const candidates = [
         sourceUrl: null,
       },
     ],
-    sourceLinks: [
+    trustIndex: {
+      score: 42,
+      lastUpdated: 'maio/2026',
+      notes: 'Sem processos judiciais, mas criticado por promover pseudociência e afirmar cura de autismo sem evidências científicas.',
+      metrics: {
+        promises: 20,
+        investigations: 90,
+        convictions: 90,
+        discourseCoherence: 40,
+        votingPresence: 20,
+        transparency: 35,
+      },
+    },
+        sourceLinks: [
       {
         title: 'Críticas acadêmicas à Teoria da Inteligência Multifocal',
         url: null,
@@ -1184,7 +1249,20 @@ export const candidates = [
         sourceUrl: null,
       },
     ],
-    sourceLinks: [],
+    trustIndex: {
+      score: 62,
+      lastUpdated: 'maio/2026',
+      notes: 'Perfil discreto sem investigações ou processos. Baixa visibilidade pública dificulta avaliação de promessas e transparência.',
+      metrics: {
+        promises: 40,
+        investigations: 95,
+        convictions: 95,
+        discourseCoherence: 70,
+        votingPresence: 30,
+        transparency: 45,
+      },
+    },
+        sourceLinks: [],
   },
 
   {
@@ -1240,7 +1318,20 @@ export const candidates = [
         sourceUrl: null,
       },
     ],
-    sourceLinks: [],
+    trustIndex: {
+      score: 55,
+      lastUpdated: 'maio/2026',
+      notes: 'Sem processos criminais. Polêmico por declarações antissionistas que geraram processo por racismo.',
+      metrics: {
+        promises: 30,
+        investigations: 85,
+        convictions: 80,
+        discourseCoherence: 60,
+        votingPresence: 30,
+        transparency: 50,
+      },
+    },
+        sourceLinks: [],
   },
 
   {
@@ -1296,7 +1387,20 @@ export const candidates = [
         sourceUrl: null,
       },
     ],
-    sourceLinks: [
+    trustIndex: {
+      score: 40,
+      lastUpdated: 'maio/2026',
+      notes: 'Condenado a pagar R$ 10 mil por chamar Kim Kataguiri de "nazista". Histórico de declarações extremadas.',
+      metrics: {
+        promises: 25,
+        investigations: 75,
+        convictions: 35,
+        discourseCoherence: 45,
+        votingPresence: 20,
+        transparency: 40,
+      },
+    },
+        sourceLinks: [
       {
         title: 'TJDF condena Pimenta por chamar deputado de nazista',
         url: null,
@@ -1371,6 +1475,19 @@ export const candidates = [
         sourceUrl: null,
       },
     ],
-    sourceLinks: [],
+    trustIndex: {
+      score: 50,
+      lastUpdated: 'maio/2026',
+      notes: 'Sem investigações ou processos judiciais. Candidata nova com pouco histórico verificável de promessas cumpridas.',
+      metrics: {
+        promises: 20,
+        investigations: 95,
+        convictions: 95,
+        discourseCoherence: 55,
+        votingPresence: 20,
+        transparency: 45,
+      },
+    },
+        sourceLinks: [],
   },
 ];

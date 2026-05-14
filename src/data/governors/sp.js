@@ -111,7 +111,21 @@ export const spGovernorCandidates = [
           "O governo afirma que policiais reagem a ameaças reais de organizações criminosas e que todas as ações são investigadas.",
       },
     ],
-    sources: [
+    trustIndex: {
+      score: 62,
+      lastUpdated: 'maio/2026',
+      notes: 'Gestão técnica reconhecida, mas polêmicas com violência policial (Chacina do Guarujá) e dependência do bolsonarismo afetam a pontuação.',
+      metrics: {
+        promises: 60,
+        investigations: 65,
+        convictions: 90,
+        discourseCoherence: 55,
+        votingPresence: 70,
+        transparency: 65,
+      },
+    },
+
+        sources: [
       {
         title: "Agência SP — Índices criminais de 2025",
         url: "https://www.agenciasp.sp.gov.br/sao-paulo-tem-reducao-dos-principais-indices-criminais-em-2025-com-quedas-historicas-para-roubos-homicidios-e-latrocinios/",
@@ -267,7 +281,21 @@ export const spGovernorCandidates = [
         status: "historical",
       },
     ],
-    sources: [
+    trustIndex: {
+      score: 48,
+      lastUpdated: 'maio/2026',
+      notes: 'Condenado por caixa dois em 2012 (em recurso). Gestão em SP como prefeito foi contestada — perdeu a reeleição com 16% dos votos. Como ministro da Fazenda, apresenta prestação de contas regular.',
+      metrics: {
+        promises: 50,
+        investigations: 65,
+        convictions: 35,
+        discourseCoherence: 55,
+        votingPresence: 60,
+        transparency: 65,
+      },
+    },
+
+        sources: [
       {
         title: "El País — Avaliação Datafolha da gestão Haddad (2015)",
         url: "https://brasil.elpais.com/brasil/2015/11/02/politica/1446471379_096733.html",
@@ -378,7 +406,21 @@ export const spGovernorCandidates = [
           "Kim afirma que rompeu por discordâncias institucionais, políticas e administrativas genuínas.",
       },
     ],
-    sources: [
+    trustIndex: {
+      score: 38,
+      lastUpdated: 'maio/2026',
+      notes: 'Múltiplos inquéritos ativos, incluindo investigação sobre financiamento estrangeiro do MBL e suspeita de desvio de recursos de gabinete.',
+      metrics: {
+        promises: 30,
+        investigations: 25,
+        convictions: 70,
+        discourseCoherence: 40,
+        votingPresence: 55,
+        transparency: 35,
+      },
+    },
+
+        sources: [
       {
         title: "Jovem Pan — Kim traça meta de 8% para candidatura ao governo de SP",
         url: "https://jovempan.com.br/opiniao-jovem-pan/comentaristas/bruno-pinheiro/kim-kataguiri-traca-meta-8-em-junho-para-encarar-a-briga-pelo-palacio-dos-bandeirantes.html",
@@ -461,7 +503,21 @@ export const spGovernorCandidates = [
         status: "ongoing",
       },
     ],
-    sources: [
+    trustIndex: {
+      score: 52,
+      lastUpdated: 'maio/2026',
+      notes: 'Investigado por irregularidades em contrato de saúde em Santo André. Sem condenações. Perfil de gestor municipal com histórico misto.',
+      metrics: {
+        promises: 50,
+        investigations: 50,
+        convictions: 80,
+        discourseCoherence: 55,
+        votingPresence: 60,
+        transparency: 50,
+      },
+    },
+
+        sources: [
       {
         title: "Poder360 — PSDB lança Paulo Serra como pré-candidato ao governo de SP",
         url: "https://www.poder360.com.br/poder-eleicoes/psdb-lanca-paulo-serra-como-pre-candidato-ao-governo-de-sp/",
@@ -517,7 +573,21 @@ export const spGovernorCandidates = [
       },
     ],
     controversies: [],
-    sources: [],
+    trustIndex: {
+      score: 45,
+      lastUpdated: 'maio/2026',
+      notes: 'Deputado estadual com pouco histórico verificável. Ligado ao PL e ao bolsonarismo. Sem condenações, mas com votações polêmicas na Alesp.',
+      metrics: {
+        promises: 30,
+        investigations: 75,
+        convictions: 85,
+        discourseCoherence: 45,
+        votingPresence: 50,
+        transparency: 40,
+      },
+    },
+
+        sources: [],
   },
   {
     id: "erika-hilton",
@@ -565,7 +635,21 @@ export const spGovernorCandidates = [
       },
     ],
     controversies: [],
-    sources: [],
+    trustIndex: {
+      score: 55,
+      lastUpdated: 'maio/2026',
+      notes: 'Sem investigações ou processos. Candidata nova com pouco histórico executivo verificável. Alta transparência nas redes e prestação de contas.',
+      metrics: {
+        promises: 35,
+        investigations: 90,
+        convictions: 95,
+        discourseCoherence: 65,
+        votingPresence: 70,
+        transparency: 70,
+      },
+    },
+
+        sources: [],
   },
 ];
 

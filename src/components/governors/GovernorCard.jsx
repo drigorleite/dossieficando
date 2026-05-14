@@ -101,6 +101,19 @@ export default function GovernorCard({ candidate, onClick }) {
               <span className="text-white font-semibold">{candidate.controversies?.length || 0}</span> polêmicas
             </span>
           </div>
+          {candidate.trustIndex && (
+            <div className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold border ${
+              candidate.trustIndex.score >= 70
+                ? 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10'
+                : candidate.trustIndex.score >= 40
+                ? 'text-amber-400 border-amber-500/30 bg-amber-500/10'
+                : 'text-red-400 border-red-500/30 bg-red-500/10'
+            }`}>
+              {candidate.trustIndex.score}/100
+            </div>
+          )}
+        </div>
+        <div className="flex items-center justify-end mt-2">
           <div className="flex items-center gap-1 text-xs text-blue-400 group-hover:text-blue-300 transition-colors">
             Ver dossiê
             <ChevronRight size={12} className="transition-transform group-hover:translate-x-0.5" />
