@@ -1,0 +1,133 @@
+// Candidatos ao Governo de Mato Grosso do Sul — Eleições 2026
+export const msGovernorCandidates = [
+  {
+    id: "eduardo-riedel",
+    slug: "eduardo-riedel",
+    name: "Eduardo Riedel",
+    party: "PP",
+    role: "Governador de Mato Grosso do Sul",
+    image: "/images/governors/eduardo-riedel.jpg",
+    status: "Governador atual — pré-candidato à reeleição",
+    statusType: "investigating",
+    tags: ["Reeleição", "PP", "Agronegócio", "Infraestrutura", "Pantanal"],
+    summary:
+      "Atual governador de MS. Anteriormente foi Secretário de Infraestrutura e Habitação. Foco em desenvolvimento econômico, sustentabilidade e modernização da gestão pública. Declarou apoio à anistia dos atos de 8 de janeiro, gerando conflito com o PT.",
+    electoralStrengths: [
+      "Governador atual com vantagem da incumbência",
+      "Experiência em cargos de gestão estadual",
+      "Foco em infraestrutura e agronegócio",
+      "Alinhamento com ODS da ONU",
+    ],
+    electoralWeaknesses: [
+      "Controvérsia sobre lockdown na pandemia",
+      "Suspensão de contratos de rodovias pelo TCE",
+      "Declaração pró-anistia do 8 de janeiro",
+    ],
+    policies: [
+      {
+        title: "Infraestrutura e Logística",
+        description: "Investimentos em rodovias, saneamento e logística para o desenvolvimento econômico e social de MS.",
+        arguments: ["MS é corredor logístico estratégico", "Agronegócio demanda infraestrutura de qualidade", "Parcerias com setor privado"],
+        criticisms: ["TCE suspendeu 16 contratos de rodovias no Pantanal", "Obras com atrasos e irregularidades"],
+        defense: "O governador afirma que não há nada a esconder e que as obras não serão atrasadas.",
+        result: "MISTO",
+        resultDetail: "Investimentos em andamento, mas com questionamentos do TCE.",
+      },
+      {
+        title: "Sustentabilidade e Pantanal",
+        description: "Transformar a biodiversidade do Pantanal em riqueza sustentável, com foco em turismo ecológico e preservação.",
+        arguments: ["Pantanal é patrimônio natural único", "Turismo ecológico gera renda sem destruição", "Alinhamento com agenda climática global"],
+        criticisms: ["Queimadas no Pantanal continuam sendo problema grave", "Tensão entre agronegócio e preservação"],
+        defense: "O governo investe em brigadas de combate a incêndios e em programas de preservação.",
+        result: "MISTO",
+        resultDetail: "Avanços em sustentabilidade, mas queimadas persistem.",
+      },
+    ],
+    controversies: [
+      {
+        title: "Oposição ao lockdown durante a pandemia",
+        description: "Posição contrária a pedido judicial de lockdown em Campo Grande durante a pandemia de COVID-19.",
+        status: "historical",
+        defense: "Defendeu que lockdown causaria mais danos econômicos do que benefícios à saúde.",
+      },
+      {
+        title: "Declaração pró-anistia do 8 de janeiro",
+        description: "Declarou apoio à anistia para os envolvidos nos atos de 8 de janeiro, gerando conflito com o PT e aliados do governo federal.",
+        status: "ongoing",
+        defense: "Defende que a anistia é necessária para a reconciliação nacional.",
+      },
+    ],
+    sources: [
+      { title: "Perfil de Eduardo Riedel — Governo MS", url: "https://www.ms.gov.br/governador", reliability: "official" },
+    ],
+    trustIndex: {
+      score: 55,
+      label: "Atenção",
+      color: "amber",
+      metrics: [
+        { name: "Promessas cumpridas", score: 58, weight: 25, description: "Gestão com resultados razoáveis." },
+        { name: "Investigações ativas", score: 60, weight: 20, description: "Questionamentos do TCE sobre contratos." },
+        { name: "Condenações", score: 80, weight: 20, description: "Sem condenações." },
+        { name: "Coerência de discurso", score: 50, weight: 15, description: "Declaração pró-anistia gera contradições." },
+        { name: "Presença em votações", score: 55, weight: 10, description: "Cargo executivo." },
+        { name: "Transparência", score: 52, weight: 10, description: "Gestão com dados públicos disponíveis." },
+      ],
+      methodology: "Score calculado com base em 6 métricas ponderadas.",
+      lastUpdated: "2026-05",
+    },
+  },
+  {
+    id: "fabio-trad",
+    slug: "fabio-trad",
+    name: "Fábio Trad",
+    party: "PT",
+    role: "Ex-Deputado Federal",
+    image: "/images/governors/fabio-trad.jpg",
+    status: "Ex-deputado — pré-candidato ao governo",
+    statusType: "clean",
+    tags: ["PT", "Lula", "Direito", "Oposição"],
+    summary:
+      "Advogado e professor de Direito. Foi deputado federal por MS por três mandatos. Filiou-se ao PT em 2025, apostando no apoio de Lula para a disputa estadual. Ex-presidente da OAB/MS.",
+    electoralStrengths: [
+      "Apoio do PT e do presidente Lula",
+      "Experiência legislativa como deputado federal",
+      "Formação jurídica e acadêmica",
+      "Ex-presidente da OAB/MS",
+    ],
+    electoralWeaknesses: [
+      "Não conseguiu reeleição em 2022",
+      "PT tem base limitada em MS",
+      "Filiação recente ao PT pode parecer oportunista",
+    ],
+    policies: [
+      {
+        title: "Justiça Social e Desenvolvimento Regional",
+        description: "Proposta alinhada com a plataforma do PT, focando em justiça social, educação e desenvolvimento regional.",
+        arguments: ["MS tem desigualdades regionais significativas", "Programas sociais do governo federal podem ser ampliados", "Experiência legislativa em políticas sociais"],
+        criticisms: ["PT tem histórico de dificuldades na gestão estadual em MS", "Proposta ainda vaga"],
+        defense: "Defende que o apoio de Lula e os programas federais podem transformar MS.",
+        result: "INCONCLUSIVO",
+        resultDetail: "Proposta em construção.",
+      },
+    ],
+    controversies: [],
+    sources: [
+      { title: "Fábio Trad se filia ao PT e mira governo de MS — Campo Grande News", url: "https://www.campograndenews.com.br/politica/fabio-trad-pt-governo-ms", reliability: "press" },
+    ],
+    trustIndex: {
+      score: 52,
+      label: "Atenção",
+      color: "amber",
+      metrics: [
+        { name: "Promessas cumpridas", score: 55, weight: 25, description: "Atuação legislativa razoável." },
+        { name: "Investigações ativas", score: 70, weight: 20, description: "Sem investigações graves." },
+        { name: "Condenações", score: 80, weight: 20, description: "Sem condenações." },
+        { name: "Coerência de discurso", score: 40, weight: 15, description: "Mudança de partido gera questionamentos." },
+        { name: "Presença em votações", score: 60, weight: 10, description: "Histórico legislativo razoável." },
+        { name: "Transparência", score: 55, weight: 10, description: "Dados de mandato disponíveis." },
+      ],
+      methodology: "Score calculado com base em 6 métricas ponderadas.",
+      lastUpdated: "2026-05",
+    },
+  },
+];

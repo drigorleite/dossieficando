@@ -1,0 +1,111 @@
+// Candidatos ao Governo de Mato Grosso — Eleições 2026
+export const mtGovernorCandidates = [
+  {
+    id: "jayme-campos",
+    slug: "jayme-campos",
+    name: "Jayme Campos",
+    party: "União Brasil",
+    role: "Senador por Mato Grosso",
+    image: "/images/governors/jayme-campos.jpg",
+    status: "Senador — pré-candidato ao governo",
+    statusType: "clean",
+    tags: ["Senador", "União Brasil", "Agronegócio", "Pantanal", "Municipalismo"],
+    summary:
+      "Empresário, agropecuarista e político com vasta experiência. Ex-prefeito de Várzea Grande (3 mandatos), ex-governador de MT e senador (2 mandatos). Defensor do desenvolvimento econômico, logística e Estatuto do Pantanal.",
+    electoralStrengths: [
+      "Experiência como ex-governador e senador",
+      "Forte base no agronegócio e interior",
+      "Histórico de destinação de recursos para MT",
+      "Articulação com municípios (municipalismo)",
+    ],
+    electoralWeaknesses: [
+      "Figura do establishment político de MT",
+      "Críticas por ser parte do grupo que governa o estado há 30 anos",
+      "Desgaste natural de longa carreira política",
+    ],
+    policies: [
+      {
+        title: "Logística e Infraestrutura",
+        description: "Defende a instalação da Ferronorte (Rondonópolis–Lucas do Rio Verde) e a duplicação da BR-163.",
+        arguments: ["MT é maior produtor de grãos do Brasil", "Logística deficiente aumenta custo do agronegócio", "Ferrovia reduziria custo de transporte"],
+        criticisms: ["Projetos com décadas de atraso", "Dependência de recursos federais"],
+        defense: "Defende que a articulação política é o caminho para destravar os projetos.",
+        result: "INCONCLUSIVO",
+        resultDetail: "Projetos em andamento, mas com histórico de atrasos.",
+      },
+    ],
+    controversies: [],
+    sources: [
+      { title: "Jayme Campos — Senado Federal", url: "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5953", reliability: "official" },
+    ],
+    trustIndex: {
+      score: 54,
+      label: "Atenção",
+      color: "amber",
+      metrics: [
+        { name: "Promessas cumpridas", score: 55, weight: 25, description: "Longa carreira com resultados mistos." },
+        { name: "Investigações ativas", score: 65, weight: 20, description: "Sem investigações graves." },
+        { name: "Condenações", score: 75, weight: 20, description: "Sem condenações." },
+        { name: "Coerência de discurso", score: 55, weight: 15, description: "Discurso de desenvolvimento regional consistente." },
+        { name: "Presença em votações", score: 65, weight: 10, description: "Boa presença no Senado." },
+        { name: "Transparência", score: 50, weight: 10, description: "Dados de mandato disponíveis." },
+      ],
+      methodology: "Score calculado com base em 6 métricas ponderadas.",
+      lastUpdated: "2026-05",
+    },
+  },
+  {
+    id: "alex-pucinelli",
+    slug: "alex-pucinelli",
+    name: "Alex Pucinelli",
+    party: "Democrata 35",
+    role: "Empresário do setor elétrico",
+    image: "/images/governors/alex-pucinelli.jpg",
+    status: "Empresário — novo candidato",
+    statusType: "clean",
+    tags: ["Outsider", "Setor Elétrico", "Reforma Tributária", "Terceira Via"],
+    summary:
+      "Empresário do setor elétrico e de infraestrutura. Autodeclarado terceira via, conservador e cristão. Posiciona-se como alternativa ao grupo político que governa MT há 30 anos. Propõe reforma tributária estadual e revisão de incentivos fiscais.",
+    electoralStrengths: [
+      "Imagem política 'limpa' como outsider",
+      "Experiência empresarial como CEO",
+      "Proposta de reforma tributária detalhada",
+      "Discurso de renovação política",
+    ],
+    electoralWeaknesses: [
+      "Sem experiência em cargos públicos",
+      "Partido com pouca estrutura",
+      "Lacunas de conhecimento em políticas estaduais",
+    ],
+    policies: [
+      {
+        title: "Reforma Tributária Estadual",
+        description: "Propõe reformar o sistema tributário de MT, descrito como o mais complexo do Brasil, com mais de 1.000 métodos de cálculo para o ICMS.",
+        arguments: ["Simplificação tributária reduz custo para empresas", "Revisão de incentivos fiscais para grandes corporações", "Redução da carga para PMEs e cidadãos"],
+        criticisms: ["Reforma tributária estadual depende de articulação política", "Sem experiência em gestão pública para implementar"],
+        defense: "Defende que a experiência empresarial o qualifica para simplificar a máquina pública.",
+        result: "INCONCLUSIVO",
+        resultDetail: "Proposta ainda em fase de elaboração.",
+      },
+    ],
+    controversies: [],
+    sources: [
+      { title: "Alex Pucinelli lança pré-candidatura ao governo de MT — Primeira Página", url: "https://primeirapagina.com.br/politica/alex-pucinelli-pre-candidatura-mt", reliability: "press" },
+    ],
+    trustIndex: {
+      score: 45,
+      label: "Atenção",
+      color: "amber",
+      metrics: [
+        { name: "Promessas cumpridas", score: 50, weight: 25, description: "Sem histórico político para avaliar." },
+        { name: "Investigações ativas", score: 80, weight: 20, description: "Sem investigações registradas." },
+        { name: "Condenações", score: 90, weight: 20, description: "Sem condenações." },
+        { name: "Coerência de discurso", score: 55, weight: 15, description: "Discurso de outsider consistente." },
+        { name: "Presença em votações", score: 0, weight: 10, description: "Sem histórico legislativo." },
+        { name: "Transparência", score: 50, weight: 10, description: "Poucos dados disponíveis." },
+      ],
+      methodology: "Score calculado com base em 6 métricas ponderadas.",
+      lastUpdated: "2026-05",
+    },
+  },
+];

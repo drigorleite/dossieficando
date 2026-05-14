@@ -1,125 +1,106 @@
 import React from "react";
-import { Shield, AlertTriangle, CheckCircle, ChevronRight, Building2 } from "lucide-react";
+import { motion } from "framer-motion";
+import { ExternalLink, AlertTriangle, CheckCircle, XCircle, MinusCircle, Lightbulb, Building2 } from "lucide-react";
 
-const statusConfig = {
-  active: {
-    label: "Investigações ativas",
-    color: "text-red-400",
-    bg: "bg-red-500/10 border-red-500/20",
-    dot: "bg-red-400",
-    Icon: AlertTriangle,
-  },
-  investigating: {
-    label: "Suspeitas / processos",
-    color: "text-amber-400",
-    bg: "bg-amber-500/10 border-amber-500/20",
-    dot: "bg-amber-400",
-    Icon: Shield,
-  },
-  clean: {
-    label: "Sem processos relevantes",
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/10 border-emerald-500/20",
-    dot: "bg-emerald-400",
-    Icon: CheckCircle,
-  },
-};
+function riskAccent(statusType = "") {
+  if (statusType === "active") return { dot: "bg-red-500", text: "text-red-400", border: "border-red-500/30", bg: "bg-red-500/20", icon: XCircle, label: "Investigações ativas" };
+  if (statusType === "investigating") return { dot: "bg-amber-500", text: "text-amber-400", border: "border-amber-500/30", bg: "bg-amber-500/20", icon: AlertTriangle, label: "Suspeitas / processos" };
+  if (statusType === "clean") return { dot: "bg-emerald-500", text: "text-emerald-400", border: "border-emerald-500/30", bg: "bg-emerald-500/20", icon: CheckCircle, label: "Sem processos relevantes" };
+  return { dot: "bg-neutral-500", text: "text-neutral-400", border: "border-neutral-500/30", bg: "bg-neutral-500/20", icon: MinusCircle, label: "Status desconhecido" };
+}
 
 export default function GovernorCard({ candidate, onClick }) {
-  const cfg = statusConfig[candidate.statusType] || statusConfig.clean;
-  const { Icon } = cfg;
+  const { dot, text, border, bg, icon: RiskIcon, label } = riskAccent(candidate.statusType);
+  const trustScore = candidate.trustIndex?.score;
 
   return (
-    <button
+    <motion.button
       onClick={() => onClick(candidate)}
-      className="group relative w-full text-left rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/60 hover:bg-zinc-800/80 hover:border-white/15 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/40"
+      whileHover={{ y: -6 }}
+      whileTap={{ scale: 0.98 }}
+      className="group relative min-h-96 w-full overflow-hidden rounded-4xl border border-white/10 bg-neutral-900 text-left shadow-2xl shadow-black/20 outline-none transition focus-visible:ring-2 focus-visible:ring-white/40"
     >
-      {/* Status indicator strip */}
-      <div className={`absolute top-0 left-0 right-0 h-0.5 ${cfg.dot}`} />
-
-      {/* Photo area */}
-      <div className="relative h-52 overflow-hidden bg-zinc-800">
+      {/* Background image — full card */}
+      <div className="absolute inset-0">
         <img
           src={candidate.image}
           alt={candidate.name}
-          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+          className="h-full w-full object-cover object-top grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
           onError={(e) => {
             e.target.style.display = "none";
-            e.target.parentElement.classList.add("flex", "items-center", "justify-center");
           }}
         />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/30 to-transparent" />
-
-        {/* Party badge */}
-        <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 text-xs font-bold text-white">
-          {candidate.party}
-        </div>
-
-        {/* Status badge */}
-        <div className={`absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full border backdrop-blur-sm text-xs font-medium ${cfg.bg} ${cfg.color}`}>
-          <div className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
-          <Icon size={10} />
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/10" />
       </div>
 
-      {/* Content */}
-      <div className="p-4">
-        <div className="mb-3">
-          <h3 className="text-base font-bold text-white leading-tight group-hover:text-blue-300 transition-colors">
-            {candidate.name}
-          </h3>
-          <p className="text-xs text-zinc-400 mt-0.5 flex items-center gap-1">
-            <Building2 size={10} />
-            {candidate.role}
-          </p>
+      {/* Top badges */}
+      <div className="absolute left-4 right-4 top-4 z-10 flex items-start justify-between gap-2">
+        {/* Risk indicator */}
+        <div className={`flex items-center gap-1.5 rounded-full border ${border} ${bg} px-2.5 py-1 backdrop-blur`}>
+          <span className={`h-1.5 w-1.5 rounded-full ${dot} shrink-0`} />
+          <RiskIcon size={10} className={text} />
+          <span className={`text-[10px] font-medium ${text} leading-none hidden sm:block`}>{label}</span>
         </div>
 
-        <p className="text-xs text-zinc-500 leading-relaxed line-clamp-3 mb-3">
-          {candidate.summary}
-        </p>
+        {/* Party badge */}
+        <span className="inline-flex items-center rounded-full border border-white/10 bg-black/50 px-2.5 py-1 text-xs font-bold text-white backdrop-blur">
+          {candidate.party}
+        </span>
+      </div>
 
+      {/* Content — bottom overlay */}
+      <div className="relative flex h-full min-h-96 flex-col justify-end p-5">
         {/* Tags */}
-        <div className="flex flex-wrap gap-1 mb-3">
+        <div className="mb-3 flex flex-wrap gap-1.5">
           {candidate.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="px-2 py-0.5 rounded-full bg-zinc-800 border border-zinc-700 text-xs text-zinc-400"
+              className="rounded-full border border-white/10 bg-white/10 px-2 py-0.5 text-[10px] font-medium text-neutral-300 backdrop-blur"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        {/* Metrics */}
-        <div className="flex items-center justify-between pt-3 border-t border-zinc-800">
-          <div className="flex gap-4 text-xs">
-            <span className="text-zinc-500">
-              <span className="text-white font-semibold">{candidate.policies?.length || 0}</span> políticas
-            </span>
-            <span className="text-zinc-500">
-              <span className="text-white font-semibold">{candidate.controversies?.length || 0}</span> polêmicas
-            </span>
-          </div>
-          {candidate.trustIndex && (
-            <div className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold border ${
-              candidate.trustIndex.score >= 70
-                ? 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10'
-                : candidate.trustIndex.score >= 40
-                ? 'text-amber-400 border-amber-500/30 bg-amber-500/10'
-                : 'text-red-400 border-red-500/30 bg-red-500/10'
-            }`}>
-              {candidate.trustIndex.score}/100
-            </div>
-          )}
+        <h3 className="text-xl font-bold leading-tight text-white">{candidate.name}</h3>
+        <div className="mt-1 flex items-center gap-2">
+          <Building2 size={11} className="text-neutral-400 shrink-0" />
+          <p className="text-xs text-neutral-400 truncate">{candidate.role}</p>
         </div>
-        <div className="flex items-center justify-end mt-2">
-          <div className="flex items-center gap-1 text-xs text-blue-400 group-hover:text-blue-300 transition-colors">
-            Ver dossiê
-            <ChevronRight size={12} className="transition-transform group-hover:translate-x-0.5" />
+
+        {/* Metrics grid */}
+        <div className="grid grid-cols-3 gap-2 py-4">
+          <div className="rounded-2xl border border-white/10 bg-white/10 p-2.5 backdrop-blur">
+            <p className="text-[9px] text-neutral-400">Políticas</p>
+            <p className="text-base font-semibold text-white">{candidate.policies?.length || 0}</p>
           </div>
+          <div className="rounded-2xl border border-white/10 bg-white/10 p-2.5 backdrop-blur">
+            <p className="text-[9px] text-neutral-400">Polêmicas</p>
+            <p className="text-base font-semibold text-white">{candidate.controversies?.length || 0}</p>
+          </div>
+          <div className={`rounded-2xl border p-2.5 backdrop-blur ${
+            trustScore >= 70 ? "border-emerald-500/30 bg-emerald-500/20" :
+            trustScore >= 40 ? "border-amber-500/30 bg-amber-500/20" :
+            "border-red-500/30 bg-red-500/20"
+          }`}>
+            <p className="text-[9px] text-neutral-400">Confiança</p>
+            <p className={`text-base font-semibold ${
+              trustScore >= 70 ? "text-emerald-300" :
+              trustScore >= 40 ? "text-amber-300" :
+              "text-red-300"
+            }`}>{trustScore ?? "—"}</p>
+          </div>
+        </div>
+
+        <p className="line-clamp-2 text-xs leading-5 text-neutral-300">{candidate.summary}</p>
+
+        <div className="mt-4 flex items-center justify-end border-t border-white/10 pt-3">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-black transition group-hover:bg-neutral-200">
+            Ver dossiê <ExternalLink size={12} aria-hidden="true" />
+          </span>
         </div>
       </div>
-    </button>
+    </motion.button>
   );
 }

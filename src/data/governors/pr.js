@@ -1,0 +1,127 @@
+// Candidatos ao Governo do Paraná — Eleições 2026
+export const prGovernorCandidates = [
+  {
+    id: "ratinho-junior",
+    slug: "ratinho-junior",
+    name: "Ratinho Junior",
+    party: "PSD",
+    role: "Governador do Paraná",
+    image: "/images/governors/ratinho-junior.jpg",
+    status: "Governador atual — pré-candidato à reeleição",
+    statusType: "clean",
+    tags: ["Reeleição", "PSD", "Infraestrutura", "Agronegócio", "Pré-candidato Presidência"],
+    summary:
+      "Atual governador do PR (2019–). Filho do apresentador Ratinho. Reeleito em 1º turno em 2022 com 67% dos votos. Um dos governadores com maior aprovação do Brasil. Cogitado como pré-candidato à Presidência em 2026.",
+    electoralStrengths: [
+      "Governador com altíssima aprovação (70%+)",
+      "Reeleito em 1º turno com 67% dos votos",
+      "PR tem bons indicadores econômicos",
+      "Cogitado para a Presidência",
+      "Base política consolidada",
+    ],
+    electoralWeaknesses: [
+      "Pode deixar o governo para disputar a Presidência",
+      "Críticas sobre obras com superfaturamento",
+      "Dependência da imagem do pai (Ratinho)",
+    ],
+    policies: [
+      {
+        title: "Infraestrutura e Concessões",
+        description: "Programa de concessões de rodovias, portos e aeroportos para modernizar a infraestrutura paranaense.",
+        arguments: ["PR é hub logístico do Sul do Brasil", "Concessões atraem investimento privado", "Modernização sem onerar o estado"],
+        criticisms: ["Obras com suspeitas de superfaturamento", "Benefícios concentrados em regiões mais ricas"],
+        defense: "O governo afirma que as concessões são auditadas e que os investimentos beneficiam todo o estado.",
+        result: "POSITIVO",
+        resultDetail: "Infraestrutura melhorada, mas com questionamentos sobre contratos.",
+      },
+      {
+        title: "Agronegócio e Exportações",
+        description: "Apoio ao agronegócio paranaense, que é um dos maiores produtores de grãos, carnes e derivados do Brasil.",
+        arguments: ["PR é 2º maior exportador agrícola do Brasil", "Apoio a cooperativas e pequenos produtores", "Diversificação da pauta exportadora"],
+        criticisms: ["Concentração de benefícios em grandes produtores", "Pequenos agricultores com dificuldades"],
+        defense: "O governo afirma que apoia cooperativas e a agricultura familiar.",
+        result: "POSITIVO",
+        resultDetail: "PR mantém posição de destaque no agronegócio nacional.",
+      },
+    ],
+    controversies: [
+      {
+        title: "Obras com suspeitas de superfaturamento",
+        description: "Algumas obras do governo estadual foram investigadas por suspeitas de superfaturamento.",
+        status: "ongoing",
+        defense: "O governo afirma que todas as obras passam por auditoria e que não há irregularidades comprovadas.",
+      },
+    ],
+    sources: [
+      { title: "Ratinho Junior — Governo do Paraná", url: "https://www.pr.gov.br/governador", reliability: "official" },
+    ],
+    trustIndex: {
+      score: 65,
+      label: "Moderado",
+      color: "green",
+      metrics: [
+        { name: "Promessas cumpridas", score: 68, weight: 25, description: "Gestão com bons resultados." },
+        { name: "Investigações ativas", score: 65, weight: 20, description: "Algumas investigações sobre obras." },
+        { name: "Condenações", score: 80, weight: 20, description: "Sem condenações." },
+        { name: "Coerência de discurso", score: 65, weight: 15, description: "Discurso de gestor consistente." },
+        { name: "Presença em votações", score: 55, weight: 10, description: "Cargo executivo." },
+        { name: "Transparência", score: 60, weight: 10, description: "Gestão com dados públicos disponíveis." },
+      ],
+      methodology: "Score calculado com base em 6 métricas ponderadas.",
+      lastUpdated: "2026-05",
+    },
+  },
+  {
+    id: "requiao-filho",
+    slug: "requiao-filho",
+    name: "Requião Filho",
+    party: "PT",
+    role: "Senador pelo Paraná",
+    image: "/images/governors/requiao-filho.jpg",
+    status: "Senador — pré-candidato ao governo",
+    statusType: "clean",
+    tags: ["PT", "Senador", "Oposição", "Esquerda", "Família Requião"],
+    summary:
+      "Senador pelo PR. Filho do ex-governador Roberto Requião. Representa a oposição de esquerda ao governo Ratinho Junior. Candidato ao governo do PR em 2026 pelo PT.",
+    electoralStrengths: [
+      "Família Requião tem base eleitoral histórica no PR",
+      "Apoio do PT e do governo Lula",
+      "Senador com visibilidade nacional",
+    ],
+    electoralWeaknesses: [
+      "Ratinho Junior tem aprovação muito alta",
+      "PT tem base limitada no PR",
+      "Desafio enorme para vencer um governador popular",
+    ],
+    policies: [
+      {
+        title: "Serviços Públicos e Desestatização",
+        description: "Opõe-se às privatizações e concessões do governo Ratinho Junior, defendendo serviços públicos de qualidade.",
+        arguments: ["Privatizações aumentam tarifas para o cidadão", "Serviços públicos devem ser universais", "PR tem recursos para manter serviços estatais"],
+        criticisms: ["Modelo estatal tem histórico de ineficiência", "PR precisa de investimentos privados"],
+        defense: "Defende que o estado pode gerir serviços públicos com eficiência e equidade.",
+        result: "INCONCLUSIVO",
+        resultDetail: "Proposta em construção.",
+      },
+    ],
+    controversies: [],
+    sources: [
+      { title: "Requião Filho — Senado Federal", url: "https://www25.senado.leg.br/web/senadores/senador/-/perfil/requiao-filho", reliability: "official" },
+    ],
+    trustIndex: {
+      score: 52,
+      label: "Atenção",
+      color: "amber",
+      metrics: [
+        { name: "Promessas cumpridas", score: 55, weight: 25, description: "Atuação legislativa razoável." },
+        { name: "Investigações ativas", score: 70, weight: 20, description: "Sem investigações graves." },
+        { name: "Condenações", score: 80, weight: 20, description: "Sem condenações." },
+        { name: "Coerência de discurso", score: 55, weight: 15, description: "Discurso de esquerda consistente." },
+        { name: "Presença em votações", score: 65, weight: 10, description: "Boa presença no Senado." },
+        { name: "Transparência", score: 50, weight: 10, description: "Dados de mandato disponíveis." },
+      ],
+      methodology: "Score calculado com base em 6 métricas ponderadas.",
+      lastUpdated: "2026-05",
+    },
+  },
+];
