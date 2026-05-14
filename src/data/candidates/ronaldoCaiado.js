@@ -11,6 +11,20 @@ const ronaldoCaiado = {
 
   proposals: [
     {
+      title: 'Modelo de segurança de Goiás como referência nacional',
+      category: 'Segurança Pública',
+      detailLevel: 'medium',
+      summary:
+        'Caiado usa os índices de redução de criminalidade de Goiás — queda de homicídios, latrocínios e outros crimes — como cartão de visita e propõe replicar o modelo em âmbito nacional, integrando forças estaduais com apoio das Forças Armadas.',
+      implementation:
+        'Expansão do modelo goiano de integração entre polícias civil, militar e federal, com uso intensivo de inteligência e tecnologia, para outros estados dispostos a adotar o programa.',
+      feasibility: {
+        political: 'Modelo com resultados concretos em Goiás; replicação nacional depende de adesão dos governadores.',
+        fiscal: 'Investimento em tecnologia e treinamento; custo varia conforme o estado.',
+      },
+    },
+
+    {
       title: 'Classificar facções criminosas como organizações terroristas',
       category: 'Segurança Pública',
       detailLevel: 'high',
@@ -24,6 +38,22 @@ const ronaldoCaiado = {
       },
       criticism:
         'Especialistas alertam que a classificação como terrorismo pode ser usada de forma abusiva e não resolve as causas estruturais do crime organizado.',
+    },
+
+    {
+      title: 'Oposição à PEC da Segurança Pública (SUSP)',
+      category: 'Segurança Pública',
+      detailLevel: 'high',
+      summary:
+        'Caiado critica a Proposta de Emenda à Constituição que cria o Sistema Único de Segurança Pública (SUSP). Afirma que o plano do governo Lula retira a prerrogativa dos estados e dá "poderes à bandidagem". Defende que cada estado mantenha controle sobre suas polícias e bancos de dados.',
+      implementation:
+        'Articulação parlamentar para barrar a PEC do SUSP no Congresso e manutenção da autonomia estadual em segurança pública, com coordenação voluntária entre estados.',
+      feasibility: {
+        political: 'Governadores de oposição tendem a apoiar a posição de Caiado; aprovação da PEC dependeria de maioria qualificada.',
+        constitutional: 'A PEC do SUSP altera o pacto federativo em segurança pública, tema sensível para estados.',
+      },
+      criticism:
+        'Defensores do SUSP argumentam que a fragmentação das forças estaduais facilita a atuação de facções que operam em múltiplos estados.',
     },
 
     {

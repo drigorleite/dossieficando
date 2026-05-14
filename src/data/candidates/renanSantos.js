@@ -11,6 +11,23 @@ const renanSantos = {
 
   proposals: [
     {
+      title: 'Cidade-Estado do Rio de Janeiro (recriar a Guanabara)',
+      category: 'Reforma Político-Administrativa',
+      detailLevel: 'high',
+      summary:
+        'Renan Santos propõe recriar a antiga Guanabara e transformar a cidade do Rio de Janeiro em um estado autônomo. Afirma que a capital fluminense vive um "colapso estrutural" e defende usar as Forças Armadas como instrumento auxiliar para reconquistar territórios dominados por facções. A nova unidade teria autonomia para controlar suas próprias forças de segurança, "destruir o crime organizado" e implementar um amplo processo de "desfavelização".',
+      implementation:
+        'Separação constitucional da cidade do Rio de Janeiro do estado homônimo, criando uma nova unidade federativa autônoma com orçamento próprio, polícia própria e políticas públicas independentes de interferências do restante do estado. A nova cidade-estado seria reposicionada como hub de tecnologia, mercado financeiro e turismo.',
+      feasibility: {
+        political: 'Exigiria PEC aprovada por maioria qualificada no Congresso e referendo popular; altamente controverso politicamente.',
+        constitutional: 'A criação de um novo estado exige aprovação da população diretamente interessada (plebiscito) e do Congresso Nacional, conforme art. 18 da Constituição.',
+        fiscal: 'Impacto fiscal complexo: redistribuição de receitas de ICMS, FPE e dívidas entre o novo estado e o Rio de Janeiro remanescente.',
+      },
+      criticism:
+        'Críticos apontam que a separação criaria disputas jurídicas e financeiras complexas e não resolveria as causas estruturais da violência sem políticas sociais complementares.',
+    },
+
+    {
       title: 'Guerra às facções e reocupação de territórios',
       category: 'Segurança Pública',
       detailLevel: 'medium',
@@ -58,7 +75,7 @@ const renanSantos = {
       category: 'Economia e Finanças Públicas',
       detailLevel: 'medium',
       summary:
-        'O Livro Amarelo propõe acabar com privilégios de servidores, reduzir gastos públicos, adotar responsabilidade fiscal, simplificar impostos e incentivar o empreendedorismo.',
+        'O Livro Amarelo propõe acabar com privilégios de servidores, reduzir gastos públicos, adotar responsabilidade fiscal, simplificar impostos e incentivar o empreendedorismo. O financiamento do plano programático viria da venda do próprio "Livro Amarelo".',
       implementation:
         'Reforma administrativa para cortar benefícios excessivos do funcionalismo, simplificação tributária e corte de despesas não essenciais.',
       feasibility: {

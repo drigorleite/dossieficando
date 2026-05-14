@@ -41,7 +41,7 @@ const lula = {
       category: 'Infraestrutura e Soberania',
       detailLevel: 'medium',
       summary:
-        'Articula plano de soberania nacional com investimentos em infraestrutura que reduzam a dependência externa do Brasil em setores estratégicos: exploração mineral, segurança alimentar, fortalecimento militar e independência digital.',
+        'Articula plano de soberania nacional com investimentos em infraestrutura que reduzam a dependência externa do Brasil em setores estratégicos: exploração mineral, segurança alimentar, fortalecimento militar e independência digital. O discurso contrapõe a direita e ressalta que o Brasil precisa de liderança capaz de enfrentar disputas geopolíticas.',
       implementation:
         'Elaboração de projeto nacional de médio e longo prazos em colaboração com os ministros Fernando Haddad, Geraldo Alckmin e Simone Tebet, com foco em diversificação econômica e fortalecimento de cadeias produtivas estratégicas.',
       feasibility: {
@@ -53,13 +53,28 @@ const lula = {
     {
       title: 'Legado de infraestrutura para um quarto mandato',
       category: 'Infraestrutura e Soberania',
-      detailLevel: 'low',
+      detailLevel: 'medium',
       summary:
-        'Lula sinalizou que um eventual quarto mandato precisaria deixar um legado além dos programas sociais, com projeto nacional de médio e longo prazos para fortalecer a infraestrutura e diversificar a economia.',
-      implementation: '',
+        'Lula sinalizou que um eventual quarto mandato precisaria deixar um legado além dos programas sociais, com projeto nacional de médio e longo prazos para fortalecer a infraestrutura, diversificar a economia e sustentar a soberania com ênfase em desenvolvimento tecnológico.',
+      implementation:
+        'Elaboração conjunta com os ministros Haddad, Alckmin e Tebet de um plano de infraestrutura e tecnologia de longo prazo.',
       feasibility: {
         political: 'Depende de coalizão parlamentar estável e continuidade do governo.',
         fiscal: 'Escopo e custo não detalhados publicamente.',
+      },
+    },
+
+    {
+      title: '2026 como "ano de colher" — entrega de resultados',
+      category: 'Infraestrutura e Soberania',
+      detailLevel: 'medium',
+      summary:
+        'Em reunião ministerial de dezembro de 2025, Lula afirmou que 2026 seria o "ano de colher o que plantamos". Cobrou resultados dos programas já lançados e sinalizou que pretende apresentar comparações entre a situação atual e a deixada pelo governo anterior como eixo central da campanha.',
+      implementation:
+        'Comunicação institucional baseada em indicadores de programas em andamento (Bolsa Família, PAC, Minha Casa Minha Vida, transição energética) com comparativos do período anterior.',
+      feasibility: {
+        political: 'Estratégia de campanha centrada em resultados concretos; eficácia depende de indicadores favoráveis até outubro de 2026.',
+        fiscal: 'Não implica novos gastos; é uma diretriz de comunicação e entrega de programas já financiados.',
       },
     },
 

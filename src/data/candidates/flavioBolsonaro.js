@@ -10,6 +10,7 @@ const flavioBolsonaro = {
   },
 
   proposals: [
+    // --- Segurança Pública ---
     {
       title: 'Redução da maioridade penal',
       category: 'Segurança Pública',
@@ -37,6 +38,7 @@ const flavioBolsonaro = {
       },
     },
 
+    // --- Trabalho e Previdência ---
     {
       title: 'Nova reforma da Previdência',
       category: 'Trabalho e Previdência',
@@ -67,6 +69,7 @@ const flavioBolsonaro = {
       },
     },
 
+    // --- Economia e Finanças Públicas ---
     {
       title: 'Novo arcabouço fiscal e rearranjo orçamentário',
       category: 'Economia e Finanças Públicas',
@@ -84,18 +87,63 @@ const flavioBolsonaro = {
     },
 
     {
-      title: 'Privatizações amplas',
+      title: 'Redução de gastos, impostos e burocracia',
       category: 'Economia e Finanças Públicas',
-      detailLevel: 'low',
+      detailLevel: 'medium',
       summary:
-        'Textos críticos ao plano afirmam que ele prevê a privatização de até 95% das empresas estatais, incluindo Petrobras, Banco do Brasil e Caixa Econômica Federal.',
-      implementation: '',
+        'Flávio Bolsonaro defendeu reduzir o gasto público e a burocracia, cortar cargos comissionados e despesas consideradas supérfluas (como publicidade oficial). Sinalizou que pretende diminuir a carga tributária e trazer "previsibilidade" aos investidores.',
+      implementation:
+        'Corte de cargos comissionados, eliminação de despesas supérfluas (publicidade oficial) e redução de alíquotas tributárias para atrair investimentos.',
+      feasibility: {
+        political: 'Discurso de eficiência tem apelo amplo; cortes específicos dependem de negociação parlamentar.',
+        fiscal: 'Potencial de redução do déficit estrutural; quais impostos seriam cortados não foi detalhado.',
+      },
+      criticism:
+        'O candidato não detalhou quais impostos seriam reduzidos, o que dificulta a avaliação do impacto fiscal real.',
+    },
+
+    {
+      title: 'Privatizações amplas com exceção para minerais estratégicos',
+      category: 'Economia e Finanças Públicas',
+      detailLevel: 'medium',
+      summary:
+        'Em apresentação a investidores, o senador disse que pretende privatizar cerca de 95% das estatais federais. Prevê exceção para áreas estratégicas — como minerais de terras raras usados em chips e baterias —, para as quais propõe parcerias público-privadas e investimento estatal, pois considera que o Brasil ainda não domina a tecnologia de extração e processamento.',
+      implementation:
+        'Venda de Petrobras, Banco do Brasil, Caixa Econômica Federal e demais estatais, com PPPs para setores de minerais estratégicos onde o domínio tecnológico ainda é incipiente.',
       feasibility: {
         political: 'Privatização de Petrobras, BB e CEF enfrenta resistência intensa no Congresso e na sociedade.',
         fiscal: 'Receita expressiva de curto prazo; perda de dividendos no longo prazo.',
       },
       criticism:
-        'Fontes críticas ao plano alertam que a venda de estatais estratégicas comprometeria soberania econômica e acesso a serviços financeiros em regiões remotas.',
+        'Fontes críticas alertam que a venda de estatais estratégicas comprometeria soberania econômica e acesso a serviços financeiros em regiões remotas.',
+    },
+
+    {
+      title: 'Equipe econômica técnica e ministro da Fazenda',
+      category: 'Economia e Finanças Públicas',
+      detailLevel: 'low',
+      summary:
+        'O pré-candidato disse que seu plano econômico está sendo preparado por uma equipe técnica e que pretende nomear um ministro da Fazenda "melhor do que o atual", sem divulgar nomes.',
+      implementation: '',
+      feasibility: {
+        political: 'Sinalização vaga; nomes e orientação da equipe econômica não foram divulgados.',
+        fiscal: 'Impacto não estimável sem conhecer a composição e o programa da equipe.',
+      },
+    },
+
+    {
+      title: 'Outras reformas em discussão (versões não confirmadas)',
+      category: 'Economia e Finanças Públicas',
+      detailLevel: 'low',
+      summary:
+        'Segundo entrevistas e vazamentos não confirmados, o entorno do candidato analisa reformas trabalhista e previdenciária mais profundas, contenção dos gastos mínimos em saúde e educação e anistia a investigados pelos atos de 8 de janeiro. As versões oficiais ainda são vagas.',
+      implementation: '',
+      feasibility: {
+        political: 'Anistia aos atos de 8 de janeiro é altamente controversa e divide o eleitorado.',
+        fiscal: 'Contenção dos pisos de saúde e educação exigiria PEC e geraria forte resistência.',
+      },
+      criticism:
+        'Propostas não foram confirmadas oficialmente; baseiam-se em vazamentos e entrevistas informais.',
     },
   ],
 
