@@ -4,6 +4,7 @@ import Container from './ui/Container';
 
 const navLinks = [
   { href: '#candidatos', label: 'Candidatos' },
+  { href: '#governadores', label: 'Governadores' },
   { href: '#propostas', label: 'Propostas' },
   { href: '#proposito', label: 'Propósito' },
   { href: '#metodo', label: 'Método' },

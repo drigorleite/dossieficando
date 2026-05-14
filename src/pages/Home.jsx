@@ -10,6 +10,7 @@ import ProposalsComparisonSection from '../components/ProposalsComparisonSection
 import PurposeSection from '../components/PurposeSection';
 import MethodSection from '../components/MethodSection';
 import Footer from '../components/Footer';
+import GovernorSection from '../components/governors/GovernorSection';
 
 export default function Home() {
   const [selectedCandidate, setSelectedCandidate] = useState(null);
@@ -36,6 +37,7 @@ export default function Home() {
         setSelectedCandidate={setSelectedCandidate}
         onOpenComparison={() => setComparisonOpen(true)}
       />
+      <GovernorSection />
       <ProposalsComparisonSection onOpenCandidate={setSelectedCandidate} />
       <PurposeSection />
       <MethodSection />
