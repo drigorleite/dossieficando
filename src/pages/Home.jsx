@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import CandidateGrid from '../components/CandidateGrid';
 import CandidateExpanded from '../components/CandidateExpanded';
+import CandidateComparison from '../components/CandidateComparison';
 import ProposalsComparisonSection from '../components/ProposalsComparisonSection';
 import PurposeSection from '../components/PurposeSection';
 import MethodSection from '../components/MethodSection';
@@ -12,6 +13,7 @@ import Footer from '../components/Footer';
 
 export default function Home() {
   const [selectedCandidate, setSelectedCandidate] = useState(null);
+  const [comparisonOpen, setComparisonOpen] = useState(false);
   const [query, setQuery] = useState('');
 
   const filteredCandidates = useMemo(() => {
@@ -27,11 +29,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-neutral-950 font-sans text-white">
-      <Header />
-      <Hero query={query} setQuery={setQuery} />
+      <Header onOpenComparison={() => setComparisonOpen(true)} />
+      <Hero query={query} setQuery={setQuery} onOpenComparison={() => setComparisonOpen(true)} />
       <CandidateGrid
         filteredCandidates={filteredCandidates}
         setSelectedCandidate={setSelectedCandidate}
+        onOpenComparison={() => setComparisonOpen(true)}
       />
       <ProposalsComparisonSection onOpenCandidate={setSelectedCandidate} />
       <PurposeSection />
@@ -43,6 +46,19 @@ export default function Home() {
           <CandidateExpanded
             candidate={selectedCandidate}
             onClose={() => setSelectedCandidate(null)}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {comparisonOpen && (
+          <CandidateComparison
+            candidates={candidates}
+            onClose={() => setComparisonOpen(false)}
+            onOpenCandidate={(c) => {
+              setComparisonOpen(false);
+              setSelectedCandidate(c);
+            }}
           />
         )}
       </AnimatePresence>
