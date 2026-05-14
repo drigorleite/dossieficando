@@ -336,15 +336,36 @@ const flavioBolsonaro = {
   // ── Índice de Confiabilidade ──
   trustIndex: {
     score: 38,
-    lastUpdated: 'Mai/2025',
-    notes: 'Pontuação afetada pelo caso das rachadinhas, investigação da ABIN paralela e pelo histórico de alianças familiares. Propostas ainda não testadas no executivo.',
+    lastUpdated: 'Mai/2026',
+    notes: 'Pontuação afetada pelo caso das rachadinhas, investigação da ABIN paralela e pelo histórico de alianças familiares. Propostas ainda não testadas no executivo. Nota parlamentar no ranking.org.br é alta (8,30), refletindo presença e atuação no Senado, mas não considera investigações criminais.',
     metrics: {
       promises: 40,
       investigations: 20,
       convictions: 45,
       discourseCoherence: 35,
-      votingPresence: 60,
+      votingPresence: 82,
       transparency: 30,
+    },
+    rankingOrg: {
+      score: 8.30,
+      position: 8,
+      positionTotal: 81,
+      state: 'RJ',
+      statePosition: 1,
+      stateTotalPositions: 3,
+      awards: [
+        'Prêmio Excelência Parlamentar 2023',
+        'Prêmio Excelência Parlamentar 2024',
+        'Prêmio Excelência Parlamentar 2025',
+      ],
+      scoresByYear: [
+        { year: 2023, score: 7.53 },
+        { year: 2024, score: 8.05 },
+        { year: 2025, score: 7.63 },
+        { year: 2026, score: 10.00 },
+      ],
+      url: 'https://ranking.org.br/perfil/flavio-nantes-bolsonaro',
+      note: 'O Ranking dos Políticos avalia atuação parlamentar (presença, votações, projetos) — não considera investigações criminais ou escândalos.',
     },
   },
 

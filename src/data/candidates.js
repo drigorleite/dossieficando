@@ -638,7 +638,7 @@ export const candidates = [
     ],
     trustIndex: {
       score: 44,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Carreira longa com condenações cíveis e histórico de instabilidade discursiva. Sem condenações criminais.',
       metrics: {
         promises: 35,
@@ -755,7 +755,7 @@ export const candidates = [
     ],
     trustIndex: {
       score: 48,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Condenado por caixa dois em 2012 (em recurso). Como ministro da Fazenda, apresenta prestação de contas regular.',
       metrics: {
         promises: 50,
@@ -852,7 +852,7 @@ export const candidates = [
     ],
     trustIndex: {
       score: 55,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Sem processos judiciais, mas posições polêmicas sobre anistia e clima. Carreira longa com poucos escândalos pessoais.',
       metrics: {
         promises: 50,
@@ -1094,7 +1094,7 @@ export const candidates = [
     ],
     trustIndex: {
       score: 38,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Inquérito por peculato em aberto. Histórico de expulsão do PSOL e liderança de greve irregular.',
       metrics: {
         promises: 30,
@@ -1172,7 +1172,7 @@ export const candidates = [
     ],
     trustIndex: {
       score: 42,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Sem processos judiciais, mas criticado por promover pseudociência e afirmar cura de autismo sem evidências científicas.',
       metrics: {
         promises: 20,
@@ -1251,7 +1251,7 @@ export const candidates = [
     ],
     trustIndex: {
       score: 62,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Perfil discreto sem investigações ou processos. Baixa visibilidade pública dificulta avaliação de promessas e transparência.',
       metrics: {
         promises: 40,
@@ -1320,7 +1320,7 @@ export const candidates = [
     ],
     trustIndex: {
       score: 55,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Sem processos criminais. Polêmico por declarações antissionistas que geraram processo por racismo.',
       metrics: {
         promises: 30,
@@ -1389,7 +1389,7 @@ export const candidates = [
     ],
     trustIndex: {
       score: 40,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Condenado a pagar R$ 10 mil por chamar Kim Kataguiri de "nazista". Histórico de declarações extremadas.',
       metrics: {
         promises: 25,
@@ -1477,7 +1477,7 @@ export const candidates = [
     ],
     trustIndex: {
       score: 50,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Sem investigações ou processos judiciais. Candidata nova com pouco histórico verificável de promessas cumpridas.',
       metrics: {
         promises: 20,

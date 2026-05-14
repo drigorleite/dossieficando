@@ -433,7 +433,7 @@ const lula = {
   // ── Índice de Confiabilidade ──
   trustIndex: {
     score: 52,
-    lastUpdated: 'Mai/2025',
+    lastUpdated: 'Mai/2026',
     notes: 'Pontuação afetada pelas investigações da Lava Jato (anuladas) e pelo histórico de alianças com o Centrão. Promessas sociais têm alto índice de cumprimento.',
     metrics: {
       promises: 65,

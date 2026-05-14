@@ -113,7 +113,7 @@ export const spGovernorCandidates = [
     ],
     trustIndex: {
       score: 62,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Gestão técnica reconhecida, mas polêmicas com violência policial (Chacina do Guarujá) e dependência do bolsonarismo afetam a pontuação.',
       metrics: {
         promises: 60,
@@ -283,7 +283,7 @@ export const spGovernorCandidates = [
     ],
     trustIndex: {
       score: 48,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Condenado por caixa dois em 2012 (em recurso). Gestão em SP como prefeito foi contestada — perdeu a reeleição com 16% dos votos. Como ministro da Fazenda, apresenta prestação de contas regular.',
       metrics: {
         promises: 50,
@@ -407,16 +407,41 @@ export const spGovernorCandidates = [
       },
     ],
     trustIndex: {
-      score: 38,
-      lastUpdated: 'maio/2026',
-      notes: 'Múltiplos inquéritos ativos, incluindo investigação sobre financiamento estrangeiro do MBL e suspeita de desvio de recursos de gabinete.',
+      score: 42,
+      lastUpdated: 'Mai/2026',
+      notes: 'Nota parlamentar no ranking.org.br é muito alta (8,69 — 6º da Câmara), refletindo excelente atuação legislativa. Score interno mais baixo por investigações sobre financiamento do MBL e suspeitas de desvio de recursos de gabinete.',
       metrics: {
-        promises: 30,
-        investigations: 25,
+        promises: 35,
+        investigations: 30,
         convictions: 70,
-        discourseCoherence: 40,
-        votingPresence: 55,
-        transparency: 35,
+        discourseCoherence: 45,
+        votingPresence: 87,
+        transparency: 40,
+      },
+      rankingOrg: {
+        score: 8.69,
+        position: 6,
+        positionTotal: 460,
+        state: 'SP',
+        statePosition: 4,
+        stateTotalPositions: 65,
+        awards: [
+          'Prêmio Excelência Parlamentar 2019',
+          'Prêmio Excelência Parlamentar 2020',
+          'Prêmio Excelência Parlamentar 2021',
+          'Prêmio Excelência Parlamentar 2022',
+          'Prêmio Excelência Parlamentar 2023',
+          'Prêmio Excelência Parlamentar 2024',
+          'Prêmio Excelência Parlamentar 2025',
+        ],
+        scoresByYear: [
+          { year: 2023, score: 7.86 },
+          { year: 2024, score: 8.61 },
+          { year: 2025, score: 8.48 },
+          { year: 2026, score: 9.80 },
+        ],
+        url: 'https://ranking.org.br/perfil/kim-patroca-kataguiri',
+        note: 'O Ranking dos Políticos avalia atuação parlamentar (presença, votações, projetos) — não considera investigações criminais ou escândalos.',
       },
     },
 
@@ -505,7 +530,7 @@ export const spGovernorCandidates = [
     ],
     trustIndex: {
       score: 52,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Investigado por irregularidades em contrato de saúde em Santo André. Sem condenações. Perfil de gestor municipal com histórico misto.',
       metrics: {
         promises: 50,
@@ -575,7 +600,7 @@ export const spGovernorCandidates = [
     controversies: [],
     trustIndex: {
       score: 45,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Deputado estadual com pouco histórico verificável. Ligado ao PL e ao bolsonarismo. Sem condenações, mas com votações polêmicas na Alesp.',
       metrics: {
         promises: 30,
@@ -637,7 +662,7 @@ export const spGovernorCandidates = [
     controversies: [],
     trustIndex: {
       score: 55,
-      lastUpdated: 'maio/2026',
+      lastUpdated: 'Mai/2026',
       notes: 'Sem investigações ou processos. Candidata nova com pouco histórico executivo verificável. Alta transparência nas redes e prestação de contas.',
       metrics: {
         promises: 35,

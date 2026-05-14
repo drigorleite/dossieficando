@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Info, ChevronDown, ChevronUp } from 'lucide-react';
+import { Info, ChevronDown, ChevronUp, ExternalLink, Award, TrendingUp } from 'lucide-react';
 
 const METRICS = [
   {
@@ -75,12 +75,94 @@ function ScoreCircle({ score }) {
   );
 }
 
+function RankingOrgBadge({ rankingOrg }) {
+  if (!rankingOrg) return null;
+  const { score, position, positionTotal, state, statePosition, stateTotalPositions, awards, scoresByYear, url } = rankingOrg;
+
+  const scoreColor = score >= 8 ? 'text-emerald-400' : score >= 6 ? 'text-amber-400' : 'text-red-400';
+  const scoreBg = score >= 8 ? 'bg-emerald-500/10 border-emerald-500/30' : score >= 6 ? 'bg-amber-500/10 border-amber-500/30' : 'bg-red-500/10 border-red-500/30';
+
+  return (
+    <div className={`rounded-2xl border p-5 ${scoreBg}`}>
+      <div className="flex items-start justify-between mb-4">
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <TrendingUp size={14} className="text-neutral-400" />
+            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-neutral-400">
+              Ranking dos Políticos
+            </span>
+          </div>
+          <p className="text-[11px] text-neutral-600">ranking.org.br — avaliação independente de parlamentares</p>
+        </div>
+        {url && (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-[10px] text-neutral-500 hover:text-neutral-300 transition-colors"
+          >
+            Ver perfil <ExternalLink size={10} />
+          </a>
+        )}
+      </div>
+
+      <div className="flex items-center gap-6 mb-4">
+        <div className="text-center">
+          <span className={`text-4xl font-bold ${scoreColor}`}>{score.toFixed(2).replace('.', ',')}</span>
+          <p className="text-[10px] text-neutral-600 mt-0.5">nota (0–10)</p>
+        </div>
+        <div className="flex gap-4">
+          {position && positionTotal && (
+            <div className="text-center">
+              <span className="text-xl font-bold text-white">{position}º</span>
+              <p className="text-[10px] text-neutral-600">de {positionTotal}</p>
+            </div>
+          )}
+          {state && statePosition && (
+            <div className="text-center">
+              <span className="text-xl font-bold text-white">{statePosition}º</span>
+              <p className="text-[10px] text-neutral-600">{state} de {stateTotalPositions}</p>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {scoresByYear && scoresByYear.length > 0 && (
+        <div className="mb-4">
+          <p className="text-[10px] text-neutral-600 mb-2 uppercase tracking-wider">Notas por ano</p>
+          <div className="flex gap-2 flex-wrap">
+            {scoresByYear.map(({ year, score: s }) => (
+              <div key={year} className="text-center bg-white/5 rounded-lg px-3 py-1.5">
+                <p className="text-[10px] text-neutral-500">{year}</p>
+                <p className={`text-sm font-bold ${s >= 8 ? 'text-emerald-400' : s >= 6 ? 'text-amber-400' : 'text-red-400'}`}>
+                  {s.toFixed(2).replace('.', ',')}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {awards && awards.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {awards.map((award, i) => (
+            <div key={i} className="flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 rounded-full px-2.5 py-1">
+              <Award size={10} className="text-amber-400" />
+              <span className="text-[10px] text-amber-300">{award}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function TrustIndex({ trustIndex }) {
   const [showMethodology, setShowMethodology] = useState(false);
 
   if (!trustIndex) return null;
 
-  const { score, metrics, notes, lastUpdated } = trustIndex;
+  const { score, metrics, notes, lastUpdated, rankingOrg } = trustIndex;
 
   return (
     <div className="space-y-6">
@@ -131,6 +213,16 @@ export default function TrustIndex({ trustIndex }) {
         </div>
       </div>
 
+      {/* Ranking dos Políticos — dados externos */}
+      {rankingOrg && (
+        <div>
+          <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500 mb-3">
+            Avaliação externa independente
+          </h4>
+          <RankingOrgBadge rankingOrg={rankingOrg} />
+        </div>
+      )}
+
       {/* Methodology toggle */}
       <div className="rounded-2xl border border-white/10 overflow-hidden">
         <button
@@ -171,6 +263,14 @@ export default function TrustIndex({ trustIndex }) {
                 o que pode distorcer a pontuação. Leia sempre a metodologia antes de comparar candidatos de perfis diferentes.
               </p>
             </div>
+            {rankingOrg && (
+              <div className="rounded-xl bg-blue-500/5 border border-blue-500/20 px-3 py-2.5">
+                <p className="text-[10px] text-blue-400/80 leading-relaxed">
+                  ℹ️ Os dados do <strong>Ranking dos Políticos</strong> (ranking.org.br) são independentes e avaliam exclusivamente parlamentares federais em exercício.
+                  Governadores, ministros e pré-candidatos sem mandato ativo não são avaliados por essa fonte.
+                </p>
+              </div>
+            )}
           </div>
         )}
       </div>

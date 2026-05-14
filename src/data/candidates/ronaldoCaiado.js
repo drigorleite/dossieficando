@@ -234,7 +234,7 @@ const ronaldoCaiado = {
   },
   trustIndex: {
     score: 58,
-    lastUpdated: 'maio/2026',
+    lastUpdated: 'Mai/2026',
     notes: 'Governador com resultados verificáveis em segurança pública em Goiás. Histórico ligado à UDR e questionamentos sobre mineração afetam a pontuação.',
     metrics: {
       promises: 60,
