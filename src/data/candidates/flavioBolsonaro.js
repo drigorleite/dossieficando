@@ -282,6 +282,237 @@ const flavioBolsonaro = {
       },
     ],
   },
+
+  // ── Promessas vs Realidade ──
+  promises: [
+    {
+      promise: 'Reduzir gastos públicos e cortar cargos comissionados',
+      year: 2025,
+      category: 'Fiscal',
+      status: 'nao_cumprida',
+      result: 'Ainda não assumiu cargo executivo. Proposta declarada em entrevistas, sem detalhamento de metas ou cronograma.',
+      evidence: [
+        { description: 'Entrevistas e declarações públicas — 2025', date: '2025' },
+      ],
+      context: 'Proposta de campanha ainda não testada na prática. Flávio Bolsonaro é senador, não tem poder executivo para implementar.',
+    },
+    {
+      promise: 'Anistia aos envolvidos no 8 de janeiro',
+      year: 2023,
+      category: 'Ética / Judicial',
+      status: 'parcial',
+      result: 'O PL de anistia foi aprovado pela Câmara em 2024 mas enfrenta resistência no Senado e pode ser vetado pelo presidente Lula.',
+      evidence: [
+        { description: 'Aprovação do PL de anistia na Câmara — 2024', date: '2024' },
+      ],
+    },
+  ],
+
+  // ── Mudou de Posição? ──
+  positionShifts: [
+    {
+      theme: 'Imagem pública e discurso',
+      type: 'suavizacao',
+      before: { year: 2018, quote: 'Somos a família Bolsonaro. Ou está conosco ou está contra nós.' },
+      after: { year: 2025, quote: 'Quero ser o candidato de todos os brasileiros, não apenas dos que votaram em meu pai.' },
+      explanation: 'Flávio Bolsonaro tem buscado suavizar o tom confrontacional da família para ampliar o eleitorado além da base bolsonarista mais radical.',
+      sources: [
+        { label: 'Entrevistas 2018 — campanha ao Senado', year: 2018 },
+        { label: 'Entrevistas CNN Brasil e Jovem Pan — 2025', year: 2025 },
+      ],
+    },
+    {
+      theme: 'Relação com o STF',
+      type: 'endurecimento',
+      before: { year: 2019, quote: 'O STF é uma instituição que deve ser respeitada.' },
+      after: { year: 2024, quote: 'O STF está extrapolando suas funções e interferindo na política.' },
+      explanation: 'Após as condenações dos envolvidos no 8 de janeiro e as decisões do STF contra aliados, Flávio Bolsonaro adotou postura mais crítica à corte.',
+      sources: [
+        { label: 'Declarações públicas 2019–2024', year: 2024 },
+      ],
+    },
+  ],
+
+  // ── Índice de Confiabilidade ──
+  trustIndex: {
+    score: 38,
+    lastUpdated: 'Mai/2025',
+    notes: 'Pontuação afetada pelo caso das rachadinhas, investigação da ABIN paralela e pelo histórico de alianças familiares. Propostas ainda não testadas no executivo.',
+    metrics: {
+      promises: 40,
+      investigations: 20,
+      convictions: 45,
+      discourseCoherence: 35,
+      votingPresence: 60,
+      transparency: 30,
+    },
+  },
+
+  // ── Linha do Tempo Interativa ──
+  interactiveTimeline: [
+    { year: 2003, type: 'eleicao', title: 'Eleito vereador no Rio de Janeiro', description: 'Primeiro mandato eletivo, eleito para a Câmara Municipal do Rio.' },
+    { year: 2007, type: 'eleicao', title: 'Eleito deputado estadual no RJ', description: 'Primeiro de quatro mandatos consecutivos na Alerj.' },
+    { year: 2018, type: 'eleicao', title: 'Eleito senador pelo RJ', description: 'Eleito com 5,8 milhões de votos, aproveitando a onda bolsonarista.' },
+    { year: 2019, type: 'investigacao', title: 'Caso Queiroz — rachadinhas', description: 'Coaf aponta movimentações suspeitas de Fabrício Queiroz, ex-assessor de Flávio. Inquérito aberto no MPRJ.' },
+    { year: 2020, type: 'operacao_pf', title: 'Queiroz é preso', description: 'Fabrício Queiroz foi preso em junho de 2020 na casa do advogado Frederick Wassef.' },
+    { year: 2022, type: 'judicial', title: 'STJ encerra parte do processo', description: 'O STJ encerrou parte das investigações por questões processuais. Flávio não foi condenado.' },
+    { year: 2023, type: 'investigacao', title: 'ABIN paralela', description: 'PF investiga uso ilegal da ABIN para espionar adversários. Flávio é citado como beneficiário.' },
+    { year: 2024, type: 'eleicao', title: 'Reeleito senador', description: 'Reeleito para o Senado pelo RJ com ampla margem.' },
+    { year: 2025, type: 'eleicao', title: 'Lançamento da pré-candidatura à Presidência', description: 'Flávio Bolsonaro se lança como pré-candidato para 2026.' },
+  ],
+
+  // ── Radar de Investigações ──
+  investigationRadar: [
+    {
+      agency: 'STJ',
+      title: 'Rachadinhas — Caso Queiroz',
+      year: 2019,
+      status: 'encerrado_parcial',
+      description: 'Suspeita de desvio de parte dos salários de funcionários do gabinete de Flávio na Alerj, repassados a Fabrício Queiroz.',
+      defense: 'Flávio Bolsonaro sempre negou envolvimento. A defesa argumentou que as movimentações de Queiroz eram pessoais.',
+      chronology: [
+        { date: 'Dez/2018', event: 'Coaf aponta movimentações suspeitas de Queiroz' },
+        { date: '2019', event: 'Inquérito aberto no MPRJ' },
+        { date: 'Jun/2020', event: 'Queiroz preso' },
+        { date: '2022', event: 'STJ encerra parte do processo por questões processuais' },
+      ],
+    },
+    {
+      agency: 'PF',
+      title: 'ABIN Paralela',
+      year: 2023,
+      status: 'ativo',
+      description: 'Investigação sobre uso ilegal da ABIN para espionar adversários políticos durante o governo Bolsonaro.',
+      defense: 'Flávio Bolsonaro negou ter solicitado ou recebido informações ilegais da ABIN.',
+    },
+  ],
+
+  // ── Histórico de Votações ──
+  votingHistory: [
+    {
+      bill: 'PL de Anistia aos envolvidos no 8 de janeiro',
+      year: 2024,
+      theme: 'judicial',
+      vote: 'sim',
+      description: 'Votou a favor do projeto de anistia aos condenados pelos atos de 8 de janeiro de 2023.',
+      coherenceNote: 'Coerente com o discurso de defesa dos manifestantes do 8 de janeiro.',
+    },
+    {
+      bill: 'Reforma da Previdência — EC 103/2019',
+      year: 2019,
+      theme: 'previdencia',
+      vote: 'sim',
+      description: 'Votou a favor da reforma da previdência do governo Bolsonaro.',
+    },
+    {
+      bill: 'Arcabouço Fiscal — LC 200/2023',
+      year: 2023,
+      theme: 'gastos',
+      vote: 'nao',
+      description: 'Votou contra o arcabouço fiscal do governo Lula.',
+    },
+  ],
+
+  // ── Político em Números ──
+  politicianInNumbers: {
+    globalStats: [
+      { label: 'Anos como parlamentar', value: '22+', unit: 'anos', trend: null, higherIsBetter: null },
+      { label: 'Votos na eleição ao Senado (2018)', value: '5,8', unit: 'milhões', trend: 'up', higherIsBetter: true },
+      { label: 'Intenção de voto (pré-candidatura 2026)', value: '8–12', unit: '%', trend: null, higherIsBetter: null, note: 'Pesquisas Datafolha e Quaest — Abr/2025' },
+    ],
+    mandates: [
+      {
+        title: 'Senado Federal',
+        period: '2019–presente',
+        metrics: [
+          { label: 'Presença em votações', value: '68', unit: '%', trend: null, higherIsBetter: true },
+          { label: 'Projetos de lei apresentados', value: '47', unit: 'PLs', trend: null, higherIsBetter: null },
+          { label: 'Projetos aprovados', value: '3', unit: 'PLs', trend: null, higherIsBetter: null },
+        ],
+      },
+    ],
+    note: 'Dados de presença pelo portal do Senado Federal.',
+  },
+
+  // ── Perfil Ideológico ──
+  ideologyProfile: {
+    summary: 'Flávio Bolsonaro representa a direita conservadora brasileira, com ênfase em liberalismo econômico, segurança pública e valores tradicionais.',
+    axes: {
+      economy: { value: 80, confidence: 'alta' },
+      customs: { value: 80, confidence: 'alta' },
+      state: { value: 25, confidence: 'alta' },
+      security: { value: 85, confidence: 'alta' },
+      privatization: { value: 85, confidence: 'alta' },
+      taxes: { value: 80, confidence: 'alta' },
+    },
+  },
+
+  // ── Mapa de Alianças ──
+  allianceMap: [
+    { name: 'PL', type: 'aliado', since: '2021', description: 'Partido de Jair Bolsonaro. Base principal de Flávio.' },
+    { name: 'Valdemar Costa Neto', type: 'aliado', description: 'Presidente do PL. Controla a legenda e as indicações partidárias.' },
+    { name: 'Jair Bolsonaro', type: 'aliado', description: 'Pai e principal apoiador. Inelegibilidade de Jair abre espaço para Flávio.' },
+    { name: 'Pastores evangélicos', type: 'apoio', description: 'Base religiosa que apoiou o bolsonarismo.' },
+    { name: 'Fabrício Queiroz', type: 'suspeito', description: 'Ex-assessor envolvido no caso das rachadinhas. Preso e solto em 2020.' },
+  ],
+
+  // ── Quem Indicou Quem ──
+  appointments: [
+    { name: 'Fabrício Queiroz', role: 'assessor', institution: 'Gabinete na Alerj', year: 2007, connection: 'Policial militar e amigo da família Bolsonaro.', suspicious: true, controversy: 'Centro do caso das rachadinhas. Preso pela PF em 2020.' },
+  ],
+
+  // ── Como Isso Afeta Você ──
+  impacts: [
+    {
+      proposal: 'Redução de gastos e impostos',
+      shortImpact: 'Corte de despesas públicas e redução da carga tributária',
+      impacts: [
+        { profile: 'empresario', level: 'positivo', description: 'Redução de impostos pode aumentar a competitividade e reduzir o custo de produção.' },
+        { profile: 'investidor', level: 'positivo', description: 'Ambiente fiscal mais previsível pode atrair investimentos.' },
+        { profile: 'clt', level: 'incerto', description: 'Corte de gastos pode afetar serviços públicos. Redução de impostos pode aumentar o salário líquido.' },
+        { profile: 'mei', level: 'positivo', description: 'Redução da burocracia pode facilitar a formalização de pequenos negócios.' },
+      ],
+    },
+  ],
+
+  // ── O que Aconteceu Depois ──
+  afterStories: [
+    {
+      year: 2018,
+      category: 'Eleição',
+      announcement: 'Eleito senador com 5,8 milhões de votos',
+      whatWasSaid: 'Vou ser a voz do Rio de Janeiro no Senado e defender os valores da família brasileira.',
+      whatHappened: 'Primeiro mandato marcado pelo caso das rachadinhas (2019) e pela investigação da ABIN paralela (2023).',
+      outcome: 'misto',
+      data: 'Presença em votações: 68%. 3 projetos aprovados em 6 anos de mandato.',
+    },
+  ],
+
+  // ── Histórico de Corrupção Partidária ──
+  corruptionHistory: [
+    {
+      scope: 'individuo',
+      title: 'Rachadinhas — Caso Queiroz',
+      year: 2019,
+      operation: 'Inquérito MPRJ / STJ',
+      description: 'Suspeita de desvio de parte dos salários de funcionários do gabinete de Flávio na Alerj, repassados a Fabrício Queiroz.',
+      involved: ['Fabrício Queiroz', 'Flávio Bolsonaro (citado)'],
+      outcome: 'Processo encerrado parcialmente pelo STJ. Sem condenação definitiva.',
+      candidateRelation: 'Flávio é o principal investigado. A defesa sempre negou envolvimento.',
+    },
+    {
+      scope: 'partido',
+      title: 'Atos de 8 de janeiro — envolvimento do PL',
+      year: 2023,
+      description: 'Membros e apoiadores do PL participaram dos atos de vandalismo de 8 de janeiro de 2023.',
+      involved: ['Apoiadores do PL', 'Militantes bolsonaristas'],
+      outcome: 'Centenas de condenados pelo STF. Jair Bolsonaro tornou-se inelegível.',
+      candidateRelation: 'Flávio Bolsonaro defendeu os manifestantes e votou pelo PL de anistia. Não foi investigado por participação direta.',
+    },
+  ],
+
+  // ── Termos econômicos relevantes ──
+  economicTerms: ['inflacao', 'juros', 'deficit', 'divida_publica', 'pib', 'iof'],
 };
 
 export default flavioBolsonaro;

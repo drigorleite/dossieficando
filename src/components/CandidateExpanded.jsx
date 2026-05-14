@@ -3,11 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft, FileText, Scale, Newspaper, Lightbulb, BookOpen,
   AlertTriangle, Users, ChevronDown, ChevronUp, Clock,
-  Building2, Briefcase, GitCompare,
+  Building2, Briefcase, GitCompare, CheckSquare, TrendingUp,
+  ShieldAlert, Vote, BarChart2, Compass, Network, UserCheck,
+  Zap, RotateCcw, DollarSign, Star,
 } from 'lucide-react';
 import Container from './ui/Container';
 import Badge from './ui/Badge';
-import Button from './ui/Button';
 import Card from './ui/Card';
 import InfoCard from './InfoCard';
 import Timeline from './Timeline';
@@ -17,6 +18,20 @@ import LegalNotice from './dossier/LegalNotice';
 import ProposalCard from './dossier/ProposalCard';
 import SectionRenderer from './dossier/SectionRenderer';
 import TrajectorySection from './dossier/TrajectorySection';
+import PromisesVsReality from './features/PromisesVsReality';
+import PositionShifts from './features/PositionShifts';
+import TrustIndex from './features/TrustIndex';
+import InteractiveTimeline from './features/InteractiveTimeline';
+import InvestigationRadar from './features/InvestigationRadar';
+import VotingHistory from './features/VotingHistory';
+import PoliticianInNumbers from './features/PoliticianInNumbers';
+import IdeologyProfile from './features/IdeologyProfile';
+import AllianceMap from './features/AllianceMap';
+import WhoAppointedWhom from './features/WhoAppointedWhom';
+import HowItAffectsYou from './features/HowItAffectsYou';
+import WhatHappenedAfter from './features/WhatHappenedAfter';
+import EconomicExplainer from './features/EconomicExplainer';
+import PartyCorruptionHistory from './features/PartyCorruptionHistory';
 import { modularCandidates } from '../data/candidates/index';
 import { SECTION_TYPES } from '../constants/sectionTypes';
 
@@ -27,12 +42,57 @@ const CATEGORIES = [
   { type: 'ligação', label: 'Ligações (Entorno)', accent: 'text-neutral-400', border: 'border-white/10', bg: 'bg-white/[0.02]' },
 ];
 
-const TABS = [
-  { id: 'dossie', label: 'Dossiê', icon: BookOpen },
-  { id: 'trajetoria', label: 'Trajetória', icon: Clock },
-  { id: 'propostas', label: 'Propostas', icon: Lightbulb },
-  { id: 'secoes', label: 'Partido & Contexto', icon: AlertTriangle },
-  { id: 'fontes', label: 'Fontes', icon: FileText },
+// Tab groups for better organization
+const TAB_GROUPS = [
+  {
+    label: 'Dossiê',
+    tabs: [
+      { id: 'dossie', label: 'Linha do Tempo', icon: BookOpen, always: true },
+      { id: 'trajetoria', label: 'Trajetória', icon: Clock, requires: 'trajectory' },
+      { id: 'timeline_interativa', label: 'Cronologia', icon: TrendingUp, requires: 'interactiveTimeline' },
+    ],
+  },
+  {
+    label: 'Análise',
+    tabs: [
+      { id: 'propostas', label: 'Propostas', icon: Lightbulb, requires: 'proposals' },
+      { id: 'promessas', label: 'Promessas vs Realidade', icon: CheckSquare, requires: 'promises' },
+      { id: 'mudancas', label: 'Mudou de Posição?', icon: RotateCcw, requires: 'positionShifts' },
+      { id: 'votacoes', label: 'Votações', icon: Vote, requires: 'votingHistory' },
+    ],
+  },
+  {
+    label: 'Investigações',
+    tabs: [
+      { id: 'radar', label: 'Radar de Investigações', icon: ShieldAlert, requires: 'investigationRadar' },
+      { id: 'secoes', label: 'Partido & Contexto', icon: AlertTriangle, requires: 'sections' },
+      { id: 'corrupcao', label: 'Histórico Partidário', icon: Briefcase, requires: 'corruptionHistory' },
+    ],
+  },
+  {
+    label: 'Perfil',
+    tabs: [
+      { id: 'numeros', label: 'Político em Números', icon: BarChart2, requires: 'politicianInNumbers' },
+      { id: 'ideologia', label: 'Perfil Ideológico', icon: Compass, requires: 'ideologyProfile' },
+      { id: 'aliancas', label: 'Mapa de Alianças', icon: Network, requires: 'allianceMap' },
+      { id: 'indicacoes', label: 'Quem Indicou Quem', icon: UserCheck, requires: 'appointments' },
+      { id: 'confiabilidade', label: 'Índice de Confiabilidade', icon: Star, requires: 'trustIndex' },
+    ],
+  },
+  {
+    label: 'Impacto',
+    tabs: [
+      { id: 'impacto', label: 'Como Afeta Você', icon: Zap, requires: 'impacts' },
+      { id: 'depois', label: 'O que Aconteceu Depois', icon: GitCompare, requires: 'afterStories' },
+      { id: 'economico', label: 'Explicador Econômico', icon: DollarSign, requires: 'economicTerms' },
+    ],
+  },
+  {
+    label: 'Fontes',
+    tabs: [
+      { id: 'fontes', label: 'Fontes', icon: FileText, always: true },
+    ],
+  },
 ];
 
 function CategoryBlock({ type, label, accent, border, bg, items }) {
@@ -79,6 +139,44 @@ function TabContent({ children }) {
   );
 }
 
+function TabGroupNav({ groups, activeTab, onTabChange }) {
+  // Flatten all visible tabs with group separators
+  const allTabs = [];
+  groups.forEach((group, gi) => {
+    const visibleTabs = group.tabs.filter((t) => t._visible);
+    if (!visibleTabs.length) return;
+    if (gi > 0 && allTabs.length > 0) {
+      allTabs.push({ separator: true, key: `sep-${gi}` });
+    }
+    visibleTabs.forEach((tab) => allTabs.push({ ...tab, groupLabel: group.label }));
+  });
+
+  return (
+    <div className="flex items-center gap-0.5">
+      {allTabs.map((item) => {
+        if (item.separator) {
+          return <span key={item.key} className="mx-1 h-4 w-px bg-white/10 shrink-0" />;
+        }
+        const Icon = item.icon;
+        return (
+          <button
+            key={item.id}
+            onClick={() => onTabChange(item.id)}
+            className={`flex shrink-0 items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-medium transition-all ${
+              activeTab === item.id
+                ? 'bg-white text-neutral-950 shadow-sm'
+                : 'text-neutral-400 hover:bg-white/10 hover:text-white'
+            }`}
+          >
+            <Icon size={13} aria-hidden="true" />
+            <span>{item.label}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function CandidateExpanded({ candidate, onClose }) {
   const [activeTab, setActiveTab] = useState('dossie');
 
@@ -88,17 +186,51 @@ export default function CandidateExpanded({ candidate, onClose }) {
   const sections = modular?.sections ?? {};
   const ideology = modular?.profile?.ideology ?? null;
   const trajectory = modular?.trajectory ?? null;
+  const promises = modular?.promises ?? [];
+  const positionShifts = modular?.positionShifts ?? [];
+  const trustIndex = modular?.trustIndex ?? null;
+  const interactiveTimeline = modular?.interactiveTimeline ?? [];
+  const investigationRadar = modular?.investigationRadar ?? [];
+  const votingHistory = modular?.votingHistory ?? [];
+  const politicianInNumbers = modular?.politicianInNumbers ?? null;
+  const ideologyProfile = modular?.ideologyProfile ?? null;
+  const allianceMap = modular?.allianceMap ?? [];
+  const appointments = modular?.appointments ?? [];
+  const impacts = modular?.impacts ?? [];
+  const afterStories = modular?.afterStories ?? [];
+  const corruptionHistory = modular?.corruptionHistory ?? [];
+  const economicTerms = modular?.economicTerms ?? [];
 
   const hasSections = Object.values(sections).some((arr) => arr?.length > 0);
   const hasProposals = proposals.length > 0;
   const hasTrajectory = trajectory && Object.values(trajectory).some((arr) => arr?.length > 0);
 
-  const availableTabs = TABS.filter((tab) => {
-    if (tab.id === 'propostas') return hasProposals;
-    if (tab.id === 'secoes') return hasSections;
-    if (tab.id === 'trajetoria') return hasTrajectory;
-    return true;
-  });
+  // Mark which tabs are visible
+  const processedGroups = TAB_GROUPS.map((group) => ({
+    ...group,
+    tabs: group.tabs.map((tab) => ({
+      ...tab,
+      _visible:
+        tab.always ||
+        (tab.requires === 'proposals' && hasProposals) ||
+        (tab.requires === 'trajectory' && hasTrajectory) ||
+        (tab.requires === 'sections' && hasSections) ||
+        (tab.requires === 'interactiveTimeline' && interactiveTimeline.length > 0) ||
+        (tab.requires === 'promises' && promises.length > 0) ||
+        (tab.requires === 'positionShifts' && positionShifts.length > 0) ||
+        (tab.requires === 'trustIndex' && trustIndex !== null) ||
+        (tab.requires === 'investigationRadar' && investigationRadar.length > 0) ||
+        (tab.requires === 'votingHistory' && votingHistory.length > 0) ||
+        (tab.requires === 'politicianInNumbers' && politicianInNumbers !== null) ||
+        (tab.requires === 'ideologyProfile' && ideologyProfile !== null) ||
+        (tab.requires === 'allianceMap' && allianceMap.length > 0) ||
+        (tab.requires === 'appointments' && appointments.length > 0) ||
+        (tab.requires === 'impacts' && impacts.length > 0) ||
+        (tab.requires === 'afterStories' && afterStories.length > 0) ||
+        (tab.requires === 'corruptionHistory' && corruptionHistory.length > 0) ||
+        (tab.requires === 'economicTerms' && economicTerms.length > 0),
+    })),
+  }));
 
   // Count timeline items by type
   const suspeitasCount = candidate.timeline?.filter((t) => t.type === 'suspeita').length ?? 0;
@@ -185,6 +317,24 @@ export default function CandidateExpanded({ candidate, onClose }) {
                   {proposals.length} proposta{proposals.length > 1 ? 's' : ''} mapeada{proposals.length > 1 ? 's' : ''}
                 </span>
               )}
+              {promises.length > 0 && (
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-300">
+                  <CheckSquare size={11} />
+                  {promises.length} promessa{promises.length > 1 ? 's' : ''} auditada{promises.length > 1 ? 's' : ''}
+                </span>
+              )}
+              {trustIndex && (
+                <span className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium ${
+                  trustIndex.score >= 60
+                    ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
+                    : trustIndex.score >= 40
+                    ? 'border-amber-500/30 bg-amber-500/10 text-amber-300'
+                    : 'border-red-500/30 bg-red-500/10 text-red-300'
+                }`}>
+                  <Star size={11} />
+                  Confiabilidade: {trustIndex.score}/100
+                </span>
+              )}
             </div>
           </Container>
         </div>
@@ -206,6 +356,12 @@ export default function CandidateExpanded({ candidate, onClose }) {
                 <span><strong className="text-white">{proposals.length}</strong> propostas</span>
               </div>
             )}
+            {promises.length > 0 && (
+              <div className="flex items-center gap-2 text-sm text-neutral-400">
+                <CheckSquare size={14} className="text-neutral-500" />
+                <span><strong className="text-white">{promises.length}</strong> promessas</span>
+              </div>
+            )}
             <div className="flex items-center gap-2 text-sm text-neutral-400 ml-auto">
               <Scale size={14} className="text-neutral-500" />
               <span className="text-neutral-300">{candidate.riskLevel}</span>
@@ -216,35 +372,12 @@ export default function CandidateExpanded({ candidate, onClose }) {
         {/* ── Tab Navigation ── */}
         <div className="sticky top-0 z-30 border-b border-white/10 bg-neutral-950/95 backdrop-blur-xl">
           <Container>
-            <nav className="flex gap-1 overflow-x-auto py-2 scrollbar-none" aria-label="Seções do dossiê">
-              {availableTabs.map(({ id, label, icon: Icon }) => (
-                <button
-                  key={id}
-                  onClick={() => setActiveTab(id)}
-                  className={`flex shrink-0 items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition-all ${
-                    activeTab === id
-                      ? 'bg-white text-neutral-950 shadow-sm'
-                      : 'text-neutral-400 hover:bg-white/10 hover:text-white'
-                  }`}
-                >
-                  <Icon size={14} aria-hidden="true" />
-                  {label}
-                  {id === 'propostas' && hasProposals && (
-                    <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none ${
-                      activeTab === id ? 'bg-neutral-950/20 text-neutral-800' : 'bg-emerald-500/20 text-emerald-300'
-                    }`}>
-                      {proposals.length}
-                    </span>
-                  )}
-                  {id === 'dossie' && candidate.timeline?.length > 0 && (
-                    <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none ${
-                      activeTab === id ? 'bg-neutral-950/20 text-neutral-800' : 'bg-white/10 text-neutral-400'
-                    }`}>
-                      {candidate.timeline.length}
-                    </span>
-                  )}
-                </button>
-              ))}
+            <nav className="overflow-x-auto py-2 scrollbar-none" aria-label="Seções do dossiê">
+              <TabGroupNav
+                groups={processedGroups}
+                activeTab={activeTab}
+                onTabChange={setActiveTab}
+              />
             </nav>
           </Container>
         </div>
@@ -279,6 +412,30 @@ export default function CandidateExpanded({ candidate, onClose }) {
                         <p className="text-sm font-medium text-white">{candidate.riskLevel}</p>
                       </div>
                     </div>
+
+                    {/* Trust index mini */}
+                    {trustIndex && (
+                      <div className={`rounded-2xl border p-4 ${
+                        trustIndex.score >= 60 ? 'border-emerald-500/20 bg-emerald-500/5' :
+                        trustIndex.score >= 40 ? 'border-amber-500/20 bg-amber-500/5' :
+                        'border-red-500/20 bg-red-500/5'
+                      }`}>
+                        <p className="text-[10px] uppercase tracking-widest text-neutral-500 mb-2">Índice de Confiabilidade</p>
+                        <div className="flex items-end gap-2">
+                          <p className={`text-3xl font-bold ${
+                            trustIndex.score >= 60 ? 'text-emerald-400' :
+                            trustIndex.score >= 40 ? 'text-amber-400' : 'text-red-400'
+                          }`}>{trustIndex.score}</p>
+                          <p className="text-sm text-neutral-500 mb-1">/100</p>
+                        </div>
+                        <button
+                          onClick={() => setActiveTab('confiabilidade')}
+                          className="mt-2 text-xs text-neutral-400 hover:text-white transition underline underline-offset-2"
+                        >
+                          Ver metodologia →
+                        </button>
+                      </div>
+                    )}
 
                     {/* Related people */}
                     {candidate.relatedPeople?.length > 0 && (
@@ -394,6 +551,19 @@ export default function CandidateExpanded({ candidate, onClose }) {
               </TabContent>
             )}
 
+            {/* ── CRONOLOGIA INTERATIVA TAB ── */}
+            {activeTab === 'timeline_interativa' && (
+              <TabContent key="timeline_interativa">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">Cronologia Interativa</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Investigações, eleições, alianças, operações da PF, votações e decisões judiciais — filtráveis por tipo e período.
+                  </p>
+                </div>
+                <InteractiveTimeline events={interactiveTimeline} />
+              </TabContent>
+            )}
+
             {/* ── PROPOSTAS TAB ── */}
             {activeTab === 'propostas' && (
               <TabContent key="propostas">
@@ -428,6 +598,59 @@ export default function CandidateExpanded({ candidate, onClose }) {
               </TabContent>
             )}
 
+            {/* ── PROMESSAS VS REALIDADE TAB ── */}
+            {activeTab === 'promessas' && (
+              <TabContent key="promessas">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">Promessas vs Realidade</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Auditoria das promessas feitas pelo candidato, com resultado verificado, evidências e cronologia.
+                  </p>
+                </div>
+                <PromisesVsReality promises={promises} />
+              </TabContent>
+            )}
+
+            {/* ── MUDOU DE POSIÇÃO TAB ── */}
+            {activeTab === 'mudancas' && (
+              <TabContent key="mudancas">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">Mudou de Posição?</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Comparativo de declarações e posições ao longo do tempo. Mostra incoerências e evoluções sem editorializar.
+                  </p>
+                </div>
+                <PositionShifts shifts={positionShifts} />
+              </TabContent>
+            )}
+
+            {/* ── VOTAÇÕES TAB ── */}
+            {activeTab === 'votacoes' && (
+              <TabContent key="votacoes">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">Histórico de Votações</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Como o candidato votou em pautas importantes: previdência, impostos, segurança, armas, gastos públicos.
+                    Inclui análise de coerência entre voto e discurso.
+                  </p>
+                </div>
+                <VotingHistory votes={votingHistory} />
+              </TabContent>
+            )}
+
+            {/* ── RADAR DE INVESTIGAÇÕES TAB ── */}
+            {activeTab === 'radar' && (
+              <TabContent key="radar">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">Radar de Investigações</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Investigações separadas por órgão (PF, STF, TSE, MPF, CGU), com status, cronologia e documentos.
+                  </p>
+                </div>
+                <InvestigationRadar investigations={investigationRadar} />
+              </TabContent>
+            )}
+
             {/* ── SEÇÕES MODULARES TAB ── */}
             {activeTab === 'secoes' && (
               <TabContent key="secoes">
@@ -452,6 +675,127 @@ export default function CandidateExpanded({ candidate, onClose }) {
                     );
                   })}
                 </div>
+              </TabContent>
+            )}
+
+            {/* ── HISTÓRICO DE CORRUPÇÃO PARTIDÁRIA TAB ── */}
+            {activeTab === 'corrupcao' && (
+              <TabContent key="corrupcao">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">Histórico de Corrupção Partidária</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Separado por indivíduo, partido, governo e aliados. Escândalos do partido não implicam automaticamente o candidato.
+                  </p>
+                </div>
+                <PartyCorruptionHistory corruptionHistory={corruptionHistory} />
+              </TabContent>
+            )}
+
+            {/* ── POLÍTICO EM NÚMEROS TAB ── */}
+            {activeTab === 'numeros' && (
+              <TabContent key="numeros">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">Político em Números</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Indicadores objetivos: anos no poder, indicadores econômicos durante mandatos, presença em votações.
+                  </p>
+                </div>
+                <PoliticianInNumbers numbers={politicianInNumbers} />
+              </TabContent>
+            )}
+
+            {/* ── PERFIL IDEOLÓGICO TAB ── */}
+            {activeTab === 'ideologia' && (
+              <TabContent key="ideologia">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">Perfil Ideológico</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Posicionamento em 6 eixos: economia, costumes, Estado, segurança, privatização e impostos.
+                    Baseado em votações e declarações públicas verificadas.
+                  </p>
+                </div>
+                <IdeologyProfile ideologyProfile={ideologyProfile} />
+              </TabContent>
+            )}
+
+            {/* ── MAPA DE ALIANÇAS TAB ── */}
+            {activeTab === 'aliancas' && (
+              <TabContent key="aliancas">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">Mapa de Alianças Políticas</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Partidos aliados, ex-aliados, rompimentos, financiadores e grupos de apoio.
+                  </p>
+                </div>
+                <AllianceMap alliances={allianceMap} />
+              </TabContent>
+            )}
+
+            {/* ── QUEM INDICOU QUEM TAB ── */}
+            {activeTab === 'indicacoes' && (
+              <TabContent key="indicacoes">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">Quem Indicou Quem?</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Ministros, presidentes de estatais, diretores e assessores indicados pelo candidato ou por aliados.
+                    Muita gente governa por indicação indireta.
+                  </p>
+                </div>
+                <WhoAppointedWhom appointments={appointments} />
+              </TabContent>
+            )}
+
+            {/* ── ÍNDICE DE CONFIABILIDADE TAB ── */}
+            {activeTab === 'confiabilidade' && (
+              <TabContent key="confiabilidade">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">Índice de Confiabilidade Política</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Pontuação baseada em 6 métricas verificáveis. Metodologia transparente e auditável.
+                    Este índice é editorial — não substitui julgamento próprio.
+                  </p>
+                </div>
+                <TrustIndex trustIndex={trustIndex} />
+              </TabContent>
+            )}
+
+            {/* ── COMO AFETA VOCÊ TAB ── */}
+            {activeTab === 'impacto' && (
+              <TabContent key="impacto">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">Como Isso Afeta Você?</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Impacto das propostas por perfil: MEI, CLT, empresário, investidor, importação, aluguel, carro, mercado.
+                  </p>
+                </div>
+                <HowItAffectsYou impacts={impacts} />
+              </TabContent>
+            )}
+
+            {/* ── O QUE ACONTECEU DEPOIS TAB ── */}
+            {activeTab === 'depois' && (
+              <TabContent key="depois">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">O que Aconteceu Depois?</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Anúncios, promessas e escândalos — e o que realmente aconteceu no final.
+                    O diferencial que a internet política raramente mostra.
+                  </p>
+                </div>
+                <WhatHappenedAfter afterStories={afterStories} />
+              </TabContent>
+            )}
+
+            {/* ── EXPLICADOR ECONÔMICO TAB ── */}
+            {activeTab === 'economico' && (
+              <TabContent key="economico">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white">Explicador Econômico</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Termos econômicos relevantes para entender as propostas deste candidato, em linguagem simples.
+                  </p>
+                </div>
+                <EconomicExplainer relevantTerms={economicTerms} />
               </TabContent>
             )}
 

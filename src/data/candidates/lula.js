@@ -324,6 +324,351 @@ const lula = {
       },
     ],
   },
+
+  // ── Promessas vs Realidade ──
+  promises: [
+    {
+      promise: 'Isenção do IR para quem ganha até R$ 5.000',
+      year: 2022,
+      category: 'Tributação',
+      status: 'parcial',
+      result: 'O projeto foi enviado ao Congresso em 2024. A isenção foi aprovada para rendas até R$ 2.824 em 2024. A ampliação para R$ 5.000 está prevista para 2026, condicionada à aprovação do pacote fiscal.',
+      evidence: [
+        { description: 'Projeto de lei enviado ao Congresso em novembro de 2024', date: 'Nov/2024' },
+        { description: 'Aprovação da isenção até R$ 2.824 — vigência 2024', date: '2024' },
+      ],
+      context: 'A proposta original previa isenção total até R$ 5.000 a partir de 2026, mas foi condicionada à aprovação de medidas de contenção de gastos.',
+    },
+    {
+      promise: 'Acabar com o teto de gastos e criar novo arcabouço fiscal',
+      year: 2022,
+      category: 'Fiscal',
+      status: 'cumprida',
+      result: 'O arcabouço fiscal foi aprovado pelo Congresso em agosto de 2023 (LC 200/2023), substituindo o teto de gastos.',
+      evidence: [
+        { description: 'Aprovação do arcabouço fiscal — Lei Complementar 200/2023', date: 'Ago/2023' },
+      ],
+    },
+    {
+      promise: 'Reconstruir o Bolsa Família e ampliar para R$ 600',
+      year: 2022,
+      category: 'Social',
+      status: 'cumprida',
+      result: 'O Bolsa Família foi reestruturado em março de 2023 com benefício mínimo de R$ 600 e adicional de R$ 150 por criança de 0 a 6 anos. Em 2024, o benefício médio superou R$ 680.',
+      evidence: [
+        { description: 'Reestruturação do Bolsa Família — MP 1164/2023', date: 'Mar/2023' },
+        { description: 'Benefício médio de R$ 682 em 2024 — MDS', date: '2024' },
+      ],
+    },
+    {
+      promise: 'Retomar obras do PAC e investir em infraestrutura',
+      year: 2022,
+      category: 'Infraestrutura',
+      status: 'parcial',
+      result: 'O PAC foi relançado em agosto de 2023 com R$ 1,7 trilhão em investimentos previstos. A execução até 2024 ficou abaixo do previsto em algumas áreas.',
+      evidence: [
+        { description: 'Lançamento do novo PAC — agosto de 2023', date: 'Ago/2023' },
+      ],
+    },
+    {
+      promise: 'Zerar o desmatamento na Amazônia até 2030',
+      year: 2022,
+      category: 'Meio Ambiente',
+      status: 'parcial',
+      result: 'O desmatamento na Amazônia caiu 50% em 2023 em relação a 2022. Em 2024, a queda continuou, mas a meta de desmatamento zero até 2030 ainda é considerada desafiadora.',
+      evidence: [
+        { description: 'Queda de 50% no desmatamento em 2023 — INPE', date: '2023' },
+      ],
+    },
+  ],
+
+  // ── Mudou de Posição? ──
+  positionShifts: [
+    {
+      theme: 'Responsabilidade fiscal',
+      type: 'virada',
+      before: { year: 2002, quote: 'O povo não pode pagar a conta de uma dívida que não fez.' },
+      after: { year: 2023, quote: 'Vamos cumprir o arcabouço fiscal. Não vou gastar mais do que arrecado.' },
+      explanation: 'Lula passou de crítico do ajuste fiscal para defensor do arcabouço fiscal. A mudança foi gradual e se acentuou após a crise de confiança no mercado financeiro no início do 3º mandato.',
+      sources: [
+        { label: 'Carta ao Povo Brasileiro — 2002', year: 2002 },
+        { label: 'Discurso na aprovação do arcabouço fiscal — 2023', year: 2023 },
+      ],
+    },
+    {
+      theme: 'Privatizações',
+      type: 'suavizacao',
+      before: { year: 1994, quote: 'Privatização é entregar o patrimônio do povo para o capital estrangeiro.' },
+      after: { year: 2023, quote: 'Não somos contra concessões e parcerias com o setor privado.' },
+      explanation: 'O PT passou de oposição radical às privatizações para aceitar concessões e PPPs em infraestrutura. A posição oficial ainda é contrária a privatizações de estatais estratégicas.',
+      sources: [
+        { label: 'Discurso de campanha 1994', year: 1994 },
+        { label: 'Entrevista CNN Brasil — 2023', year: 2023 },
+      ],
+    },
+    {
+      theme: 'Segurança pública',
+      type: 'endurecimento',
+      before: { year: 2003, quote: 'Segurança pública não se faz com mais armas e mais prisões.' },
+      after: { year: 2024, quote: 'Vamos criar o Programa Brasil Contra o Crime Organizado com R$ 11 bilhões.' },
+      explanation: 'Após anos de crítica ao punitivismo, o governo Lula lançou em 2024 um pacote de segurança pública com foco em combate ao crime organizado.',
+      sources: [
+        { label: 'Discurso de posse — 2003', year: 2003 },
+        { label: 'Lançamento do Programa Brasil Contra o Crime — 2024', year: 2024 },
+      ],
+    },
+    {
+      theme: 'Relação com o Centrão',
+      type: 'virada',
+      before: { year: 2005, quote: 'O PT não vai se aliar ao fisiologismo e ao clientelismo do Centrão.' },
+      after: { year: 2023, quote: 'Governar é construir maioria. Precisamos do apoio de todos os partidos.' },
+      explanation: 'O escândalo do Mensalão em 2005 expôs a contradição entre o discurso anti-Centrão do PT e a prática de distribuição de cargos para garantir governabilidade.',
+      sources: [
+        { label: 'Declarações do PT pré-2005', year: 2005 },
+        { label: 'Entrevista Folha de S.Paulo — 2023', year: 2023 },
+      ],
+    },
+  ],
+
+  // ── Índice de Confiabilidade ──
+  trustIndex: {
+    score: 52,
+    lastUpdated: 'Mai/2025',
+    notes: 'Pontuação afetada pelas investigações da Lava Jato (anuladas) e pelo histórico de alianças com o Centrão. Promessas sociais têm alto índice de cumprimento.',
+    metrics: {
+      promises: 65,
+      investigations: 35,
+      convictions: 60,
+      discourseCoherence: 45,
+      votingPresence: 70,
+      transparency: 55,
+    },
+  },
+
+  // ── Linha do Tempo Interativa ──
+  interactiveTimeline: [
+    { year: 1975, type: 'alianca', title: 'Presidente do Sindicato dos Metalúrgicos do ABC', description: 'Assume a presidência do sindicato e organiza as primeiras greves contra a ditadura.' },
+    { year: 1980, type: 'partido', title: 'Fundação do PT', description: 'Cofunda o Partido dos Trabalhadores junto a sindicalistas, intelectuais e movimentos sociais.' },
+    { year: 1989, type: 'eleicao', title: 'Derrota para Fernando Collor no 2º turno', description: 'Primeira candidatura presidencial. Perdeu por 4,5 pontos percentuais.' },
+    { year: 2002, type: 'eleicao', title: 'Eleito Presidente — 1ª vez', description: 'Venceu José Serra com 61,3% dos votos no 2º turno.' },
+    { year: 2005, type: 'investigacao', title: 'Escândalo do Mensalão', description: 'Esquema de compra de votos de parlamentares exposto. Dirigentes do PT foram condenados. Lula não foi indiciado.', detail: 'O STF condenou 25 pessoas, incluindo o ex-ministro José Dirceu. Lula afirmou desconhecer o esquema.' },
+    { year: 2006, type: 'eleicao', title: 'Reeleito Presidente', description: 'Venceu Geraldo Alckmin com 60,8% dos votos no 2º turno, mesmo após o Mensalão.' },
+    { year: 2010, type: 'eleicao', title: 'Fim do 2º mandato com 87% de aprovação', description: 'Deixou o cargo com a maior aprovação de um presidente na história do Brasil.' },
+    { year: 2016, type: 'operacao_pf', title: 'Condução coercitiva pela PF', description: 'Levado coercitivamente para depor na Operação Lava Jato. O STF declarou a condução ilegal em 2018.' },
+    { year: 2018, type: 'judicial', title: 'Preso pela Lava Jato', description: 'Condenado pelo juiz Sergio Moro no caso do tríplex do Guarujá. Ficou 580 dias preso.', detail: 'Em 2021, o STF anulou todas as condenações por incompetência jurisdicional do juízo de Curitiba.' },
+    { year: 2021, type: 'judicial', title: 'STF anula condenações', description: 'O STF decidiu que o juízo de Curitiba era incompetente para julgar os casos. Lula recuperou direitos políticos.' },
+    { year: 2022, type: 'eleicao', title: 'Eleito Presidente — 3ª vez', description: 'Venceu Jair Bolsonaro com 50,9% dos votos no 2º turno.' },
+    { year: 2023, type: 'alianca', title: 'Aliança com o Centrão', description: 'Formou governo com MDB, PSD, PP, União Brasil e outros partidos do Centrão, distribuindo ministérios.' },
+    { year: 2024, type: 'investigacao', title: 'Irregularidades no INSS', description: 'Fraudes no INSS envolvendo descontos indevidos em benefícios de aposentados.' },
+    { year: 2025, type: 'fala', title: 'Declaração sobre taxação de importações dos EUA', description: 'Lula criticou as tarifas de Trump e defendeu o BRICS como alternativa à dependência dos EUA.' },
+  ],
+
+  // ── Radar de Investigações ──
+  investigationRadar: [
+    {
+      agency: 'STF',
+      title: 'Tríplex do Guarujá',
+      year: 2016,
+      status: 'anulado',
+      description: 'Lula foi condenado por Sergio Moro por suposto recebimento de propina da OAS. O STF anulou a condenação em 2021 por incompetência jurisdicional.',
+      defense: 'A defesa sempre negou que o apartamento pertencesse a Lula. O STF confirmou que o juízo de Curitiba era incompetente para julgar o caso.',
+      chronology: [
+        { date: '2016', event: 'Abertura do processo na 13ª Vara Federal de Curitiba' },
+        { date: 'Jul/2017', event: 'Condenado por Sergio Moro a 9 anos e 6 meses' },
+        { date: 'Abr/2018', event: 'Preso em Curitiba' },
+        { date: 'Nov/2019', event: 'Solto após STF derrubar prisão em 2ª instância' },
+        { date: 'Mar/2021', event: 'STF anula condenações por incompetência jurisdicional' },
+      ],
+    },
+    {
+      agency: 'PF',
+      title: 'Irregularidades no INSS — 2025',
+      year: 2025,
+      status: 'ativo',
+      description: 'Investigação sobre fraudes no INSS envolvendo descontos indevidos em benefícios de aposentados e pensionistas.',
+      defense: 'O governo Lula afirmou que tomou medidas imediatas ao descobrir as irregularidades e acionou os órgãos de controle.',
+    },
+    {
+      agency: 'MPF',
+      title: 'Mensalão — Responsabilidade do Presidente',
+      year: 2005,
+      status: 'arquivado',
+      description: 'O MPF investigou se Lula tinha conhecimento do esquema de compra de votos de parlamentares. Lula não foi indiciado.',
+      defense: 'Lula sempre afirmou desconhecer o esquema. O STF não encontrou provas de envolvimento direto do presidente.',
+    },
+  ],
+
+  // ── Histórico de Votações ──
+  votingHistory: [
+    {
+      bill: 'Constituição Federal — Capítulo dos Direitos Trabalhistas',
+      year: 1988,
+      theme: 'trabalhista',
+      vote: 'sim',
+      description: 'Como deputado constituinte, votou pela inclusão dos direitos trabalhistas na Constituição, incluindo 13º salário, FGTS, licença-maternidade e direito de greve.',
+    },
+    {
+      bill: 'Reforma da Previdência — EC 103/2019 (governo Bolsonaro)',
+      year: 2019,
+      theme: 'previdencia',
+      vote: 'nao',
+      description: 'O PT votou contra a reforma da previdência do governo Bolsonaro, que aumentou a idade mínima para aposentadoria.',
+      coherenceNote: 'Lula havia aprovado a reforma da previdência de 2003 (EC 41), que também aumentou a idade mínima para servidores públicos.',
+    },
+    {
+      bill: 'Arcabouço Fiscal — LC 200/2023',
+      year: 2023,
+      theme: 'gastos',
+      vote: 'sim',
+      description: 'O governo Lula enviou e aprovou o arcabouço fiscal, substituindo o teto de gastos por um sistema de bandas de crescimento de despesas.',
+      coherenceNote: 'O PT criticou o teto de gastos de Temer como "emenda da morte" e prometeu revogá-lo. O arcabouço mantém limites fiscais, apenas com regras diferentes.',
+    },
+  ],
+
+  // ── Político em Números ──
+  politicianInNumbers: {
+    globalStats: [
+      { label: 'Anos no poder (total)', value: '12+', unit: 'anos', trend: null, higherIsBetter: null },
+      { label: 'Aprovação ao deixar o 2º mandato', value: '87', unit: '%', trend: 'up', higherIsBetter: true, comparison: 'Maior aprovação de um presidente na história do Brasil' },
+      { label: 'Aprovação atual (3º mandato)', value: '35', unit: '%', trend: 'down', higherIsBetter: true, comparison: 'Queda significativa em relação ao pico do 3º mandato', note: 'Pesquisa Datafolha — Abr/2025' },
+    ],
+    mandates: [
+      {
+        title: '1º e 2º mandatos',
+        period: '2003–2010',
+        metrics: [
+          { label: 'Crescimento médio do PIB', value: '4,0', unit: '%/ano', trend: 'up', higherIsBetter: true, comparison: 'Acima da média histórica de 2,5%' },
+          { label: 'Inflação média (IPCA)', value: '5,8', unit: '%/ano', trend: null, higherIsBetter: false },
+          { label: 'Desemprego (2010)', value: '5,3', unit: '%', trend: 'down', higherIsBetter: false, comparison: 'Menor desemprego da história até então' },
+          { label: 'Redução da pobreza extrema', value: '68', unit: '%', trend: 'down', higherIsBetter: true, comparison: 'Queda de 68% na pobreza extrema entre 2003 e 2010' },
+        ],
+      },
+      {
+        title: '3º mandato',
+        period: '2023–presente',
+        metrics: [
+          { label: 'Crescimento do PIB (2024)', value: '3,4', unit: '%', trend: 'up', higherIsBetter: true, comparison: 'Acima das expectativas iniciais' },
+          { label: 'Inflação (IPCA 2024)', value: '4,8', unit: '%', trend: 'up', higherIsBetter: false, comparison: 'Acima do teto da meta (4,5%)' },
+          { label: 'Desemprego (2024)', value: '6,2', unit: '%', trend: 'down', higherIsBetter: false },
+          { label: 'Dívida pública / PIB', value: '91', unit: '%', trend: 'up', higherIsBetter: false, note: 'Preocupação crescente do mercado financeiro' },
+        ],
+      },
+    ],
+    note: 'Dados de desemprego pelo IBGE (PNAD). PIB pelo IBGE. Inflação pelo IPCA/IBGE. Aprovação pelo Datafolha.',
+  },
+
+  // ── Perfil Ideológico ──
+  ideologyProfile: {
+    summary: 'Lula representa a centro-esquerda brasileira, com forte ênfase em programas sociais e papel ativo do Estado na economia. No 3º mandato, adotou postura mais moderada em relação ao mercado financeiro.',
+    axes: {
+      economy: { value: 25, confidence: 'alta' },
+      customs: { value: 30, confidence: 'alta' },
+      state: { value: 65, confidence: 'alta' },
+      security: { value: 40, confidence: 'media' },
+      privatization: { value: 20, confidence: 'alta' },
+      taxes: { value: 25, confidence: 'alta' },
+    },
+  },
+
+  // ── Mapa de Alianças ──
+  allianceMap: [
+    { name: 'PT', type: 'aliado', since: '1980', description: 'Partido fundado por Lula. Base principal do governo.' },
+    { name: 'MDB', party: 'MDB', type: 'aliado', since: '2022', description: 'Aliança para governabilidade. MDB ocupa ministérios estratégicos.' },
+    { name: 'PSD', party: 'PSD', type: 'aliado', since: '2022', description: 'Partido de Gilberto Kassab, aliado do governo com cargos no segundo escalão.' },
+    { name: 'PP', party: 'PP', type: 'aliado', since: '2022', description: 'Partido do Centrão com histórico de apoio a governos de diferentes espectros.' },
+    { name: 'PSDB', party: 'PSDB', type: 'rompimento', since: '1994', description: 'Adversário histórico. Lula derrotou FHC em 2002.', breakReason: 'Disputa eleitoral histórica. O PSDB apoiou Bolsonaro em 2022.' },
+    { name: 'Odebrecht / Grandes empreiteiras', type: 'suspeito', description: 'Investigações da Lava Jato apontaram relações entre o governo Lula e empreiteiras. Condenações anuladas pelo STF.' },
+    { name: 'MST', type: 'apoio', description: 'Movimento dos Trabalhadores Rurais Sem Terra. Apoio histórico ao PT.' },
+    { name: 'CUT', type: 'apoio', description: 'Central Única dos Trabalhadores. Base sindical histórica do PT.' },
+  ],
+
+  // ── Quem Indicou Quem ──
+  appointments: [
+    { name: 'Fernando Haddad', role: 'ministro', institution: 'Ministério da Fazenda', year: 2023, connection: 'Ex-prefeito de SP e candidato presidencial pelo PT em 2018. Aliado histórico de Lula.' },
+    { name: 'Alexandre Padilha', role: 'ministro', institution: 'Ministério das Relações Institucionais', year: 2023, connection: 'Articulação política com o Congresso. Ex-ministro da Saúde no 2º mandato de Lula.' },
+    { name: 'Lula Marques', role: 'cargo_comissionado', institution: 'Agência Brasil', year: 2023, connection: 'Fotógrafo pessoal de Lula por décadas.', suspicious: true, controversy: 'Indicação de fotógrafo pessoal para cargo de direção em agência pública foi criticada por especialistas em governança.' },
+    { name: 'Jean Paul Prates', role: 'presidente_estatal', institution: 'Petrobras', year: 2023, connection: 'Senador pelo PT do RN. Indicação política para a presidência da maior estatal brasileira.', controversy: 'Demitido em 2024 após divergências com o governo sobre política de dividendos e preço de combustíveis.' },
+  ],
+
+  // ── Como Isso Afeta Você ──
+  impacts: [
+    {
+      proposal: 'Isenção do IR até R$ 5.000',
+      shortImpact: 'Redução do imposto de renda para trabalhadores de renda média',
+      impacts: [
+        { profile: 'clt', level: 'positivo', description: 'Trabalhadores com salário até R$ 5.000 deixariam de pagar IR, com ganho líquido de até R$ 400/mês.' },
+        { profile: 'empresario', level: 'negativo', description: 'A renúncia fiscal de R$ 30–40 bilhões pode pressionar o governo a aumentar impostos sobre empresas ou dividendos.' },
+        { profile: 'investidor', level: 'negativo', description: 'A incerteza fiscal gerada pela proposta pode pressionar o câmbio e os juros.' },
+      ],
+    },
+    {
+      proposal: 'Programa Brasil Contra o Crime Organizado (R$ 11 bi)',
+      shortImpact: 'Investimento em segurança pública federal',
+      impacts: [
+        { profile: 'clt', level: 'positivo', description: 'Redução da criminalidade pode melhorar a qualidade de vida nas regiões mais afetadas pelo crime organizado.' },
+        { profile: 'empresario', level: 'positivo', description: 'Ambiente mais seguro pode reduzir custos com segurança privada e perdas por furtos.' },
+        { profile: 'mei', level: 'positivo', description: 'Pequenos negócios são desproporcionalmente afetados por roubos e extorsões do crime organizado.' },
+      ],
+    },
+  ],
+
+  // ── O que Aconteceu Depois ──
+  afterStories: [
+    {
+      year: 2003,
+      category: 'Economia',
+      announcement: 'Carta ao Povo Brasileiro — promessa de responsabilidade fiscal',
+      whatWasSaid: 'O Brasil quer mudar. Mas quer mudar com segurança, sem aventuras.',
+      whatHappened: 'O 1º mandato manteve o tripé macroeconômico herdado de FHC. O mercado financeiro aprovou a postura.',
+      outcome: 'positivo',
+      data: 'PIB cresceu 4% ao ano em média. Inflação controlada.',
+    },
+    {
+      year: 2005,
+      category: 'Ética',
+      announcement: 'Promessa de governo ético e transparente',
+      whatWasSaid: 'Nunca antes na história deste país um governo foi tão honesto.',
+      whatHappened: 'O escândalo do Mensalão em 2005 expôs um esquema de compra de votos de parlamentares coordenado por dirigentes do PT.',
+      outcome: 'negativo',
+      data: '25 condenados pelo STF no caso do Mensalão em 2012.',
+    },
+    {
+      year: 2022,
+      category: 'Social',
+      announcement: 'Promessa de reconstrução e retomada do crescimento',
+      whatWasSaid: 'Vou reconstruir o Brasil que foi destruído.',
+      whatHappened: 'O PIB cresceu 2,9% em 2023 e 3,4% em 2024. O Bolsa Família foi reestruturado. Mas a inflação e os juros altos limitaram o poder de compra.',
+      outcome: 'misto',
+      data: 'PIB 2024: +3,4%. Inflação 2024: 4,8%. Aprovação: caiu de 53% para 35%.',
+    },
+  ],
+
+  // ── Histórico de Corrupção Partidária ──
+  corruptionHistory: [
+    {
+      scope: 'partido',
+      title: 'Mensalão (2005)',
+      year: 2005,
+      operation: 'Ação Penal 470',
+      description: 'Esquema de compra de votos de parlamentares coordenado pelo PT e aliados.',
+      involved: ['José Dirceu', 'José Genoíno', 'Delúbio Soares', 'Marcos Valério'],
+      outcome: '25 condenados pelo STF em 2012. Lula não foi indiciado.',
+      candidateRelation: 'Lula afirmou desconhecer o esquema. O STF não encontrou provas de envolvimento direto do presidente.',
+    },
+    {
+      scope: 'governo',
+      title: 'Petrolão / Lava Jato (2014–2021)',
+      year: 2014,
+      operation: 'Operação Lava Jato',
+      description: 'Esquema de corrupção na Petrobras envolvendo empreiteiras, partidos políticos e funcionários da estatal. Estimativa de R$ 6,4 bilhões desviados.',
+      involved: ['Odebrecht', 'OAS', 'Camargo Corrêa', 'PT', 'PMDB', 'PP'],
+      outcome: 'Centenas de condenações. Condenações de Lula anuladas pelo STF em 2021.',
+      candidateRelation: 'Lula foi condenado por Sergio Moro no caso do tríplex e do sítio de Atibaia. O STF anulou ambas as condenações por incompetência jurisdicional.',
+    },
+  ],
+
+  // ── Termos econômicos relevantes ──
+  economicTerms: ['inflacao', 'juros', 'deficit', 'divida_publica', 'pib', 'reforma_tributaria'],
 };
 
 export default lula;
