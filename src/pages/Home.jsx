@@ -32,7 +32,7 @@ export default function Home() {
   }, [query]);
 
   return (
-    <div className="min-h-screen bg-neutral-950 font-sans text-white">
+    <div className="min-h-screen bg-neutral-950 font-sans text-white pt-[64px]">
       <Header
         onOpenComparison={() => setComparisonOpen(true)}
         onOpenCandidate={setSelectedCandidate}
