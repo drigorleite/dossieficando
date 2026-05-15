@@ -10,6 +10,8 @@ import ProposalsComparisonSection from '../components/ProposalsComparisonSection
 import PurposeSection from '../components/PurposeSection';
 import AboutSection from '../components/AboutSection';
 import MethodSection from '../components/MethodSection';
+import MethodologyPage from '../components/MethodologyPage';
+import FeedbackSection from '../components/FeedbackSection';
 import Footer from '../components/Footer';
 import GovernorSection from '../components/governors/GovernorSection';
 
@@ -31,7 +33,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-neutral-950 font-sans text-white">
-      <Header onOpenComparison={() => setComparisonOpen(true)} />
+      <Header
+        onOpenComparison={() => setComparisonOpen(true)}
+        onOpenCandidate={setSelectedCandidate}
+      />
       <Hero query={query} setQuery={setQuery} onOpenComparison={() => setComparisonOpen(true)} />
       <CandidateGrid
         filteredCandidates={filteredCandidates}
@@ -43,6 +48,8 @@ export default function Home() {
       <AboutSection />
       <PurposeSection />
       <MethodSection />
+      <MethodologyPage />
+      <FeedbackSection />
       <Footer />
 
       <AnimatePresence>

@@ -1,6 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
-import { Menu, X, Scale, GitCompare, ChevronDown, MapPin } from 'lucide-react';
+import { Menu, X, Scale, GitCompare, ChevronDown, MapPin, Search } from 'lucide-react';
 import Container from './ui/Container';
+import ThemeToggle from './ui/ThemeToggle';
+import { candidates } from '../data/candidates';
+import { modularCandidates } from '../data/candidates/index';
+import { governorsByState } from '../data/governors/index';
 
 const STATES_QUICK = [
   { abbr: "SP", label: "São Paulo" },
@@ -23,6 +27,136 @@ const navLinks = [
   { href: '#metodo', label: 'Método' },
 ];
 
+function buildSearchIndex() {
+  const items = [];
+  // Presidential candidates
+  candidates.forEach((c) => {
+    items.push({
+      id: c.slug,
+      name: c.name,
+      party: c.party,
+      role: c.role,
+      type: 'presidential',
+      href: '#candidatos',
+      slug: c.slug,
+    });
+  });
+  // Governor candidates
+  Object.entries(governorsByState || {}).forEach(([state, govs]) => {
+    (govs || []).forEach((g) => {
+      items.push({
+        id: `gov-${state}-${g.slug}`,
+        name: g.name,
+        party: g.party,
+        role: `Candidato ao governo de ${state.toUpperCase()}`,
+        type: 'governor',
+        href: '#governadores',
+        state: state.toUpperCase(),
+      });
+    });
+  });
+  return items;
+}
+
+function GlobalSearch({ onSelectCandidate }) {
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+  const [focused, setFocused] = useState(false);
+  const ref = useRef(null);
+  const inputRef = useRef(null);
+  const searchIndex = useRef(buildSearchIndex());
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (ref.current && !ref.current.contains(e.target)) setFocused(false);
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
+  useEffect(() => {
+    if (!query.trim()) { setResults([]); return; }
+    const q = query.toLowerCase();
+    const filtered = searchIndex.current
+      .filter((item) =>
+        item.name.toLowerCase().includes(q) ||
+        item.party?.toLowerCase().includes(q) ||
+        item.role?.toLowerCase().includes(q)
+      )
+      .slice(0, 8);
+    setResults(filtered);
+  }, [query]);
+
+  const handleSelect = (item) => {
+    setQuery('');
+    setResults([]);
+    setFocused(false);
+    if (item.type === 'presidential' && onSelectCandidate) {
+      const candidate = candidates.find((c) => c.slug === item.slug);
+      if (candidate) onSelectCandidate(candidate);
+    } else {
+      const el = document.querySelector(item.href);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') { setFocused(false); setQuery(''); }
+  };
+
+  return (
+    <div ref={ref} className="relative hidden md:block">
+      <div className="relative">
+        <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 pointer-events-none" aria-hidden="true" />
+        <input
+          ref={inputRef}
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onFocus={() => setFocused(true)}
+          onKeyDown={handleKeyDown}
+          placeholder="Buscar candidato, partido..."
+          aria-label="Busca global de candidatos"
+          aria-autocomplete="list"
+          aria-expanded={results.length > 0}
+          className="w-52 rounded-xl border border-white/10 bg-white/5 py-2 pl-8 pr-3 text-sm text-neutral-300 placeholder-neutral-600 transition focus:border-white/20 focus:bg-white/8 focus:outline-none focus:w-64 lg:w-64"
+        />
+      </div>
+      {focused && results.length > 0 && (
+        <div
+          role="listbox"
+          aria-label="Resultados da busca"
+          className="absolute top-full left-0 mt-2 w-80 rounded-2xl border border-white/10 bg-neutral-900/98 backdrop-blur-xl shadow-2xl shadow-black/50 z-50 overflow-hidden"
+        >
+          {results.map((item) => (
+            <button
+              key={item.id}
+              role="option"
+              onClick={() => handleSelect(item)}
+              className="flex w-full items-center gap-3 px-4 py-3 text-left transition hover:bg-white/5"
+            >
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white truncate">{item.name}</p>
+                <p className="text-xs text-neutral-500 truncate">{item.role}</p>
+              </div>
+              {item.party && (
+                <span className="shrink-0 rounded border border-white/10 bg-white/5 px-1.5 py-0.5 text-[10px] font-medium text-neutral-400">
+                  {item.party}
+                </span>
+              )}
+              {item.state && (
+                <span className="shrink-0 rounded border border-white/10 bg-white/5 px-1.5 py-0.5 text-[10px] font-mono font-bold text-neutral-400">
+                  {item.state}
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function GovernorsDropdown() {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
@@ -39,15 +173,20 @@ function GovernorsDropdown() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
+        aria-haspopup="true"
+        aria-expanded={open}
         className="flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm text-neutral-400 transition hover:bg-white/5 hover:text-white"
       >
-        <MapPin size={13} />
+        <MapPin size={13} aria-hidden="true" />
         Governadores
-        <ChevronDown size={12} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown size={12} className={`transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
       </button>
 
       {open && (
-        <div className="absolute top-full left-0 mt-2 w-64 rounded-2xl border border-white/10 bg-neutral-900/98 backdrop-blur-xl shadow-2xl shadow-black/50 z-50 overflow-hidden">
+        <div
+          role="menu"
+          className="absolute top-full left-0 mt-2 w-64 rounded-2xl border border-white/10 bg-neutral-900/98 backdrop-blur-xl shadow-2xl shadow-black/50 z-50 overflow-hidden"
+        >
           <div className="px-4 py-3 border-b border-white/10">
             <p className="text-[10px] font-semibold text-zinc-500 uppercase tracking-widest">Selecione o estado</p>
           </div>
@@ -56,6 +195,7 @@ function GovernorsDropdown() {
               <a
                 key={state.abbr}
                 href="#governadores"
+                role="menuitem"
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-3 px-4 py-2.5 text-sm text-neutral-400 hover:bg-white/5 hover:text-white transition-colors"
               >
@@ -81,21 +221,21 @@ function GovernorsDropdown() {
   );
 }
 
-export default function Header({ onOpenComparison }) {
+export default function Header({ onOpenComparison, onOpenCandidate }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-neutral-950/90 backdrop-blur-xl">
       <Container className="py-3">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-4">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <a href="#" className="flex items-center gap-3 group shrink-0" aria-label="Dossieficando — página inicial">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition group-hover:bg-white/10">
               <Scale size={16} className="text-white" aria-hidden="true" />
             </div>
-            <div>
+            <div className="hidden sm:block">
               <p className="text-xs uppercase tracking-[0.35em] text-neutral-500">Dossiê Público</p>
-              <h1 className="text-base font-semibold tracking-tight text-white sm:text-lg leading-tight">
+              <h1 className="text-base font-semibold tracking-tight text-white leading-tight">
                 Sem lente ideológica
               </h1>
             </div>
@@ -107,45 +247,43 @@ export default function Header({ onOpenComparison }) {
               <a
                 key={href}
                 href={href}
-                className="rounded-xl px-4 py-2 text-sm text-neutral-400 transition hover:bg-white/5 hover:text-white"
+                className="rounded-xl px-4 py-2 text-sm text-neutral-400 transition hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-blue-400"
               >
                 {label}
               </a>
             ))}
-
-            {/* Governors dropdown */}
             <GovernorsDropdown />
+          </nav>
+
+          {/* Right controls */}
+          <div className="flex items-center gap-2">
+            {/* Global search */}
+            <GlobalSearch onSelectCandidate={onOpenCandidate} />
+
+            {/* Theme toggle */}
+            <ThemeToggle />
 
             {/* Compare button */}
             {onOpenComparison && (
               <button
                 onClick={onOpenComparison}
-                className="ml-2 flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-neutral-300 transition hover:bg-white/10 hover:text-white"
+                aria-label="Comparar candidatos"
+                className="hidden md:flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-neutral-300 transition hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-blue-400"
               >
                 <GitCompare size={14} aria-hidden="true" />
                 Comparar
               </button>
             )}
-          </nav>
 
-          {/* Mobile controls */}
-          <div className="flex items-center gap-2 md:hidden">
-            {onOpenComparison && (
-              <button
-                onClick={onOpenComparison}
-                className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition hover:bg-white/10 hover:text-white"
-                aria-label="Comparar candidatos"
-              >
-                <GitCompare size={16} />
-              </button>
-            )}
+            {/* Mobile menu toggle */}
             <button
               onClick={() => setMobileOpen((v) => !v)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition hover:bg-white/10"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition hover:bg-white/10 md:hidden"
               aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
               aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
             >
-              {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+              {mobileOpen ? <X size={18} aria-hidden="true" /> : <Menu size={18} aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -153,7 +291,18 @@ export default function Header({ onOpenComparison }) {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="border-t border-white/10 bg-neutral-950/98 px-4 py-5 md:hidden">
+        <div id="mobile-menu" className="border-t border-white/10 bg-neutral-950/98 px-4 py-5 md:hidden">
+          {/* Mobile search */}
+          <div className="mb-4 relative">
+            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 pointer-events-none" aria-hidden="true" />
+            <input
+              type="search"
+              placeholder="Buscar candidato, partido..."
+              aria-label="Busca de candidatos"
+              className="w-full rounded-xl border border-white/10 bg-white/5 py-2.5 pl-8 pr-3 text-sm text-neutral-300 placeholder-neutral-600 focus:outline-none focus:border-white/20"
+            />
+          </div>
+
           <nav className="flex flex-col gap-1 text-sm text-neutral-400" aria-label="Navegação mobile">
             {navLinks.map(({ href, label }) => (
               <a
@@ -166,7 +315,6 @@ export default function Header({ onOpenComparison }) {
               </a>
             ))}
 
-            {/* Governors section in mobile */}
             <div className="mt-2 mb-1 px-4">
               <p className="text-[10px] font-semibold text-zinc-600 uppercase tracking-widest">Governadores por estado</p>
             </div>
@@ -189,7 +337,7 @@ export default function Header({ onOpenComparison }) {
                 onClick={() => { setMobileOpen(false); onOpenComparison(); }}
                 className="flex items-center gap-2 rounded-xl px-4 py-3 text-left text-neutral-300 transition hover:bg-white/5 hover:text-white"
               >
-                <GitCompare size={14} />
+                <GitCompare size={14} aria-hidden="true" />
                 Comparar candidatos
               </button>
             )}

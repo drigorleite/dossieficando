@@ -1,9 +1,22 @@
 @import "tailwindcss";
 
-:root {
+/* ─── Font size variants ─────────────────────────────────────── */
+.text-sm-base   { font-size: 14px; }
+.text-base-base { font-size: 16px; }
+.text-lg-base   { font-size: 18px; }
+
+/* ─── Dark theme (default) ───────────────────────────────────── */
+:root,
+.dark {
   color-scheme: dark;
 }
 
+/* ─── Light theme ────────────────────────────────────────────── */
+.light {
+  color-scheme: light;
+}
+
+/* ─── Base ───────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
 }
@@ -15,34 +28,54 @@ body {
   font-family: Inter, system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
+/* Light mode body */
+.light body {
+  background: #f8f8f8;
+  color: #111111;
 }
 
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track  { background: #0a0a0a; }
+::-webkit-scrollbar-thumb  { background: #262626; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #404040; }
 
-::-webkit-scrollbar-thumb {
-  background: #262626;
-  border-radius: 3px;
-}
+.light ::-webkit-scrollbar-track  { background: #f0f0f0; }
+.light ::-webkit-scrollbar-thumb  { background: #d4d4d4; }
+.light ::-webkit-scrollbar-thumb:hover { background: #a3a3a3; }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #404040;
-}
-
+/* ─── Focus visible ──────────────────────────────────────────── */
 :focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline: 2px solid #60a5fa;
   outline-offset: 2px;
 }
 
+/* ─── Selection ──────────────────────────────────────────────── */
 ::selection {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(96,165,250,0.25);
 }
 
-img {
-  display: block;
+img { display: block; }
+
+/* ─── Light mode overrides ───────────────────────────────────── */
+.light {
+  background: #f8f8f8;
+}
+
+/* ─── Accessibility: reduced motion ─────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Mobile touch targets ───────────────────────────────────── */
+@media (max-width: 768px) {
+  button, a[href], [role="button"] {
+    min-height: 44px;
+  }
 }

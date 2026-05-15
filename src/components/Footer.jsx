@@ -39,6 +39,12 @@ export default function Footer() {
               <a href="#metodo" className="text-sm text-neutral-400 transition hover:text-white">
                 Metodologia
               </a>
+              <a href="#metodologia" className="text-sm text-neutral-400 transition hover:text-white">
+                Metodologia completa
+              </a>
+              <a href="#feedback" className="text-sm text-neutral-400 transition hover:text-white">
+                Enviar correção
+              </a>
             </nav>
           </div>
 
