@@ -100,7 +100,7 @@ export default function GovernorSection() {
   }
 
   return (
-    <section id="governadores" className="py-16 px-4">
+    <section id="governadores" className="py-16 px-4" style={{ background: '#0a0a0c' }}>
       <div className="max-w-7xl mx-auto">
 
         {/* Section header */}
@@ -148,7 +148,7 @@ export default function GovernorSection() {
                 exit={{ opacity: 0, height: 0 }}
                 className="overflow-hidden"
               >
-                <div className="mt-3 p-4 rounded-xl bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 leading-relaxed max-w-2xl">
+                <div className="mt-3 p-4 rounded-2xl border border-white/10 text-xs text-zinc-400 leading-relaxed max-w-2xl backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.04)', boxShadow: '0 1px 0 rgba(255,255,255,0.04) inset' }}>
                   Para cada candidato, separamos: <strong className="text-zinc-300">fato</strong> (o que foi feito), <strong className="text-zinc-300">crítica</strong> (o que opositores e especialistas apontam), <strong className="text-zinc-300">defesa</strong> (o que o candidato ou governo responde) e <strong className="text-zinc-300">resultado</strong> classificado como positivo, negativo, misto ou inconclusivo. O Índice de Confiabilidade é calculado com 6 métricas ponderadas — metodologia completa disponível em cada dossiê.
                 </div>
               </motion.div>
@@ -169,14 +169,14 @@ export default function GovernorSection() {
                 const hasSelectedState = region.states.some((s) => s.id === selectedStateId);
 
                 return (
-                  <div key={region.id} className="rounded-xl border border-zinc-800 overflow-hidden">
+                  <div key={region.id} className="rounded-2xl border border-white/10 overflow-hidden backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.03)' }}>
                     {/* Region header */}
                     <button
                       onClick={() => toggleRegion(region.id)}
                       className={`w-full flex items-center justify-between px-3 py-2.5 text-sm font-semibold transition-colors ${
                         hasSelectedState
-                          ? `${colors.pill} border-b border-zinc-700`
-                          : "bg-zinc-900 text-zinc-400 hover:text-zinc-300"
+                          ? `${colors.pill} border-b border-white/8`
+                          : "text-zinc-400 hover:text-zinc-300 hover:bg-white/4"
                       }`}
                     >
                       <div className="flex items-center gap-2">
@@ -197,7 +197,7 @@ export default function GovernorSection() {
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.2 }}
-                          className="overflow-hidden bg-zinc-950"
+                          className="overflow-hidden" style={{ background: 'rgba(13,13,15,0.80)' }}
                         >
                           {region.states.map((state) => {
                             const isSelected = state.id === selectedStateId;
@@ -205,10 +205,10 @@ export default function GovernorSection() {
                               <button
                                 key={state.id}
                                 onClick={() => selectState(state.id, region.id)}
-                                className={`w-full flex items-center justify-between px-4 py-2 text-sm transition-colors border-b border-zinc-900 last:border-0 ${
-                                  isSelected
+                                className={`w-full flex items-center justify-between px-4 py-2 text-sm transition-colors border-b border-white/5 last:border-0 ${
+                                    isSelected
                                     ? `${colors.active} font-semibold`
-                                    : "text-zinc-500 hover:text-zinc-300 hover:bg-zinc-900"
+                                    : "text-zinc-500 hover:text-zinc-300 hover:bg-white/4"
                                 }`}
                               >
                                 <div className="flex items-center gap-2">

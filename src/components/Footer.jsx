@@ -2,7 +2,7 @@ import Container from './ui/Container';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black py-12 text-white">
+    <footer className="py-12 text-white" style={{ background: '#080809', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
       <Container>
         <div className="grid gap-10 sm:grid-cols-3">
 

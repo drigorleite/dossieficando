@@ -55,7 +55,7 @@ function TimelineEvent({ event, isLast }) {
         {expanded && (
           <div className="mt-3 space-y-2">
             {event.detail && (
-              <div className="rounded-xl bg-white/[0.03] border border-white/5 px-3 py-2.5">
+              <div className="rounded-xl border border-white/8 px-3 py-2.5 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.04)' }}>
                 <p className="text-xs text-neutral-400 leading-relaxed">{event.detail}</p>
               </div>
             )}
@@ -138,7 +138,7 @@ export default function InteractiveTimeline({ events = [] }) {
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                   active
                     ? `${cfg.bg} ${cfg.color} border ${cfg.border}`
-                    : 'bg-white/5 text-neutral-500 hover:bg-white/10'
+                    : 'text-neutral-500 hover:text-neutral-300 border border-white/8 hover:border-white/15 hover:bg-white/6'
                 }`}
               >
                 <cfg.icon size={10} />
@@ -162,10 +162,10 @@ export default function InteractiveTimeline({ events = [] }) {
             <button
               key={key}
               onClick={() => setYearRange(key)}
-              className={`px-3 py-1 rounded-full text-xs transition-all ${
+              className={`px-3 py-1 rounded-full text-xs transition-all border ${
                 yearRange === key
-                  ? 'bg-white/10 text-white'
-                  : 'text-neutral-600 hover:text-neutral-400'
+                  ? 'bg-white/10 text-white border-white/15'
+                  : 'text-neutral-600 hover:text-neutral-400 border-transparent'
               }`}
             >
               {label}

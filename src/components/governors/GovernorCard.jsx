@@ -18,7 +18,8 @@ export default function GovernorCard({ candidate, onClick }) {
       onClick={() => onClick(candidate)}
       whileHover={{ y: -6 }}
       whileTap={{ scale: 0.98 }}
-      className="group relative min-h-96 w-full overflow-hidden rounded-4xl border border-white/10 bg-neutral-900 text-left shadow-2xl shadow-black/20 outline-none transition focus-visible:ring-2 focus-visible:ring-white/40"
+      className="group relative min-h-96 w-full overflow-hidden rounded-3xl border border-white/10 text-left outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white/40"
+      style={{ background: 'rgba(18,18,22,0.95)', boxShadow: '0 8px 40px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.06) inset' }}
     >
       {/* Background image — full card */}
       <div className="absolute inset-0">
@@ -31,20 +32,21 @@ export default function GovernorCard({ candidate, onClick }) {
             e.target.style.display = "none";
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/10" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.12) 100%)' }} />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-20" style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 100%)' }} aria-hidden="true" />
       </div>
 
       {/* Top badges */}
       <div className="absolute left-4 right-4 top-4 z-10 flex items-start justify-between gap-2">
         {/* Risk indicator */}
-        <div className={`flex items-center gap-1.5 rounded-full border ${border} ${bg} px-2.5 py-1 backdrop-blur`}>
+        <div className={`flex items-center gap-1.5 rounded-full border ${border} px-2.5 py-1 backdrop-blur-md`} style={{ background: 'rgba(0,0,0,0.55)', boxShadow: '0 1px 0 rgba(255,255,255,0.06) inset' }}>
           <span className={`h-1.5 w-1.5 rounded-full ${dot} shrink-0`} />
           <RiskIcon size={10} className={text} />
           <span className={`text-[10px] font-medium ${text} leading-none hidden sm:block`}>{label}</span>
         </div>
 
         {/* Party badge */}
-        <span className="inline-flex items-center rounded-full border border-white/10 bg-black/50 px-2.5 py-1 text-xs font-bold text-white backdrop-blur">
+        <span className="inline-flex items-center rounded-full border border-white/12 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md" style={{ background: 'rgba(0,0,0,0.60)', boxShadow: '0 1px 0 rgba(255,255,255,0.06) inset' }}>
           {candidate.party}
         </span>
       </div>
@@ -56,7 +58,7 @@ export default function GovernorCard({ candidate, onClick }) {
           {candidate.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-white/10 bg-white/10 px-2 py-0.5 text-[10px] font-medium text-neutral-300 backdrop-blur"
+              className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] font-medium text-neutral-300 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.08)' }}
             >
               {tag}
             </span>
@@ -71,15 +73,15 @@ export default function GovernorCard({ candidate, onClick }) {
 
         {/* Metrics grid */}
         <div className="grid grid-cols-3 gap-2 py-4">
-          <div className="rounded-2xl border border-white/10 bg-white/10 p-2.5 backdrop-blur">
+          <div className="rounded-2xl border border-white/10 p-2.5 backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.08)', boxShadow: '0 1px 0 rgba(255,255,255,0.06) inset' }}>
             <p className="text-[9px] text-neutral-400">Políticas</p>
             <p className="text-base font-semibold text-white">{candidate.policies?.length || 0}</p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/10 p-2.5 backdrop-blur">
+          <div className="rounded-2xl border border-white/10 p-2.5 backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.08)', boxShadow: '0 1px 0 rgba(255,255,255,0.06) inset' }}>
             <p className="text-[9px] text-neutral-400">Polêmicas</p>
             <p className="text-base font-semibold text-white">{candidate.controversies?.length || 0}</p>
           </div>
-          <div className={`rounded-2xl border p-2.5 backdrop-blur ${
+          <div className={`rounded-2xl border p-2.5 backdrop-blur-md ${
             trustScore >= 70 ? "border-emerald-500/30 bg-emerald-500/20" :
             trustScore >= 40 ? "border-amber-500/30 bg-amber-500/20" :
             "border-red-500/30 bg-red-500/20"

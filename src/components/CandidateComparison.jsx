@@ -48,7 +48,7 @@ function CandidateSelector({ label, candidates, value, onChange, exclude }) {
           const found = candidates.find((c) => c.slug === e.target.value);
           onChange(found ?? null);
         }}
-        className="w-full rounded-xl border border-white/10 bg-neutral-900 px-3 py-2.5 text-sm text-white outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20"
+        className="w-full rounded-2xl border border-white/10 px-3 py-2.5 text-sm text-white outline-none focus:border-white/25 focus:ring-1 focus:ring-white/20 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.05)' }}
       >
         <option value="">— Selecionar candidato —</option>
         {candidates
@@ -115,8 +115,8 @@ function ProposalComparison({ proposalsA, proposalsB, nameA, nameB }) {
             const pA = proposalsA?.filter((p) => p.category === cat) ?? [];
             const pB = proposalsB?.filter((p) => p.category === cat) ?? [];
             return (
-              <div key={cat} className="rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden">
-                <div className="px-4 py-2 border-b border-white/10 bg-white/[0.03]">
+              <div key={cat} className="rounded-2xl border border-white/10 overflow-hidden backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.02)' }}>
+                <div className="px-4 py-2 border-b border-white/8" style={{ background: 'rgba(255,255,255,0.03)' }}>
                   <span className="text-xs font-semibold uppercase tracking-[0.15em] text-neutral-400">{cat}</span>
                 </div>
                 <div className="grid grid-cols-2 divide-x divide-white/10">
@@ -240,17 +240,18 @@ export default function CandidateComparison({ candidates, onClose, onOpenCandida
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 overflow-y-auto bg-neutral-950/95 backdrop-blur-xl text-white"
+      className="fixed inset-0 z-50 overflow-y-auto text-white"
+      style={{ background: 'rgba(13,13,15,0.96)', backdropFilter: 'blur(32px)', WebkitBackdropFilter: 'blur(32px)' }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.25 }}
     >
       {/* Header */}
-      <div className="sticky top-0 z-10 border-b border-white/10 bg-neutral-950/90 backdrop-blur-xl">
+      <div className="sticky top-0 z-10 border-b border-white/8 backdrop-blur-xl" style={{ background: 'rgba(13,13,15,0.92)', boxShadow: '0 1px 0 rgba(255,255,255,0.04) inset' }}>
         <Container className="flex items-center justify-between py-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10">
+            <div className="flex h-9 w-9 items-center justify-center rounded-2xl border border-white/12 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.08)' }}>
               <GitCompare size={18} className="text-white" />
             </div>
             <div>
@@ -260,7 +261,7 @@ export default function CandidateComparison({ candidates, onClose, onOpenCandida
           </div>
           <button
             onClick={onClose}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-400 transition hover:bg-white/10 hover:text-white"
+            className="flex h-9 w-9 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-neutral-400 transition hover:bg-white/10 hover:text-white hover:border-white/20"
             aria-label="Fechar comparação"
           >
             <X size={18} />
@@ -304,7 +305,8 @@ export default function CandidateComparison({ candidates, onClose, onOpenCandida
                 ].map(({ candidate, modular, proposals }, idx) => (
                   <div
                     key={candidate.slug}
-                    className="relative overflow-hidden rounded-3xl border border-white/10 bg-neutral-900"
+                    className="relative overflow-hidden rounded-3xl border border-white/10"
+                    style={{ background: 'rgba(20,20,26,0.95)', boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.05) inset' }}
                   >
                     <div className="relative h-40 overflow-hidden">
                       <img
@@ -312,7 +314,7 @@ export default function CandidateComparison({ candidates, onClose, onOpenCandida
                         alt={candidate.name}
                         className="h-full w-full object-cover grayscale"
                       />
-                      <div className="absolute inset-0 bg-linear-to-t from-neutral-900 via-neutral-900/40 to-transparent" />
+                      <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(20,20,26,1) 0%, rgba(20,20,26,0.45) 50%, transparent 100%)' }} />
                       <div className="absolute bottom-3 left-4">
                         <span className="rounded border border-white/10 bg-white/10 px-2 py-0.5 text-xs font-medium text-neutral-300 backdrop-blur">
                           {candidate.party}

@@ -68,36 +68,38 @@ export default function GovernorExpanded({ candidate, onClose }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        className="absolute inset-0 backdrop-blur-md"
+        style={{ background: 'rgba(0,0,0,0.75)' }}
         onClick={onClose}
       />
 
       {/* Modal */}
-      <div className="relative w-full max-w-4xl max-h-[90vh] flex flex-col rounded-2xl overflow-hidden bg-zinc-950 border border-white/10 shadow-2xl">
+      <div className="relative w-full max-w-4xl max-h-[90vh] flex flex-col rounded-3xl overflow-hidden border border-white/10 shadow-2xl" style={{ background: 'rgba(15,15,18,0.96)', backdropFilter: 'blur(40px)', WebkitBackdropFilter: 'blur(40px)', boxShadow: '0 24px 80px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.06) inset' }}>
         {/* Header */}
         <div className="relative flex-shrink-0">
           {/* Background photo */}
-          <div className="h-48 overflow-hidden bg-zinc-900">
+          <div className="h-48 overflow-hidden" style={{ background: 'rgba(30,30,35,0.80)' }}>
             <img
               src={candidate.image}
               alt={candidate.name}
               className="w-full h-full object-cover object-top opacity-40"
               onError={(e) => { e.target.style.display = "none"; }}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/60 to-zinc-950" />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(15,15,18,0.65) 60%, rgba(15,15,18,1) 100%)' }} />
           </div>
 
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-black/50 border border-white/10 text-zinc-400 hover:text-white hover:bg-black/80 transition-all"
+            className="absolute top-4 right-4 p-2 rounded-2xl border border-white/12 text-zinc-400 hover:text-white transition-all backdrop-blur-md"
+            style={{ background: 'rgba(0,0,0,0.60)', boxShadow: '0 1px 0 rgba(255,255,255,0.06) inset' }}
           >
             <X size={18} />
           </button>
 
           {/* Candidate info overlay */}
           <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end gap-4">
-            <div className="w-20 h-20 rounded-xl overflow-hidden border-2 border-white/20 bg-zinc-800 flex-shrink-0 shadow-xl">
+            <div className="w-20 h-20 rounded-2xl overflow-hidden border border-white/20 flex-shrink-0 shadow-xl" style={{ background: 'rgba(40,40,48,0.80)' }}>
               <img
                 src={candidate.image}
                 alt={candidate.name}
@@ -122,15 +124,15 @@ export default function GovernorExpanded({ candidate, onClose }) {
         </div>
 
         {/* Tabs */}
-        <div className="flex-shrink-0 flex gap-1 px-6 pt-4 pb-0 border-b border-zinc-800">
+        <div className="flex-shrink-0 flex gap-1 px-6 pt-4 pb-0 border-b border-white/8">
           {TABS.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`px-4 py-2 text-sm font-medium rounded-t-lg transition-all border-b-2 -mb-px ${
                 activeTab === tab.id
-                  ? "text-white border-blue-500 bg-blue-500/5"
-                  : "text-zinc-500 border-transparent hover:text-zinc-300 hover:border-zinc-600"
+                  ? "text-white border-blue-400 bg-blue-500/8"
+                  : "text-zinc-500 border-transparent hover:text-zinc-300 hover:border-white/20"
               }`}
             >
               {tab.label}
@@ -150,14 +152,14 @@ export default function GovernorExpanded({ candidate, onClose }) {
               </div>
 
               {/* Status */}
-              <div className="p-4 rounded-xl bg-zinc-900 border border-zinc-800">
+              <div className="p-4 rounded-2xl border border-white/10 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.04)' }}>
                 <p className="text-xs text-zinc-500 mb-1">Status eleitoral</p>
                 <p className="text-sm text-zinc-200 font-medium">{candidate.status}</p>
               </div>
 
               {/* Strengths & Weaknesses */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/15">
+                <div className="p-4 rounded-2xl border border-emerald-500/15 backdrop-blur-sm" style={{ background: 'rgba(52,211,153,0.05)' }}>
                   <h4 className="text-sm font-semibold text-emerald-400 mb-3 flex items-center gap-2">
                     <TrendingUp size={14} />
                     Pontos fortes eleitorais
@@ -171,7 +173,7 @@ export default function GovernorExpanded({ candidate, onClose }) {
                     ))}
                   </ul>
                 </div>
-                <div className="p-4 rounded-xl bg-red-500/5 border border-red-500/15">
+                <div className="p-4 rounded-2xl border border-red-500/15 backdrop-blur-sm" style={{ background: 'rgba(239,68,68,0.05)' }}>
                   <h4 className="text-sm font-semibold text-red-400 mb-3 flex items-center gap-2">
                     <TrendingDown size={14} />
                     Pontos fracos eleitorais
@@ -192,7 +194,7 @@ export default function GovernorExpanded({ candidate, onClose }) {
                 <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-2">Temas associados</h3>
                 <div className="flex flex-wrap gap-2">
                   {candidate.tags?.map((tag) => (
-                    <span key={tag} className="px-3 py-1 rounded-full bg-zinc-800 border border-zinc-700 text-sm text-zinc-300">
+                    <span key={tag} className="px-3 py-1 rounded-full border border-white/10 text-sm text-zinc-300 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.06)' }}>
                       {tag}
                     </span>
                   ))}

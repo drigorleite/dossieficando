@@ -44,7 +44,7 @@ export default function FeedbackSection() {
   };
 
   return (
-    <section id="feedback" className="border-t border-white/10 bg-neutral-950 py-16">
+    <section id="feedback" className="py-16" style={{ background: '#0a0a0c', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
       <Container>
         <div className="mx-auto max-w-2xl">
           {/* Header */}
@@ -62,7 +62,7 @@ export default function FeedbackSection() {
           </div>
 
           {submitted ? (
-            <div className="flex flex-col items-center gap-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-8 text-center">
+            <div className="flex flex-col items-center gap-4 rounded-3xl border border-emerald-500/20 p-8 text-center backdrop-blur-md" style={{ background: 'rgba(52,211,153,0.05)', boxShadow: '0 8px 32px rgba(0,0,0,0.3), 0 1px 0 rgba(52,211,153,0.06) inset' }}>
               <CheckCircle size={40} className="text-emerald-400" aria-hidden="true" />
               <h3 className="text-lg font-semibold text-white">Obrigado pela contribuição!</h3>
               <p className="text-sm text-neutral-400">
@@ -71,7 +71,7 @@ export default function FeedbackSection() {
               </p>
               <button
                 onClick={() => setSubmitted(false)}
-                className="mt-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-neutral-300 transition hover:bg-white/10"
+                className="mt-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-neutral-300 transition hover:bg-white/10 hover:border-white/20 backdrop-blur-sm"
               >
                 Enviar outro feedback
               </button>
@@ -88,7 +88,7 @@ export default function FeedbackSection() {
                       type="button"
                       onClick={() => setType(value)}
                       aria-pressed={type === value}
-                      className={`flex flex-col items-center gap-1.5 rounded-xl border p-3 text-xs font-medium transition ${
+                      className={`flex flex-col items-center gap-1.5 rounded-2xl border p-3 text-xs font-medium transition backdrop-blur-sm ${
                         type === value
                           ? 'border-white/20 bg-white/10 text-white'
                           : 'border-white/10 bg-white/5 text-neutral-500 hover:bg-white/8 hover:text-neutral-300'
@@ -112,7 +112,7 @@ export default function FeedbackSection() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Como prefere ser chamado"
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-neutral-600 transition focus:border-white/20 focus:outline-none focus:ring-1 focus:ring-white/20"
+                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-neutral-600 transition focus:border-white/20 focus:outline-none focus:ring-1 focus:ring-white/20 backdrop-blur-sm"
                 />
               </div>
 
@@ -128,7 +128,7 @@ export default function FeedbackSection() {
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                     placeholder="https://..."
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-neutral-600 transition focus:border-white/20 focus:outline-none focus:ring-1 focus:ring-white/20"
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-neutral-600 transition focus:border-white/20 focus:outline-none focus:ring-1 focus:ring-white/20 backdrop-blur-sm"
                   />
                 </div>
               )}
@@ -153,7 +153,7 @@ export default function FeedbackSection() {
                       ? 'Qual candidato e por que deveria ser incluído?'
                       : 'Sua mensagem...'
                   }
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-neutral-600 transition focus:border-white/20 focus:outline-none focus:ring-1 focus:ring-white/20 resize-none"
+                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-neutral-600 transition focus:border-white/20 focus:outline-none focus:ring-1 focus:ring-white/20 resize-none backdrop-blur-sm"
                 />
               </div>
 

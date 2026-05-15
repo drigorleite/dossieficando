@@ -68,7 +68,7 @@ function ScoreCircle({ score }) {
   const label = score >= 70 ? 'Confiável' : score >= 55 ? 'Moderado' : score >= 40 ? 'Atenção' : 'Crítico';
 
   return (
-    <div className={`flex flex-col items-center justify-center w-28 h-28 rounded-full border-4 ${ring} bg-white/[0.03]`}>
+    <div className={`flex flex-col items-center justify-center w-28 h-28 rounded-full border-4 ${ring} backdrop-blur-sm`} style={{ background: 'rgba(255,255,255,0.04)' }}>
       <span className={`text-3xl font-bold ${color}`}>{score}</span>
       <span className="text-[10px] text-neutral-500 mt-0.5">{label}</span>
     </div>
@@ -83,7 +83,7 @@ function RankingOrgBadge({ rankingOrg }) {
   const scoreBg = score >= 8 ? 'bg-emerald-500/10 border-emerald-500/30' : score >= 6 ? 'bg-amber-500/10 border-amber-500/30' : 'bg-red-500/10 border-red-500/30';
 
   return (
-    <div className={`rounded-2xl border p-5 ${scoreBg}`}>
+      <div className={`rounded-2xl border p-5 backdrop-blur-sm ${scoreBg}`} style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.04) inset' }}>
       <div className="flex items-start justify-between mb-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
@@ -132,7 +132,7 @@ function RankingOrgBadge({ rankingOrg }) {
           <p className="text-[10px] text-neutral-600 mb-2 uppercase tracking-wider">Notas por ano</p>
           <div className="flex gap-2 flex-wrap">
             {scoresByYear.map(({ year, score: s }) => (
-              <div key={year} className="text-center bg-white/5 rounded-lg px-3 py-1.5">
+              <div key={year} className="text-center rounded-xl border border-white/8 px-3 py-1.5 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.05)' }}>
                 <p className="text-[10px] text-neutral-500">{year}</p>
                 <p className={`text-sm font-bold ${s >= 8 ? 'text-emerald-400' : s >= 6 ? 'text-amber-400' : 'text-red-400'}`}>
                   {s.toFixed(2).replace('.', ',')}
@@ -176,7 +176,7 @@ export default function TrustIndex({ trustIndex }) {
       </div>
 
       {/* Score + metrics */}
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+      <div className="rounded-2xl border border-white/10 p-6 backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.04)', boxShadow: '0 8px 32px rgba(0,0,0,0.25), 0 1px 0 rgba(255,255,255,0.05) inset' }}>
         <div className="flex items-center gap-8 mb-6">
           <ScoreCircle score={score} />
           <div className="flex-1">
@@ -224,7 +224,7 @@ export default function TrustIndex({ trustIndex }) {
       )}
 
       {/* Methodology toggle */}
-      <div className="rounded-2xl border border-white/10 overflow-hidden">
+      <div className="rounded-2xl border border-white/10 overflow-hidden backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.03)' }}>
         <button
           className="w-full flex items-center justify-between px-5 py-4 text-left"
           onClick={() => setShowMethodology(v => !v)}
@@ -256,7 +256,7 @@ export default function TrustIndex({ trustIndex }) {
                 </div>
               ))}
             </div>
-            <div className="rounded-xl bg-amber-500/5 border border-amber-500/20 px-3 py-2.5">
+            <div className="rounded-xl border border-amber-500/20 px-3 py-2.5 backdrop-blur-sm" style={{ background: 'rgba(245,158,11,0.05)' }}>
               <p className="text-[10px] text-amber-400/80 leading-relaxed">
                 ⚠️ Este índice NÃO deve ser usado como único critério de avaliação.
                 Candidatos sem histórico parlamentar (ex: empresários) têm métricas como "presença em votações" marcadas como N/A,
@@ -264,7 +264,7 @@ export default function TrustIndex({ trustIndex }) {
               </p>
             </div>
             {rankingOrg && (
-              <div className="rounded-xl bg-blue-500/5 border border-blue-500/20 px-3 py-2.5">
+              <div className="rounded-xl border border-blue-500/20 px-3 py-2.5 backdrop-blur-sm" style={{ background: 'rgba(59,130,246,0.05)' }}>
                 <p className="text-[10px] text-blue-400/80 leading-relaxed">
                   ℹ️ Os dados do <strong>Ranking dos Políticos</strong> (ranking.org.br) são independentes e avaliam exclusivamente parlamentares federais em exercício.
                   Governadores, ministros e pré-candidatos sem mandato ativo não são avaliados por essa fonte.

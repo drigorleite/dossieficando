@@ -42,7 +42,7 @@ function PromiseCard({ promise }) {
   const Icon = cfg.icon;
 
   return (
-    <div className={`rounded-2xl border ${cfg.border} ${cfg.bg} overflow-hidden transition-all`}>
+    <div className={`rounded-2xl border overflow-hidden transition-all backdrop-blur-sm ${cfg.border}`} style={{ background: 'rgba(255,255,255,0.03)', boxShadow: '0 2px 12px rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.04) inset' }}>
       <button
         className="w-full text-left px-5 py-4 flex items-start gap-4"
         onClick={() => setExpanded(v => !v)}
@@ -106,7 +106,7 @@ function PromiseCard({ promise }) {
               </p>
               <div className="space-y-2">
                 {promise.evidence.map((ev, i) => (
-                  <div key={i} className="flex items-start gap-3 rounded-xl bg-white/5 px-3 py-2.5">
+                  <div key={i} className="flex items-start gap-3 rounded-xl border border-white/8 px-3 py-2.5 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.05)' }}>
                     <FileText size={13} className="mt-0.5 shrink-0 text-neutral-500" />
                     <div className="flex-1 min-w-0">
                       <p className="text-xs text-neutral-300">{ev.description}</p>
@@ -133,7 +133,7 @@ function PromiseCard({ promise }) {
 
           {/* Context note */}
           {promise.context && (
-            <div className="rounded-xl border border-white/5 bg-white/[0.02] px-3 py-2.5">
+            <div className="rounded-xl border border-white/8 px-3 py-2.5 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.03)' }}>
               <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-neutral-600 mb-1">Contexto</p>
               <p className="text-xs text-neutral-500 leading-relaxed">{promise.context}</p>
             </div>
@@ -176,7 +176,7 @@ export default function PromisesVsReality({ promises = [] }) {
       </div>
 
       {/* Summary bar */}
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+      <div className="rounded-2xl border border-white/10 p-5 backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.04)', boxShadow: '0 4px 20px rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.04) inset' }}>
         <div className="flex items-center justify-between mb-3">
           <span className="text-xs text-neutral-500">Taxa de cumprimento estimada</span>
           <span className={`text-lg font-bold ${cumprimentoRate >= 60 ? 'text-emerald-400' : cumprimentoRate >= 30 ? 'text-amber-400' : 'text-red-400'}`}>
@@ -234,8 +234,8 @@ export default function PromisesVsReality({ promises = [] }) {
             onClick={() => setFilter(key)}
             className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
               filter === key
-                ? 'bg-white text-neutral-900'
-                : 'bg-white/5 text-neutral-400 hover:bg-white/10'
+                ? 'bg-white text-neutral-900 shadow-sm'
+                : 'border border-white/10 text-neutral-400 hover:bg-white/8 hover:border-white/18 hover:text-neutral-300'
             }`}
           >
             {label} {key !== 'all' && counts[key] > 0 && `(${counts[key]})`}
@@ -251,7 +251,7 @@ export default function PromisesVsReality({ promises = [] }) {
       </div>
 
       {/* Methodology note */}
-      <div className="rounded-xl border border-white/5 bg-white/[0.02] px-4 py-3">
+      <div className="rounded-xl border border-white/8 px-4 py-3 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.03)' }}>
         <p className="text-[10px] text-neutral-600 leading-relaxed">
           ⚠️ A classificação de cumprimento é baseada em fontes jornalísticas e documentos públicos verificáveis.
           Promessas em mandatos em curso são marcadas como "inconclusivo" até o término do período.

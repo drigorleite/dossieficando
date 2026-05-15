@@ -43,7 +43,7 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
   }, [filteredCandidates, partyFilter, sortBy]);
 
   return (
-    <section id="candidatos" className="bg-neutral-950 py-10 lg:py-14">
+    <section id="candidatos" className="py-10 lg:py-14" style={{ background: '#0a0a0c' }}>
       <Container>
         <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -57,7 +57,7 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
             {onOpenComparison && (
               <button
                 onClick={onOpenComparison}
-                className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-neutral-300 transition hover:bg-white/10 hover:text-white"
+                className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-neutral-300 transition hover:bg-white/10 hover:text-white hover:border-white/20"
               >
                 <GitCompare size={13} />
                 Comparar
@@ -67,7 +67,7 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
         </div>
 
         {/* Filter bar */}
-        <div className="mb-8 flex flex-wrap items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-3">
+        <div className="mb-8 flex flex-wrap items-center gap-3 rounded-2xl border border-white/10 p-3 backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.03)', boxShadow: '0 1px 0 rgba(255,255,255,0.04) inset' }}>
           <SlidersHorizontal size={15} className="text-neutral-500 shrink-0" />
 
           {/* Party filter pills */}
@@ -76,10 +76,10 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
               <button
                 key={party || 'all'}
                 onClick={() => setPartyFilter(party)}
-                className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${
                   partyFilter === party
                     ? 'bg-white text-neutral-950'
-                    : 'border border-white/10 bg-white/5 text-neutral-400 hover:bg-white/10 hover:text-white'
+                    : 'border border-white/10 bg-white/5 text-neutral-400 hover:bg-white/10 hover:text-white hover:border-white/20'
                 }`}
               >
                 {party || 'Todos os partidos'}
@@ -92,7 +92,7 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-neutral-300 outline-none focus:border-white/30"
+              className="rounded-2xl border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-neutral-300 outline-none focus:border-white/25 backdrop-blur-sm"
             >
               {SORT_OPTIONS.map(({ value, label }) => (
                 <option key={value} value={value} className="bg-neutral-900">
@@ -114,7 +114,7 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
             ))}
           </div>
         ) : (
-          <div className="rounded-4xl border border-white/10 bg-white/[0.03] p-10 text-center">
+          <div className="rounded-3xl border border-white/10 p-10 text-center backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.03)' }}>
             <p className="text-neutral-400">Nenhum candidato encontrado para essa busca.</p>
           </div>
         )}

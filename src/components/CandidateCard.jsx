@@ -22,7 +22,8 @@ export default function CandidateCard({ candidate, onOpen }) {
       onClick={() => onOpen(candidate)}
       whileHover={{ y: -6 }}
       whileTap={{ scale: 0.98 }}
-      className="group relative min-h-97.5 w-full overflow-hidden rounded-4xl border border-white/10 bg-neutral-900 text-left shadow-2xl shadow-black/20 outline-none transition focus-visible:ring-2 focus-visible:ring-white/40"
+      className="group relative min-h-97.5 w-full overflow-hidden rounded-3xl border border-white/10 text-left outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white/40"
+      style={{ background: 'rgba(18,18,22,0.95)', boxShadow: '0 8px 40px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.06) inset' }}
     >
       {/* Background image */}
       <div className="absolute inset-0">
@@ -32,20 +33,22 @@ export default function CandidateCard({ candidate, onOpen }) {
           loading="lazy"
           className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-black/10" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.15) 100%)' }} />
+        {/* Specular top highlight */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-20" style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 100%)' }} aria-hidden="true" />
       </div>
 
       {/* Top badges */}
       <div className="absolute left-4 right-4 top-4 z-10 flex items-start justify-between gap-2">
         {/* Risk indicator */}
-        <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-black/50 px-2.5 py-1 backdrop-blur">
+        <div className="flex items-center gap-1.5 rounded-full border border-white/12 bg-black/60 px-2.5 py-1 backdrop-blur-md" style={{ boxShadow: '0 1px 0 rgba(255,255,255,0.06) inset' }}>
           <span className={`h-1.5 w-1.5 rounded-full ${dot} shrink-0`} />
           <span className={`text-[10px] font-medium ${text} leading-none`}>{candidate.riskLevel}</span>
         </div>
 
         {/* Proposal count */}
         {proposalCount > 0 && (
-          <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/40 bg-emerald-500/20 px-2 py-1 text-xs font-medium text-emerald-300 backdrop-blur">
+          <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2 py-1 text-xs font-medium text-emerald-300 backdrop-blur-md" style={{ boxShadow: '0 1px 0 rgba(52,211,153,0.08) inset' }}>
             <Lightbulb size={11} />
             {proposalCount}
           </span>
@@ -68,15 +71,15 @@ export default function CandidateCard({ candidate, onOpen }) {
         </div>
 
         <div className="grid grid-cols-3 gap-2 py-4">
-          <div className="rounded-2xl border border-white/10 bg-white/10 p-3 backdrop-blur">
+          <div className="rounded-2xl border border-white/10 p-3 backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.08)', boxShadow: '0 1px 0 rgba(255,255,255,0.06) inset' }}>
             <p className="text-[10px] text-neutral-400">Casos</p>
             <p className="text-lg font-semibold text-white">{candidate.cases}</p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/10 p-3 backdrop-blur">
+          <div className="rounded-2xl border border-white/10 p-3 backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.08)', boxShadow: '0 1px 0 rgba(255,255,255,0.06) inset' }}>
             <p className="text-[10px] text-neutral-400">Fontes</p>
             <p className="text-lg font-semibold text-white">{candidate.sources}</p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/10 p-3 backdrop-blur">
+          <div className="rounded-2xl border border-white/10 p-3 backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.08)', boxShadow: '0 1px 0 rgba(255,255,255,0.06) inset' }}>
             <p className="text-[10px] text-neutral-400">Propostas</p>
             <p className={`text-lg font-semibold ${proposalCount > 0 ? 'text-emerald-300' : 'text-neutral-500'}`}>
               {proposalCount}
@@ -87,7 +90,7 @@ export default function CandidateCard({ candidate, onOpen }) {
         <p className="line-clamp-3 text-sm leading-6 text-neutral-300">{candidate.summary}</p>
 
         <div className="mt-5 flex items-center justify-end border-t border-white/10 pt-4">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition group-hover:bg-neutral-200">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition group-hover:bg-neutral-100" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
             Ver dossiê <ExternalLink size={14} aria-hidden="true" />
           </span>
         </div>

@@ -225,29 +225,29 @@ export default function Header({ onOpenComparison, onOpenCandidate }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-neutral-950/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 w-full" style={{ background: 'rgba(13,13,15,0.80)', backdropFilter: 'blur(24px) saturate(180%)', WebkitBackdropFilter: 'blur(24px) saturate(180%)', borderBottom: '1px solid rgba(255,255,255,0.07)', boxShadow: '0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 24px rgba(0,0,0,0.3)' }}>
       <Container className="py-3">
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group shrink-0" aria-label="Dossieficando — página inicial">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition group-hover:bg-white/10">
+          {/* Specular top highlight */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent)' }} aria-hidden="true" />
+          <a href="#" className="flex items-center gap-3 group shrink-0" aria-label="Dossiê Público — página inicial">
+            <div className="flex h-9 w-9 items-center justify-center rounded-2xl border border-white/12 bg-white/6 backdrop-blur-sm transition group-hover:bg-white/12">
               <Scale size={16} className="text-white" aria-hidden="true" />
             </div>
             <div className="hidden sm:block">
               <p className="text-xs uppercase tracking-[0.35em] text-neutral-500">Dossiê Público</p>
-              <h1 className="text-base font-semibold tracking-tight text-white leading-tight">
-                Sem lente ideológica
-              </h1>
+              <p className="text-sm font-semibold tracking-tight text-white leading-tight">Sem lente ideológica</p>
             </div>
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-1 md:flex" aria-label="Navegação principal">
+          <nav className="hidden items-center gap-0.5 md:flex" aria-label="Navegação principal">
             {navLinks.map(({ href, label }) => (
               <a
                 key={href}
                 href={href}
-                className="rounded-xl px-4 py-2 text-sm text-neutral-400 transition hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-blue-400"
+                className="rounded-2xl px-4 py-2 text-sm text-neutral-400 transition hover:bg-white/6 hover:text-white focus-visible:outline-2 focus-visible:outline-blue-400"
               >
                 {label}
               </a>
@@ -268,7 +268,7 @@ export default function Header({ onOpenComparison, onOpenCandidate }) {
               <button
                 onClick={onOpenComparison}
                 aria-label="Comparar candidatos"
-                className="hidden md:flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-neutral-300 transition hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-blue-400"
+                className="hidden md:flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-neutral-300 transition hover:bg-white/10 hover:text-white hover:border-white/20 focus-visible:outline-2 focus-visible:outline-blue-400"
               >
                 <GitCompare size={14} aria-hidden="true" />
                 Comparar
@@ -278,7 +278,7 @@ export default function Header({ onOpenComparison, onOpenCandidate }) {
             {/* Mobile menu toggle */}
             <button
               onClick={() => setMobileOpen((v) => !v)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition hover:bg-white/10 md:hidden"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white transition hover:bg-white/10 hover:border-white/20 md:hidden"
               aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
@@ -291,7 +291,7 @@ export default function Header({ onOpenComparison, onOpenCandidate }) {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div id="mobile-menu" className="border-t border-white/10 bg-neutral-950/98 px-4 py-5 md:hidden">
+        <div id="mobile-menu" className="border-t border-white/8 px-4 py-5 md:hidden" style={{ background: 'rgba(13,13,15,0.97)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}>
           {/* Mobile search */}
           <div className="mb-4 relative">
             <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 pointer-events-none" aria-hidden="true" />

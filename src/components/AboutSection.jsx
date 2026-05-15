@@ -65,9 +65,9 @@ export default function AboutSection() {
         </div>
 
         {/* Manifesto em destaque */}
-        <div className="mb-16 rounded-2xl border border-white/10 bg-white/[0.03] p-8 sm:p-10">
+        <div className="mb-16 rounded-3xl border border-white/10 p-8 sm:p-10 backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.04)', boxShadow: '0 8px 40px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.06) inset' }}>
           <div className="flex items-start gap-4 mb-6">
-            <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 border border-white/10">
+            <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-white/12 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.06)' }}>
               <span className="text-lg">✍️</span>
             </div>
             <div>
@@ -100,9 +100,10 @@ export default function AboutSection() {
           {pillars.map(({ icon: Icon, color, bg, title, text }) => (
             <div
               key={title}
-              className={`rounded-2xl border p-6 ${bg} transition hover:bg-white/5`}
+              className={`rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-0.5 backdrop-blur-sm ${bg}`}
+              style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.04) inset' }}
             >
-              <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 border border-white/10`}>
+              <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 backdrop-blur-sm`} style={{ background: 'rgba(255,255,255,0.05)' }}>
                 <Icon size={18} className={color} />
               </div>
               <h3 className="mb-2 text-sm font-semibold text-white">{title}</h3>
@@ -112,7 +113,7 @@ export default function AboutSection() {
         </div>
 
         {/* Aviso final */}
-        <div className="mt-12 rounded-2xl border border-amber-400/20 bg-amber-400/5 p-6 flex gap-4">
+        <div className="mt-12 rounded-2xl border border-amber-400/20 p-6 flex gap-4 backdrop-blur-sm" style={{ background: 'rgba(245,158,11,0.05)', boxShadow: '0 1px 0 rgba(245,158,11,0.06) inset' }}>
           <AlertTriangle size={18} className="text-amber-400 shrink-0 mt-0.5" />
           <div>
             <p className="text-sm font-semibold text-amber-300 mb-1">Importante</p>

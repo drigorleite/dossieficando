@@ -238,13 +238,14 @@ export default function CandidateExpanded({ candidate, onClose }) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 overflow-y-auto bg-neutral-950 text-white"
+      className="fixed inset-0 z-50 overflow-y-auto text-white"
+      style={{ background: '#0d0d0f' }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.25 }}
     >
-      <motion.div layoutId={`candidate-${candidate.slug}`} className="min-h-screen bg-neutral-950">
+      <motion.div layoutId={`candidate-${candidate.slug}`} className="min-h-screen" style={{ background: '#0d0d0f' }}>
 
         {/* ── Hero / Header ── */}
         <div className="relative min-h-[56vh] overflow-hidden border-b border-white/10">
@@ -255,12 +256,13 @@ export default function CandidateExpanded({ candidate, onClose }) {
             className="absolute inset-0 h-full w-full object-cover"
             style={{ filter: 'grayscale(0.7) brightness(0.6)' }}
           />
-          <div className="absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/60 to-black/30" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #0d0d0f 0%, rgba(13,13,15,0.65) 40%, rgba(0,0,0,0.25) 100%)' }} />
 
           {/* Back button */}
           <button
             onClick={onClose}
-            className="fixed left-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-neutral-950/80 text-white backdrop-blur transition hover:bg-white/10"
+            className="fixed left-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-2xl border border-white/12 text-white backdrop-blur-md transition hover:bg-white/10 hover:border-white/20"
+            style={{ background: 'rgba(13,13,15,0.80)', boxShadow: '0 4px 16px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.06) inset' }}
             aria-label="Voltar"
           >
             <ArrowLeft size={18} aria-hidden="true" />
@@ -340,7 +342,7 @@ export default function CandidateExpanded({ candidate, onClose }) {
         </div>
 
         {/* ── Stats bar ── */}
-        <div className="border-b border-white/10 bg-neutral-900/50 backdrop-blur">
+        <div className="border-b border-white/8 backdrop-blur-md" style={{ background: 'rgba(18,18,22,0.70)' }}>
           <Container className="flex flex-wrap gap-6 py-3">
             <div className="flex items-center gap-2 text-sm text-neutral-400">
               <FileText size={14} className="text-neutral-500" />
@@ -370,7 +372,7 @@ export default function CandidateExpanded({ candidate, onClose }) {
         </div>
 
         {/* ── Tab Navigation ── */}
-        <div className="sticky top-0 z-30 border-b border-white/10 bg-neutral-950/95 backdrop-blur-xl">
+        <div className="sticky top-0 z-30 border-b border-white/8 backdrop-blur-xl" style={{ background: 'rgba(13,13,15,0.92)', boxShadow: '0 1px 0 rgba(255,255,255,0.04) inset' }}>
           <Container>
             <nav className="overflow-x-auto py-2 scrollbar-none" aria-label="Seções do dossiê">
               <TabGroupNav
@@ -394,18 +396,18 @@ export default function CandidateExpanded({ candidate, onClose }) {
                   <aside className="space-y-4">
                     {/* Quick stats */}
                     <div className="grid grid-cols-2 gap-3">
-                      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                      <div className="rounded-2xl border border-white/10 p-4 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.04)', boxShadow: '0 1px 0 rgba(255,255,255,0.05) inset' }}>
                         <p className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Casos</p>
                         <p className="text-2xl font-bold text-white">{candidate.cases}</p>
                       </div>
-                      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                      <div className="rounded-2xl border border-white/10 p-4 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.04)', boxShadow: '0 1px 0 rgba(255,255,255,0.05) inset' }}>
                         <p className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Fontes</p>
                         <p className="text-2xl font-bold text-white">{candidate.sources}</p>
                       </div>
                     </div>
 
                     {/* Risk level */}
-                    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                    <div className="rounded-2xl border border-white/10 p-4 backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.04)', boxShadow: '0 1px 0 rgba(255,255,255,0.05) inset' }}>
                       <p className="text-[10px] uppercase tracking-widest text-neutral-500 mb-2">Classificação</p>
                       <div className="flex items-center gap-2">
                         <Scale size={14} className="text-neutral-400 shrink-0" />
