@@ -1,4 +1,11 @@
-import { CheckCircle, XCircle, AlertCircle, Info, MessageSquareWarning } from 'lucide-react';
+import {
+  CheckCircle,
+  XCircle,
+  AlertCircle,
+  Info,
+  MessageSquareWarning,
+  ExternalLink,
+} from 'lucide-react';
 import ProposalDetailBadge from './ProposalDetailBadge';
 
 const feasibilityIcon = (text) => {
@@ -31,7 +38,6 @@ export default function ProposalCard({ proposal }) {
 
   return (
     <article className="flex flex-col rounded-3xl border border-white/10 bg-neutral-900/80 p-6 gap-5">
-      {/* Header */}
       <div>
         <div className="mb-3 flex flex-wrap items-center gap-2">
           {proposal.detailLevel && (
@@ -53,7 +59,6 @@ export default function ProposalCard({ proposal }) {
         </p>
       </div>
 
-      {/* Implementation */}
       {hasImplementation ? (
         <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4">
           <h4 className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-emerald-400">
@@ -72,7 +77,6 @@ export default function ProposalCard({ proposal }) {
         </div>
       )}
 
-      {/* Feasibility */}
       {activeFeasibility.length > 0 && (
         <div className="grid gap-3 sm:grid-cols-2">
           {activeFeasibility.map(({ key, label }) => (
@@ -91,7 +95,6 @@ export default function ProposalCard({ proposal }) {
         </div>
       )}
 
-      {/* Criticism */}
       {proposal.criticism && (
         <div className="flex items-start gap-2.5 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4">
           <MessageSquareWarning size={15} className="text-amber-400 mt-0.5 shrink-0" />
@@ -101,6 +104,26 @@ export default function ProposalCard({ proposal }) {
             </p>
             <p className="text-sm leading-6 text-neutral-300">{proposal.criticism}</p>
           </div>
+        </div>
+      )}
+
+      {(proposal.sourceName || proposal.sourceUrl) && (
+        <div className="border-t border-white/10 pt-4">
+          {proposal.sourceUrl ? (
+            <a
+              href={proposal.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400 transition hover:text-white"
+            >
+              Fonte: {proposal.sourceName ?? 'Documento público'}
+              <ExternalLink size={13} aria-hidden="true" />
+            </a>
+          ) : (
+            <p className="text-xs text-neutral-500">
+              Fonte: {proposal.sourceName}
+            </p>
+          )}
         </div>
       )}
     </article>
