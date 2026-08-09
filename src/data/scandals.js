@@ -8,7 +8,7 @@ export const recentScandals = [
       'A Operação Sem Desconto apura descontos associativos não autorizados em aposentadorias e pensões. A CGU e a PF identificaram um esquema nacional que atravessou mais de uma gestão; acordos foram suspensos e o ressarcimento dos beneficiários foi iniciado.',
     caution:
       'Responsabilidade política pelo controle do INSS não é o mesmo que participação criminal. Vínculo familiar, partidário ou sindical também não basta para atribuir autoria.',
-    candidates: ['Lula', 'Romeu Zema'],
+    candidates: ['Lula'],
     sources: [
       {
         label: 'CGU e PF — Operação Sem Desconto',

@@ -1147,6 +1147,10 @@ const CUT_OFF = '9 ago. 2026';
 const enrichments = {
   lula: {
     role: 'Presidente da República e candidato à reeleição',
+    candidacyStatus: 'Candidatura homologada em convenção',
+    candidacyStatusType: 'official',
+    candidacyUrl:
+      'https://apnews.com/article/22cccc3135b09e2186898dd3cb394ed4',
     summary:
       'Presidente e candidato à reeleição. As condenações da Lava Jato foram anuladas por incompetência da vara e suspeição do juiz, sem julgamento absolutório do mérito. Seu governo é alcançado politicamente pelas apurações do INSS e do Banco Master, sem imputação criminal pessoal a Lula nesses casos até 9 de agosto de 2026.',
     tags: ['Lava Jato', 'INSS', 'Banco Master'],
@@ -1159,10 +1163,21 @@ const enrichments = {
       'Até a data de corte, não foi localizado neste levantamento um plano de governo de 2026 com memória de cálculo, metas, cronograma e mecanismos de execução verificáveis. O dossiê não reutiliza automaticamente o programa de 2022 como se fosse o plano da nova eleição.',
     timeline: [
       {
+        year: '2017–2021',
+        type: 'fato',
+        title: 'Lava Jato: condenações proferidas e depois anuladas',
+        text: 'Lula foi condenado nos processos do triplex e do sítio de Atibaia e ficou preso por 580 dias. Em 2021, o STF declarou a 13ª Vara Federal de Curitiba incompetente e anulou os atos decisórios; também reconheceu a parcialidade de Sergio Moro no caso do triplex. O resultado jurídico atual é ausência de condenação válida, mas não absolvição após julgamento do mérito das acusações.',
+        legalStatus: 'anulação',
+        source: 'STF — HC 193726 e HC 164493',
+        sourceType: 'judicial',
+        sourceUrl:
+          'https://noticias.stf.jus.br/postsnoticias/stf-confirma-anulacao-de-condenacoes-do-ex-presidente-lula-na-lava-jato/',
+      },
+      {
         year: '2025–2026',
         type: 'suspeita',
         title: 'INSS: falha estatal e alcance político',
-        text: 'A Operação Sem Desconto apura descontos associativos não autorizados em benefícios. A CGU e a PF informaram que o problema atravessou diferentes governos; o Executivo suspendeu os acordos e iniciou ressarcimentos. Frei Chico, irmão de Lula e dirigente de entidade investigada, integra o entorno político do caso, mas isso não constitui imputação criminal a Lula.',
+        text: 'A Operação Sem Desconto apura descontos associativos não autorizados em benefícios. A CGU e a PF informaram que o problema atravessou diferentes governos; o Executivo suspendeu os acordos e iniciou ressarcimentos. O registro é de responsabilidade político-administrativa do governo. Até a data de corte, a fonte oficial consultada não imputa crime pessoalmente a Lula.',
         legalStatus: 'investigação',
         source: 'CGU — Operação Sem Desconto',
         sourceType: 'oficial',
@@ -1182,6 +1197,24 @@ const enrichments = {
       },
     ],
     sourceLinks: [
+      {
+        title: 'STF confirma anulação das condenações da Lava Jato',
+        url: 'https://noticias.stf.jus.br/postsnoticias/stf-confirma-anulacao-de-condenacoes-do-ex-presidente-lula-na-lava-jato/',
+        type: 'judicial',
+        date: 'abr. 2021',
+        vehicle: 'STF',
+        reliability: 'alta',
+        notes: 'Anulação por incompetência da vara; não é absolvição de mérito.',
+      },
+      {
+        title: 'STF confirma a suspeição de Sergio Moro no caso do triplex',
+        url: 'https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=468086&ori=1',
+        type: 'judicial',
+        date: 'jun. 2021',
+        vehicle: 'STF',
+        reliability: 'alta',
+        notes: 'O reconhecimento alcançou os atos de Moro no processo do triplex.',
+      },
       {
         title: 'STF anula atos nos casos do sítio e do Instituto Lula por suspeição de Moro',
         url: 'https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=468184&ori=1',
@@ -1213,10 +1246,14 @@ const enrichments = {
   },
   'flavio-bolsonaro': {
     role: 'Senador e candidato à Presidência',
+    candidacyStatus: 'Candidatura homologada em convenção',
+    candidacyStatusType: 'official',
+    candidacyUrl:
+      'https://www.cnnbrasil.com.br/eleicoes/pl-oficializa-candidatura-de-flavio-bolsonaro-a-presidencia/',
     summary:
-      'Candidato do PL à Presidência. A denúncia da rachadinha foi arquivada depois que provas foram anuladas — não houve absolvição após julgamento do mérito. Em 2026, tornou-se alvo de inquérito por calúnia e das apurações sobre repasses do Banco Master para um filme sobre Jair Bolsonaro.',
+      'Candidato do PL à Presidência. A denúncia da rachadinha foi arquivada depois que provas foram anuladas — não houve absolvição após julgamento do mérito. Em 2026, passou a ser alcançado pelas apurações sobre repasses do Banco Master para um filme sobre Jair Bolsonaro.',
     tags: ['Banco Master', 'Rachadinha', 'STF'],
-    riskLevel: 'Inquéritos ativos; rachadinha arquivada sem mérito',
+    riskLevel: 'Master em apuração; rachadinha arquivada sem mérito',
     cases: 10,
     sources: 49,
     editorialNote:
@@ -1292,14 +1329,27 @@ const enrichments = {
         reliability: 'alta',
         notes: 'Apuração jornalística baseada em mensagens e áudios.',
       },
+      {
+        title: 'Como a denúncia da rachadinha foi arquivada sem análise do mérito',
+        url: 'https://noticias.uol.com.br/ultimas-noticias/bbc/2022/10/13/rachadinha-que-aconteceu-com-caso-que-envolve-filho-de-bolsonaro.htm',
+        type: 'notícia',
+        date: 'out. 2022',
+        vehicle: 'BBC News Brasil / UOL',
+        reliability: 'alta',
+        notes: 'Explica o efeito das anulações de prova e a ausência de julgamento do conteúdo da acusação.',
+      },
     ],
   },
   'romeu-zema': {
     role: 'Ex-governador de Minas Gerais e candidato à Presidência',
+    candidacyStatus: 'Candidatura homologada em convenção',
+    candidacyStatusType: 'official',
+    candidacyUrl:
+      'https://agenciabrasil.ebc.com.br/politica/noticia/2026-07/novo-oficializa-candidatura-de-romeu-zema-presidencia-da-republica',
     summary:
-      'Candidato do NOVO. Questionamentos recentes alcançam benefício fiscal concedido à Eletrozema, empresa da qual é acionista, operações da Zema Crédito examinadas pela CPMI do INSS e contratos da Educação. As apurações citadas não equivalem a condenação pessoal de Zema.',
-    tags: ['Eletrozema', 'INSS', 'Contratos públicos'],
-    riskLevel: 'Conflitos de interesse e apurações em curso',
+      'Candidato do NOVO. O levantamento registra benefício fiscal concedido à Eletrozema, empresa da qual é acionista, conclusões parlamentares sobre contratos da Cemig e questionamento sobre compra de livros pela Educação. Nenhum desses registros equivale a condenação pessoal de Zema.',
+    tags: ['Eletrozema', 'Cemig', 'Contratos públicos'],
+    riskLevel: 'Conflitos documentados e questionamentos em curso',
     cases: 8,
     sources: 31,
     editorialNote:
@@ -1343,28 +1393,29 @@ const enrichments = {
         type: 'suspeita',
         title: 'Benefício fiscal à Eletrozema durante a gestão',
         text: 'Dados divulgados após disputa por transparência mostraram benefício fiscal de R$ 2,28 milhões à Eletrozema, empresa de Zema e familiares, durante seu governo. Zema respondeu que o regime especial existia desde 2008, foi criado antes de sua gestão e seguia regras disponíveis a outras empresas. O episódio levanta questão de conflito de interesses, sem condenação por favorecimento ilícito até a data de corte.',
-        legalStatus: 'investigação',
+        legalStatus: 'benefício documentado',
         source: 'Folha de S.Paulo',
         sourceType: 'notícia',
         sourceUrl:
           'https://www1.folha.uol.com.br/poder/2026/06/empresa-de-zema-recebeu-beneficio-fiscal-durante-governo-dele-em-minas.shtml',
       },
       {
-        year: '2025–2026',
-        type: 'suspeita',
-        title: 'Zema Crédito na CPMI do INSS',
-        text: 'A CPMI aprovou a convocação de Zema para explicar operações de crédito consignado da empresa familiar. O requerimento aponta participação societária e questiona práticas dirigidas a aposentados. Convocação parlamentar não significa indiciamento nem comprova desconto associativo ilegal.',
-        legalStatus: 'investigação',
-        source: 'CPMI do INSS — requerimento',
+        year: '2021–2022',
+        type: 'fato',
+        title: 'CPI da Cemig e contrato com a AeC',
+        text: 'A CPI da Cemig na Assembleia mineira apontou indícios de interferência político-partidária e recomendou o envio de provas ao Ministério Público contra 17 pessoas e oito empresas. Entre os contratos examinados estava a prorrogação do serviço da AeC, cofundada por um ex-secretário de Zema, apesar de outra empresa ter vencido licitação. O relatório parlamentar não atribuiu condenação criminal pessoal a Zema.',
+        legalStatus: 'relatório de CPI',
+        source: 'ALMG — relatório final da CPI da Cemig',
         sourceType: 'legislativo',
-        sourceUrl: 'https://legis.senado.leg.br/sdleg-getter/documento?dm=10118296',
+        sourceUrl:
+          'https://www.almg.gov.br/acompanhe/noticias/arquivos/2022/02/17_cpi_cemig_distribui_copias_relatorio_final',
       },
       {
         year: '2026',
         type: 'suspeita',
         title: 'Contrato de R$ 348,4 milhões na Educação',
         text: 'A Secretaria de Educação contratou a Fazer Educação por R$ 348,4 milhões para livros. Reportagem apontou que o dono da fornecedora havia sido indiciado em outro estado; uma deputada protocolou representação no MPF. Isso não demonstra participação de Zema na suposta fraude e o procedimento deve ser tratado como questionamento sob apuração.',
-        legalStatus: 'investigação',
+        legalStatus: 'representação apresentada',
         source: 'Intercept Brasil',
         sourceType: 'reportagem',
         sourceUrl:
@@ -1382,13 +1433,13 @@ const enrichments = {
         notes: 'Inclui a resposta de Zema sobre a origem anterior do regime.',
       },
       {
-        title: 'Requerimento da CPMI sobre a Zema Crédito',
-        url: 'https://legis.senado.leg.br/sdleg-getter/documento?dm=10118296',
+        title: 'CPI da Cemig encaminha relatório e provas ao Ministério Público',
+        url: 'https://www.almg.gov.br/acompanhe/noticias/arquivos/2022/02/17_cpi_cemig_distribui_copias_relatorio_final',
         type: 'legislativo',
-        date: 'dez. 2025',
-        vehicle: 'Congresso Nacional',
+        date: 'fev. 2022',
+        vehicle: 'Assembleia Legislativa de Minas Gerais',
         reliability: 'alta',
-        notes: 'Requerimento político-investigativo, não decisão judicial.',
+        notes: 'Conclusão de CPI; não é sentença nem condenação judicial de Zema.',
       },
       {
         title: 'Contratos da Educação com empresa cujo dono foi indiciado',
@@ -1403,6 +1454,10 @@ const enrichments = {
   },
   'ronaldo-caiado': {
     role: 'Ex-governador de Goiás e candidato à Presidência',
+    candidacyStatus: 'Candidatura homologada em convenção',
+    candidacyStatusType: 'official',
+    candidacyUrl:
+      'https://agenciabrasil.ebc.com.br/politica/noticia/2026-07/psd-oficializa-candidatura-de-caiado-presidencia-da-republica',
     summary:
       'Candidato do PSD. O dossiê acompanha pedidos de apuração sobre negócios minerais e contratos estaduais com organização cujo dirigente foi investigado, distinguindo os atos do governo de eventual responsabilidade pessoal. Não há condenação de Caiado nesses episódios até 9 de agosto de 2026.',
     riskLevel: 'Questionamentos sem condenação pessoal',
@@ -1410,9 +1465,66 @@ const enrichments = {
       'Contratos firmados por uma administração não tornam automaticamente o governador autor de eventual ilícito. Atribuição pessoal só é feita quando houver ato, investigação ou decisão nominalmente documentados.',
     proposalNote:
       'O PSD informou em abril que a elaboração do plano estava começando, dividida em eixos temáticos. Até a data de corte, o material localizado descreve processo e temas, não metas, custos ou execução. Portanto, ainda não há “como” público suficiente para avaliar.',
+    timeline: [
+      {
+        year: '2026',
+        type: 'suspeita',
+        title: 'Serra Verde: representação à PGR, não investigação confirmada',
+        text: 'Parlamentares do PSOL protocolaram representação na PGR pedindo apuração e anulação da venda da mineradora Serra Verde à USA Rare Earth. Caiado havia assinado memorando com os Estados Unidos sobre minerais críticos. O ato dos parlamentares é um pedido de investigação: até a data de corte, não foi localizada confirmação pública de inquérito ou acusação formal contra Caiado. Ele defendeu que o acordo atrairia investimento e negou entregar patrimônio brasileiro.',
+        legalStatus: 'representação apresentada',
+        source: 'InfoMoney e Agência Brasil',
+        sourceType: 'notícia',
+        sourceUrl:
+          'https://www.infomoney.com.br/politica/psol-pede-que-pgr-anule-venda-de-terras-raras-em-goias-e-investigue-acao-de-caiado/',
+      },
+      {
+        year: '2026',
+        type: 'fato',
+        title: 'Contratos estaduais com entidade cujo dirigente foi investigado',
+        text: 'Reportagem registrou R$ 141 milhões em contratos do governo goiano com entidade comandada por Adair Meira, preso em investigação sobre lavagem de dinheiro ligada ao PCC. O vínculo contratual é fato administrativo; não prova participação de Caiado nos crimes apurados. O governo declarou que abriu apuração interna e que os contratos obedeceram aos procedimentos de contratação.',
+        legalStatus: 'apuração administrativa',
+        source: 'UOL — contratos do governo de Goiás',
+        sourceType: 'reportagem',
+        sourceUrl:
+          'https://noticias.uol.com.br/politica/ultimas-noticias/2026/05/11/empresa-de-preso-por-elo-com-pcc-tem-contrato-de-r-141-mi-no-governo-de-go.htm',
+      },
+    ],
+    sourceLinks: [
+      {
+        title: 'PSOL apresenta representação à PGR sobre a Serra Verde',
+        url: 'https://www.infomoney.com.br/politica/psol-pede-que-pgr-anule-venda-de-terras-raras-em-goias-e-investigue-acao-de-caiado/',
+        type: 'notícia',
+        date: 'abr. 2026',
+        vehicle: 'InfoMoney',
+        reliability: 'alta',
+        notes: 'Representação não significa abertura de inquérito nem comprovação da alegação.',
+      },
+      {
+        title: 'Agência Brasil explica o acordo e a operação da Serra Verde',
+        url: 'https://agenciabrasil.ebc.com.br/economia/noticia/2026-04/goias-defende-acordo-com-eua-para-exploracao-de-minerais-criticos',
+        type: 'notícia',
+        date: 'abr. 2026',
+        vehicle: 'Agência Brasil',
+        reliability: 'alta',
+        notes: 'Traz contexto regulatório e a posição do governo de Goiás.',
+      },
+      {
+        title: 'Contratos com entidade comandada por investigado por elo com o PCC',
+        url: 'https://noticias.uol.com.br/politica/ultimas-noticias/2026/05/11/empresa-de-preso-por-elo-com-pcc-tem-contrato-de-r-141-mi-no-governo-de-go.htm',
+        type: 'reportagem',
+        date: 'mai. 2026',
+        vehicle: 'UOL',
+        reliability: 'alta',
+        notes: 'O vínculo é contratual; a reportagem não comprova responsabilidade criminal de Caiado.',
+      },
+    ],
   },
   'renan-santos': {
     role: 'Candidato à Presidência',
+    candidacyStatus: 'Candidatura homologada em convenção',
+    candidacyStatusType: 'official',
+    candidacyUrl:
+      'https://www.otempo.com.br/eleicoes/2026/presidentes/2026/7/20/missao-oficializa-renan-santos-como-candidato-a-presidencia',
     summary:
       'Fundador do MBL e candidato do Partido Missão. Até 9 de agosto de 2026, não foi localizada condenação criminal contra ele. O histórico relevante reúne uma ação civil movida por Wesley Safadão, uma execução fiscal contestada, um confronto público registrado em vídeo e a rejeição judicial de uma denúncia por tráfico de influência.',
     tags: ['Ação civil', 'Execução fiscal', 'Denúncia rejeitada'],
@@ -1507,7 +1619,7 @@ const enrichments = {
         type: 'fato',
         title: 'Confronto filmado em ato de pré-campanha',
         text: 'Em 26 de março, Renan e o ex-integrante do MBL Gabriel Costenaro discutiram e trocaram empurrões durante uma atividade no centro do Rio de Janeiro. O episódio foi registrado em vídeo. Até a data de corte, não foi localizado procedimento judicial ou policial que justificasse descrevê-lo como “ação por agressão”.',
-        legalStatus: null,
+        legalStatus: 'sem procedimento localizado',
         source: 'GP1 — vídeo do confronto no Rio',
         sourceType: 'notícia',
         sourceUrl: 'https://www.gp1.com.br/brasil/noticia/2026/3/27/pre-candidato-renan-santos-e-suplente-de-vereador-batem-boca-e-trocam-empurroes-veja-video-619282.html',
@@ -1607,27 +1719,351 @@ const enrichments = {
       },
     ],
   },
-};
-
-const supersededTimelineTitles = {
-  lula: ['Irregularidades no INSS'],
-  'flavio-bolsonaro': [
-    'Rachadinha – Assembleia Legislativa do Rio',
-    'Sem condenações definitivas até maio de 2026',
-  ],
-  'romeu-zema': [
-    'Zema Crédito – CPMI do INSS',
-    'Sem condenações ou denúncias formais',
-  ],
-  'ronaldo-caiado': ['Sem condenações ou acusações formais'],
-  'renan-santos': [
-    'Mensagens no grupo "Cannipapo"',
-    'Processo por difamar Wesley Safadão',
-    'Ação por agressão em evento de campanha',
-    'Decisões civis e multas por remoção de conteúdo',
-    'Declarações extremas e incitação',
-    'Extrema direita internacional – Groypers',
-  ],
+  'cabo-daciolo': {
+    role: 'Ex-deputado federal e pré-candidato à Presidência',
+    candidacyStatus: 'Pré-candidatura anunciada; homologação não localizada',
+    candidacyStatusType: 'pending',
+    candidacyUrl:
+      'https://www.itatiaia.com.br/politica/eleicoes/conheca-a-carreira-de-cabo-daciolo-pre-candidato-a-presidencia/',
+    summary:
+      'O Mobiliza anunciou Cabo Daciolo como pré-candidato. Até 9 de agosto, este levantamento não localizou confirmação pública de homologação em convenção nem ocorrência jurídica relevante com situação atual verificável.',
+    tags: ['Pré-candidatura', 'Mobiliza', 'Plano pendente'],
+    riskLevel: 'Sem ocorrência jurídica ativa comprovada',
+    editorialNote:
+      'Uma notícia antiga sobre inquérito não basta para tratá-lo como ativo. Sem documento atual sobre continuidade, denúncia, arquivamento ou absolvição, o registro foi retirado do dossiê. Ausência no levantamento não funciona como certidão universal.',
+    proposalNote:
+      'O anúncio público da pré-candidatura não detalhou um programa nacional. Até a data de corte, não foi localizado plano oficial com metas, instrumentos legais, custos, fonte de recursos ou cronograma; por isso, não há base para avaliar o “como”.',
+    timeline: [],
+    sourceLinks: [
+      {
+        title: 'Perfil e anúncio da pré-candidatura de Cabo Daciolo',
+        url: 'https://www.itatiaia.com.br/politica/eleicoes/conheca-a-carreira-de-cabo-daciolo-pre-candidato-a-presidencia/',
+        type: 'notícia',
+        date: 'jun. 2026',
+        vehicle: 'Itatiaia',
+        reliability: 'alta',
+        notes: 'A reportagem dizia que a candidatura ainda seria submetida à convenção.',
+      },
+    ],
+  },
+  'augusto-cury': {
+    role: 'Escritor e pré-candidato à Presidência',
+    candidacyStatus: 'Pré-candidatura anunciada; homologação não localizada',
+    candidacyStatusType: 'pending',
+    candidacyUrl:
+      'https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2026/05/06/augusto-cury-lanca-pre-candidatura-a-presidente-prega-pacificacao-e-quer-ser-exemplo-mundial.htm',
+    summary:
+      'O Avante anunciou Augusto Cury como pré-candidato. O dossiê não usa críticas genéricas à sua obra como ocorrência jurídica e não localizou processo relevante com situação atual comprovada. A homologação em convenção não foi encontrada até a data de corte.',
+    tags: ['Pré-candidatura', 'Educação', 'Saúde mental'],
+    riskLevel: 'Sem ocorrência jurídica relevante localizada',
+    editorialNote:
+      'Crítica acadêmica, identidade religiosa e êxito editorial não são escândalos. Só entram no dossiê fatos jurídicos ou administrativos relevantes e documentados; nenhum foi localizado nesta revisão.',
+    proposalNote:
+      'As propostas disponíveis vieram do lançamento da pré-candidatura, não de um plano executivo completo. A avaliação abaixo distingue ideia pública de mecanismo de governo.',
+    proposals: [
+      {
+        area: 'Empreendedorismo e educação',
+        title: 'Bancos e escolas de empreendedorismo nas comunidades',
+        promise:
+          'Criar instituições de crédito e formação empreendedora voltadas a comunidades de baixa renda.',
+        how:
+          'O discurso de lançamento identifica o público e o tipo de serviço, mas não define se os bancos seriam públicos, privados ou fundos garantidores, nem qual ente executaria as escolas.',
+        feasibility: 'insuficiente',
+        feasibilityLabel: 'Como insuficiente',
+        gaps:
+          'Faltam capital inicial, regra de crédito e inadimplência, fonte orçamentária, governança, integração com Sebrae e rede de ensino, público estimado, cronograma e indicador de resultado.',
+        sourceLabel: 'Lançamento público da pré-candidatura',
+        sourceUrl:
+          'https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2026/05/06/augusto-cury-lanca-pre-candidatura-a-presidente-prega-pacificacao-e-quer-ser-exemplo-mundial.htm',
+      },
+      {
+        area: 'Agricultura',
+        title: 'Dobrar a produção de alimentos em dez anos',
+        promise:
+          'Elevar em 100% a produção nacional de alimentos ao longo de uma década.',
+        how:
+          'A meta temporal foi anunciada, mas não foram publicados recorte de culturas, linha de base, política de crédito, infraestrutura logística, assistência técnica ou compatibilização ambiental.',
+        feasibility: 'insuficiente',
+        feasibilityLabel: 'Meta sem plano de execução',
+        gaps:
+          'Sem linha de base e produtividade-alvo, custo, fonte de financiamento, tratamento de água e uso do solo, impacto de preços e divisão entre agricultura familiar e agronegócio, a viabilidade não pode ser testada.',
+        sourceLabel: 'Lançamento público da pré-candidatura',
+        sourceUrl:
+          'https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2026/05/06/augusto-cury-lanca-pre-candidatura-a-presidente-prega-pacificacao-e-quer-ser-exemplo-mundial.htm',
+      },
+    ],
+    timeline: [],
+    sourceLinks: [
+      {
+        title: 'Augusto Cury lança pré-candidatura e apresenta propostas iniciais',
+        url: 'https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2026/05/06/augusto-cury-lanca-pre-candidatura-a-presidente-prega-pacificacao-e-quer-ser-exemplo-mundial.htm',
+        type: 'notícia',
+        date: 'mai. 2026',
+        vehicle: 'UOL / Estadão Conteúdo',
+        reliability: 'alta',
+        notes: 'Registra propostas de lançamento; não é plano de governo detalhado.',
+      },
+    ],
+  },
+  'edmilson-costa': {
+    role: 'Economista e candidato à Presidência',
+    candidacyStatus: 'Candidatura homologada em convenção',
+    candidacyStatusType: 'official',
+    candidacyUrl: 'https://pcb.org.br/portal2/34109',
+    summary:
+      'Candidato homologado pelo PCB. Não foi localizada ocorrência jurídica relevante contra Edmilson Costa com situação atual comprovada. O programa público traz medidas estruturais, mas vários mecanismos de transição e impacto ainda não estão quantificados.',
+    tags: ['PCB', 'Dívida pública', 'Sistema financeiro'],
+    riskLevel: 'Sem ocorrência jurídica relevante localizada',
+    editorialNote:
+      'Filiação partidária, marxismo e militância política não são ilícitos nem “ligações suspeitas”. A ausência de casos neste levantamento é descrita de forma limitada, sem produzir uma certidão geral sobre a vida do candidato.',
+    proposalNote:
+      'O PCB publicou eixos e entrevistas programáticas. Há mais detalhe de direção política do que de transição jurídica, custo e impacto macroeconômico.',
+    proposals: [
+      {
+        area: 'Dívida pública e finanças',
+        title: 'Suspender pagamentos, auditar a dívida e estatizar bancos',
+        promise:
+          'Suspender juros e amortizações durante auditoria, reconhecer apenas a parcela considerada legítima, alongar títulos e transformar o sistema financeiro em atividade pública.',
+        how:
+          'Edmilson propõe auditoria, controle cambial, reestruturação com títulos longos, estatização bancária e criação de um Banco dos Trabalhadores financiado por fundos patrimoniais e previdenciários.',
+        feasibility: 'crítica',
+        feasibilityLabel: 'Há sequência; faltam regras e proteção de transição',
+        gaps:
+          'Não estão publicados o critério jurídico para dívida “legítima”, tratamento de poupadores e fundos de pensão, forma e custo das desapropriações, garantia de depósitos, efeito sobre rolagem da dívida, câmbio, inflação, crédito e contencioso. Estatizações exigiriam leis, orçamento e provável controle judicial.',
+        sourceLabel: 'PCB — entrevista programática de Edmilson Costa',
+        sourceUrl: 'https://pcb.org.br/portal2/33794',
+      },
+      {
+        area: 'Instituições',
+        title: 'Extinguir o Senado e adotar Parlamento unicameral',
+        promise:
+          'Substituir o Congresso bicameral por um Parlamento único, combinado com mecanismos de participação popular.',
+        how:
+          'A página da convenção enuncia o objetivo, mas não apresenta texto de PEC, desenho da representação dos estados ou regra de transição de mandatos.',
+        feasibility: 'crítica',
+        feasibilityLabel: 'Como constitucional ausente',
+        gaps:
+          'A mudança exigiria PEC aprovada inclusive pelo próprio Senado, além de enfrentar a função federativa da Casa e possível discussão sobre cláusulas constitucionais. Faltam composição, sistema eleitoral, competências, transição e estratégia de aprovação.',
+        sourceLabel: 'PCB — propostas homologadas na convenção',
+        sourceUrl: 'https://pcb.org.br/portal2/34109',
+      },
+    ],
+    timeline: [],
+    sourceLinks: [
+      {
+        title: 'PCB homologa Edmilson Costa e publica os eixos da candidatura',
+        url: 'https://pcb.org.br/portal2/34109',
+        type: 'programa',
+        date: 'ago. 2026',
+        vehicle: 'PCB',
+        reliability: 'alta',
+        notes: 'Fonte partidária primária para candidatura e propostas.',
+      },
+      {
+        title: 'Entrevista programática detalha auditoria, dívida e sistema financeiro',
+        url: 'https://pcb.org.br/portal2/33794',
+        type: 'programa',
+        date: 'abr. 2026',
+        vehicle: 'PCB / Opera Mundi',
+        reliability: 'alta',
+        notes: 'Fonte primária das posições do candidato; cálculos não foram auditados pelo site.',
+      },
+    ],
+  },
+  'hertz-dias': {
+    role: 'Professor e candidato à Presidência',
+    party: 'PSTU',
+    candidacyStatus: 'Candidatura homologada em convenção',
+    candidacyStatusType: 'official',
+    candidacyUrl:
+      'https://www.bra1.com.br/politica/id-669356/pstu_oficializa_candidatura_de_hertz_dias_a_presidencia_em_convencao_nacional',
+    summary:
+      'Candidato do PSTU. Não foi localizada ocorrência jurídica relevante contra Hertz Dias com situação atual comprovada. As propostas divulgadas apresentam objetivos políticos, mas não um plano nacional custeado e calendarizado.',
+    tags: ['PSTU', 'Trabalho', 'Serviços públicos'],
+    riskLevel: 'Sem ocorrência jurídica relevante localizada',
+    editorialNote:
+      'Opiniões sobre política externa, militância negra e atividade cultural não são tratadas como escândalo. O dossiê exige ato, processo ou decisão relevante e documentada.',
+    proposalNote:
+      'A cobertura da convenção lista prioridades. Sem documento executivo mais completo, a análise se limita ao grau de implementação publicado.',
+    proposals: [
+      {
+        area: 'Trabalho',
+        title: 'Reduzir a jornada sem reduzir salários',
+        promise:
+          'Diminuir a jornada de trabalho, revogar as reformas trabalhista e previdenciária e preservar a remuneração.',
+        how:
+          'A candidatura aponta mudanças legislativas federais, mas a fonte pública consultada não fixa nova jornada, texto legal, transição por setor ou fiscalização.',
+        feasibility: 'insuficiente',
+        feasibilityLabel: 'Instrumento genérico; impacto não calculado',
+        gaps:
+          'Faltam carga horária-alvo, cronograma, impacto sobre pequenas empresas, produtividade, emprego e Previdência, compensações de transição e estratégia para aprovação no Congresso.',
+        sourceLabel: 'Convenção nacional do PSTU — prioridades anunciadas',
+        sourceUrl:
+          'https://www.bra1.com.br/politica/id-669356/pstu_oficializa_candidatura_de_hertz_dias_a_presidencia_em_convencao_nacional',
+      },
+      {
+        area: 'Saúde e educação',
+        title: 'Fortalecer SUS e educação pública',
+        promise:
+          'Ampliar a defesa e a capacidade dos serviços públicos de saúde e educação.',
+        how:
+          'O objetivo foi anunciado na convenção, sem metas de cobertura, valores adicionais, fonte de receita ou divisão de responsabilidades com estados e municípios.',
+        feasibility: 'insuficiente',
+        feasibilityLabel: 'Diretriz, não plano executável',
+        gaps:
+          'Faltam diagnóstico, orçamento plurianual, metas de fila e aprendizagem, pessoal necessário, obras, modelo federativo, prazo e indicadores verificáveis.',
+        sourceLabel: 'Convenção nacional do PSTU — prioridades anunciadas',
+        sourceUrl:
+          'https://www.bra1.com.br/politica/id-669356/pstu_oficializa_candidatura_de_hertz_dias_a_presidencia_em_convencao_nacional',
+      },
+    ],
+    timeline: [],
+    sourceLinks: [
+      {
+        title: 'PSTU oficializa Hertz Dias e apresenta prioridades da chapa',
+        url: 'https://www.bra1.com.br/politica/id-669356/pstu_oficializa_candidatura_de_hertz_dias_a_presidencia_em_convencao_nacional',
+        type: 'notícia',
+        date: 'jul. 2026',
+        vehicle: 'BRA 1 / Assessoria do PSTU',
+        reliability: 'média',
+        notes: 'Única confirmação pública localizada da convenção; as propostas são descritas em nível de diretriz.',
+      },
+    ],
+  },
+  'rui-costa-pimenta': {
+    role: 'Presidente do PCO e presidenciável',
+    candidacyStatus: 'Lançamento partidário anunciado em 8 de agosto',
+    candidacyStatusType: 'pending',
+    candidacyUrl:
+      'https://pco.org.br/2026/07/16/pco-define-datas-para-lancamento-de-candidaturas/',
+    summary:
+      'O PCO anunciou o lançamento da chapa de Rui Costa Pimenta em 8 de agosto. A condenação cível por danos morais em ação de Kim Kataguiri foi mantida nas instâncias seguintes; em dezembro de 2025, o ministro Flávio Dino negou recurso no STF. O caso é civil, não criminal.',
+    tags: ['Ação civil', 'Liberdade de expressão', 'Plano pendente'],
+    riskLevel: 'Condenação cível mantida; recurso negado no STF',
+    editorialNote:
+      'A decisão é civil, não criminal. O texto registra a fundamentação, o andamento recursal localizado e a resposta do PCO, que sustenta tratar-se de crítica política protegida pela liberdade de expressão.',
+    proposalNote:
+      'O partido anunciou a chapa, mas não foi localizado até a data de corte um plano de governo de 2026 com metas, custos, cronograma e instrumentos de execução. Textos ideológicos permanentes do partido não são apresentados como se fossem um programa eleitoral protocolado.',
+    timeline: [
+      {
+        year: '2025',
+        type: 'fato',
+        title: 'Condenação cível por declarações contra Kim Kataguiri',
+        text: 'A 18ª Vara Cível de Brasília condenou Rui Costa Pimenta a pagar R$ 10 mil por danos morais após declarações em que chamou Kim Kataguiri de “nazista” e “genocida”. A defesa sustentou caráter opinativo. A decisão foi mantida nas instâncias seguintes e, em dezembro de 2025, Flávio Dino negou seguimento ao recurso no STF. O PCO respondeu que Rui fez crítica política à atuação de Kataguiri sobre ajuda humanitária à Palestina.',
+        legalStatus: 'condenação cível mantida',
+        source: 'TJDFT — processo 0709798-32.2024.8.07.0001',
+        sourceType: 'judicial',
+        sourceUrl:
+          'https://static.poder360.com.br/2025/01/PROCESSO_-0709798-32.2024.8.07.0001-PROCEDIMENTO-COMUM-CIVEL.pdf',
+      },
+    ],
+    sourceLinks: [
+      {
+        title: 'Sentença da 18ª Vara Cível de Brasília',
+        url: 'https://static.poder360.com.br/2025/01/PROCESSO_-0709798-32.2024.8.07.0001-PROCEDIMENTO-COMUM-CIVEL.pdf',
+        type: 'judicial',
+        date: 'jan. 2025',
+        vehicle: 'TJDFT',
+        reliability: 'alta',
+        notes: 'Documento primário com a fundamentação, a defesa e o valor da indenização.',
+      },
+      {
+        title: 'STF nega recurso e mantém a condenação cível',
+        url: 'https://www.gp1.com.br/brasil/noticia/2025/12/1/flavio-dino-mantem-condenacao-de-rui-costa-por-chamar-kim-kataguiri-de-nazistinha-609420.html',
+        type: 'notícia',
+        date: 'dez. 2025',
+        vehicle: 'GP1',
+        reliability: 'média',
+        notes: 'Relata a negativa de seguimento ao recurso extraordinário.',
+      },
+      {
+        title: 'Resposta do PCO à decisão do STF',
+        url: 'https://causaoperaria.org.br/2025/rui-pimenta-quem-atacar-o-pco-pagara-um-alto-preco-politico/',
+        type: 'partidária',
+        date: 'dez. 2025',
+        vehicle: 'Diário Causa Operária',
+        reliability: 'média',
+        notes: 'Fonte primária para a versão do partido e do candidato.',
+      },
+      {
+        title: 'PCO anuncia lançamento da chapa presidencial',
+        url: 'https://pco.org.br/2026/07/16/pco-define-datas-para-lancamento-de-candidaturas/',
+        type: 'partidária',
+        date: 'jul. 2026',
+        vehicle: 'PCO',
+        reliability: 'alta',
+        notes: 'Fonte primária para o calendário partidário; não comprova registro deferido pelo TSE.',
+      },
+    ],
+  },
+  'samara-martins': {
+    role: 'Dentista do SUS e candidata à Presidência',
+    candidacyStatus: 'Candidatura homologada em convenção',
+    candidacyStatusType: 'official',
+    candidacyUrl:
+      'https://agenciabrasil.ebc.com.br/politica/noticia/2026-07/unidade-popular-formaliza-candidatura-de-samara-martins-presidente',
+    summary:
+      'Candidata homologada pela Unidade Popular. Não foi localizada ocorrência jurídica relevante contra Samara Martins com situação atual comprovada. Suas propostas públicas são registradas como programa político e submetidas à mesma cobrança de mecanismo, custo e transição aplicada aos demais nomes.',
+    tags: ['UP', 'Salário mínimo', 'Segurança pública'],
+    riskLevel: 'Sem ocorrência jurídica relevante localizada',
+    editorialNote:
+      'Proposta controversa não é escândalo nem caso judicial. O dossiê separa a vida jurídica da candidata da análise de viabilidade do programa.',
+    proposalNote:
+      'A UP divulgou objetivos concretos, mas a publicação consultada é material partidário de comunicação e não traz memória de cálculo ou minutas legislativas.',
+    proposals: [
+      {
+        area: 'Renda e trabalho',
+        title: 'Dobrar o salário mínimo em 2027',
+        promise:
+          'Elevar o salário mínimo em 100% no primeiro ano do eventual governo.',
+        how:
+          'A meta e o prazo foram publicados, mas não há fórmula de reajuste, projeto de lei, faseamento ou medidas de produtividade e apoio aos empregadores afetados.',
+        feasibility: 'crítica',
+        feasibilityLabel: 'Meta clara; financiamento ausente',
+        gaps:
+          'Faltam impacto sobre Previdência, BPC, abono, folha pública, pequenas empresas, emprego, inflação e informalidade; fonte orçamentária; compensações; transição e estimativa regional e setorial.',
+        sourceLabel: 'UP — propostas públicas de Samara Martins',
+        sourceUrl:
+          'https://unidadepopular.org.br/blog/propostas-da-up-ganham-apoio-popular-e-samara-martins-cresce-em-pesquisas',
+      },
+      {
+        area: 'Segurança pública',
+        title: 'Desmilitarizar as polícias',
+        promise:
+          'Substituir o modelo militarizado das polícias estaduais por uma estrutura civil.',
+        how:
+          'A proposta exige alteração constitucional e coordenação com os estados, mas o material consultado não define nova arquitetura, competências, carreiras ou transição.',
+        feasibility: 'insuficiente',
+        feasibilityLabel: 'Mudança constitucional sem desenho institucional',
+        gaps:
+          'Faltam texto de PEC, ciclo de polícia, governança federativa, comando, previdência e carreira dos atuais militares, formação, custo, cronograma, controle externo e estratégia de aprovação por três quintos do Congresso.',
+        sourceLabel: 'UP — propostas públicas de Samara Martins',
+        sourceUrl:
+          'https://unidadepopular.org.br/blog/propostas-da-up-ganham-apoio-popular-e-samara-martins-cresce-em-pesquisas',
+      },
+    ],
+    timeline: [],
+    sourceLinks: [
+      {
+        title: 'Unidade Popular formaliza candidatura de Samara Martins',
+        url: 'https://agenciabrasil.ebc.com.br/politica/noticia/2026-07/unidade-popular-formaliza-candidatura-de-samara-martins-presidente',
+        type: 'notícia',
+        date: 'jul. 2026',
+        vehicle: 'Agência Brasil',
+        reliability: 'alta',
+        notes: 'Confirma a homologação em convenção e resume pautas da chapa.',
+      },
+      {
+        title: 'UP publica propostas defendidas por Samara Martins',
+        url: 'https://unidadepopular.org.br/blog/propostas-da-up-ganham-apoio-popular-e-samara-martins-cresce-em-pesquisas',
+        type: 'programa',
+        date: 'abr. 2026',
+        vehicle: 'Unidade Popular',
+        reliability: 'alta',
+        notes: 'Fonte partidária primária; não contém memória de cálculo.',
+      },
+    ],
+  },
 };
 
 const candidateImages = {
@@ -1635,29 +2071,69 @@ const candidateImages = {
   'flavio-bolsonaro': new URL('../assets/images/candidatos/flavio-bolsonaro-optimized.jpg', import.meta.url).href,
   'romeu-zema': new URL('../assets/images/candidatos/romeu-zema-optimized.jpg', import.meta.url).href,
   'ronaldo-caiado': new URL('../assets/images/candidatos/ronaldo-caiado-optimized.jpg', import.meta.url).href,
-  'ciro-gomes': new URL('../assets/images/candidatos/ciro-gomes.jpg', import.meta.url).href,
-  'fernando-haddad': new URL('../assets/images/candidatos/fernando-haddad.jpg', import.meta.url).href,
-  'aldo-rebelo': new URL('../assets/images/candidatos/aldo-rebelo.jpg', import.meta.url).href,
   'renan-santos': new URL('../assets/images/candidatos/renan-santos.jpg.webp', import.meta.url).href,
-  'cabo-daciolo': new URL('../assets/images/candidatos/cabo-daciolo-optimized.jpg', import.meta.url).href,
-  'augusto-cury': new URL('../assets/images/candidatos/augusto-cury.jpg', import.meta.url).href,
   'edmilson-costa': new URL('../assets/images/candidatos/edmilson-costa.jpg', import.meta.url).href,
   'hertz-dias': new URL('../assets/images/candidatos/hertz-dias.jpg', import.meta.url).href,
   'rui-costa-pimenta': new URL('../assets/images/candidatos/rui-costa-pimenta.jpg', import.meta.url).href,
   'samara-martins': new URL('../assets/images/candidatos/samara-martins.jpg', import.meta.url).href,
 };
 
-export const candidates = baseCandidates.map((candidate) => {
+const ACTIVE_PRESIDENTIAL_SLUGS = new Set([
+  'lula',
+  'flavio-bolsonaro',
+  'romeu-zema',
+  'ronaldo-caiado',
+  'renan-santos',
+  'edmilson-costa',
+  'hertz-dias',
+  'rui-costa-pimenta',
+  'samara-martins',
+]);
+
+export const candidateScope = {
+  cutOff: CUT_OFF,
+  title: 'Recorte eleitoral verificável',
+  description:
+    'A lista reúne nomes escolhidos em convenção ou lançados publicamente pelo partido para a Presidência até 9 de agosto de 2026. Homologação partidária não equivale a registro deferido: os pedidos ao TSE podem ser apresentados até 15 de agosto.',
+  tseUrl:
+    'https://www.tse.jus.br/comunicacao/noticias/2026/Junho/por-dentro-das-eleicoes-saiba-como-funciona-o-registro-de-candidaturas',
+  excluded: [
+    {
+      name: 'Ciro Gomes',
+      reason: 'homologado candidato ao governo do Ceará, não à Presidência',
+      url: 'https://noticias.uol.com.br/politica/ultimas-noticias/2026/07/20/psdb-cidadania-confirma-ciro-gomes-como-candidato-ao-governo-do-ceara.htm',
+    },
+    {
+      name: 'Fernando Haddad',
+      reason: 'disputa o governo de São Paulo; a antiga condenação eleitoral exibida no site foi revertida por absolvição unânime do TRE-SP',
+      url: 'https://www.tre-sp.jus.br/comunicacao/noticias/2021/Julho/tre-absolve-fernando-haddad-por-ausencia-de-provas-de-falsidade-ideologica-eleitoral',
+    },
+    {
+      name: 'Aldo Rebelo',
+      reason: 'desistiu da disputa presidencial em julho',
+      url: 'https://www.correiodamanha.com.br/colunistas/paulo-cappelli/2026/07/301550-aldo-rebelo-desiste-de-disputa-por-vaga-como-presidenciavel-e-deve-mirar-camara-dos-deputados.html',
+    },
+    {
+      name: 'Aécio Neves',
+      reason: 'descartou a candidatura e informou que o PSDB não teria nome próprio',
+      url: 'https://www.em.com.br/politica/2026/07/7458418-psdb-desiste-de-candidatura-a-presidencia-e-mira-reconstrucao-da-sigla.html',
+    },
+    {
+      name: 'Augusto Cury, Cabo Daciolo e Leonardo Avalanche',
+      reason: 'foram anunciados como pré-candidatos, mas não foi localizada homologação em convenção até a data de corte',
+      url: 'https://www.tse.jus.br/comunicacao/noticias/2026/Julho/eleicoes-2026-convencoes-partidarias-para-escolha-de-candidatos-comecam-na-segunda-20',
+    },
+  ],
+};
+
+export const candidates = baseCandidates.filter((candidate) =>
+  ACTIVE_PRESIDENTIAL_SLUGS.has(candidate.slug)
+).map((candidate) => {
   const enrichment = enrichments[candidate.slug];
-  const superseded = supersededTimelineTitles[candidate.slug] ?? [];
-  const timeline = [
-    ...(enrichment?.timeline ?? []),
-    ...candidate.timeline.filter((item) => !superseded.includes(item.title)),
-  ];
-  const sourceLinks = [
-    ...(enrichment?.sourceLinks ?? []),
-    ...candidate.sourceLinks,
-  ].filter((source) => source.url);
+  const timeline = enrichment?.timeline ?? candidate.timeline;
+  const sourceLinks = (enrichment?.sourceLinks ?? candidate.sourceLinks).filter(
+    (source) => source.url
+  );
 
   return {
     ...candidate,

@@ -99,6 +99,20 @@ export default function CandidateExpanded({ candidate, onClose }) {
               ))}
             </div>
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-900">{candidate.party}</p>
+            {candidate.candidacyStatus && (
+              <a
+                href={candidate.candidacyUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={`mt-3 inline-flex min-h-11 w-fit items-center rounded-full border px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-900/40 ${
+                  candidate.candidacyStatusType === 'official'
+                    ? 'border-emerald-200 bg-emerald-50 text-emerald-950 hover:bg-emerald-100'
+                    : 'border-amber-200 bg-amber-50 text-amber-950 hover:bg-amber-100'
+                }`}
+              >
+                {candidate.candidacyStatus}
+              </a>
+            )}
             <h2
               id={`candidate-title-${candidate.slug}`}
               className="mt-3 max-w-4xl text-4xl font-bold tracking-tight text-neutral-950 sm:text-6xl"

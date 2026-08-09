@@ -22,6 +22,7 @@ export default function Home() {
         c.name,
         c.role,
         c.party,
+        c.candidacyStatus,
         c.summary,
         ...c.tags,
         ...c.timeline.flatMap((item) => [item.title, item.text, item.legalStatus]),

@@ -31,6 +31,17 @@ export default function CandidateCard({ candidate, onOpen, priority = false }) {
       </div>
 
       <div className="flex flex-col p-5 sm:p-6">
+        {candidate.candidacyStatus && (
+          <span
+            className={`mb-3 inline-flex w-fit rounded-full border px-3 py-1 text-xs font-semibold ${
+              candidate.candidacyStatusType === 'official'
+                ? 'border-emerald-200 bg-emerald-50 text-emerald-900'
+                : 'border-amber-200 bg-amber-50 text-amber-900'
+            }`}
+          >
+            {candidate.candidacyStatus}
+          </span>
+        )}
         <h3 className="text-2xl font-bold leading-tight text-neutral-950">{candidate.name}</h3>
         <p className="mt-1 text-sm text-neutral-600">{candidate.role}</p>
 
