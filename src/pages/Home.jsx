@@ -13,7 +13,6 @@ import MethodSection from '../components/MethodSection';
 import MethodologyPage from '../components/MethodologyPage';
 import FeedbackSection from '../components/FeedbackSection';
 import Footer from '../components/Footer';
-import GovernorSection from '../components/governors/GovernorSection';
 
 export default function Home() {
   const [selectedCandidate, setSelectedCandidate] = useState(null);
@@ -43,7 +42,6 @@ export default function Home() {
         setSelectedCandidate={setSelectedCandidate}
         onOpenComparison={() => setComparisonOpen(true)}
       />
-      <GovernorSection />
       <ProposalsComparisonSection onOpenCandidate={setSelectedCandidate} />
       <AboutSection />
       <PurposeSection />

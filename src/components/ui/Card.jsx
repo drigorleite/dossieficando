@@ -4,7 +4,7 @@ export default function Card({ children, className = '', as: Component = 'div', 
   return (
     <Component
       className={cn(
-        'rounded-[2rem] border border-white/10 bg-white/[0.03] p-5 sm:p-6',
+        'rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-6',
         className
       )}
       {...props}

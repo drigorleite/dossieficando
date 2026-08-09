@@ -1,18 +1,27 @@
 import { cn } from '../../utils/cn';
 
 const legalStatusStyles = {
-  investigação: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
-  denúncia: 'border-orange-500/30 bg-orange-500/10 text-orange-400',
-  condenação: 'border-red-500/30 bg-red-500/10 text-red-400',
-  absolvição: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
-  arquivamento: 'border-zinc-500/30 bg-zinc-500/10 text-zinc-400',
-  anulação: 'border-blue-500/30 bg-blue-500/10 text-blue-400',
-  prescrição: 'border-purple-500/30 bg-purple-500/10 text-purple-400',
+  investigação: 'border-amber-300 bg-amber-50 text-amber-800',
+  denúncia: 'border-orange-300 bg-orange-50 text-orange-800',
+  condenação: 'border-red-300 bg-red-50 text-red-800',
+  absolvição: 'border-emerald-300 bg-emerald-50 text-emerald-800',
+  arquivamento: 'border-neutral-300 bg-neutral-100 text-neutral-700',
+  anulação: 'border-blue-300 bg-blue-50 text-blue-800',
+  prescrição: 'border-purple-300 bg-purple-50 text-purple-800',
+  liminar: 'border-sky-300 bg-sky-50 text-sky-800',
+  'ação em curso': 'border-amber-300 bg-amber-50 text-amber-800',
+  'denúncia rejeitada': 'border-emerald-300 bg-emerald-50 text-emerald-800',
+  'benefício documentado': 'border-blue-300 bg-blue-50 text-blue-800',
+  'relatório de CPI': 'border-violet-300 bg-violet-50 text-violet-800',
+  'representação apresentada': 'border-amber-300 bg-amber-50 text-amber-800',
+  'sem procedimento localizado': 'border-neutral-300 bg-neutral-100 text-neutral-700',
+  'sentença cível': 'border-orange-300 bg-orange-50 text-orange-800',
+  'condenação cível mantida': 'border-orange-300 bg-orange-50 text-orange-800',
 };
 
 export default function Badge({ children, variant = 'default', className = '' }) {
   const statusStyle = legalStatusStyles[variant];
-  const defaultStyle = 'border-white/10 bg-white/10 text-neutral-200';
+  const defaultStyle = 'border-neutral-200 bg-neutral-100 text-neutral-700';
 
   return (
     <span

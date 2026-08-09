@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { SlidersHorizontal, GitCompare } from 'lucide-react';
+import { SlidersHorizontal, GitCompare, ExternalLink } from 'lucide-react';
+import { candidateScope } from '../data/candidates';
 import Container from './ui/Container';
 import CandidateCard from './CandidateCard';
 
@@ -48,7 +49,7 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
           <div className="min-w-0">
             <p className="text-[10px] uppercase tracking-[0.28em] text-neutral-500 sm:text-xs sm:tracking-[0.35em]">Candidatos</p>
             <h2 className="mt-2 break-words text-[clamp(1.75rem,8vw,2.25rem)] font-bold leading-tight tracking-tight text-white">
-              Pré-candidatos mapeados
+              Cinco líderes nas pesquisas
             </h2>
           </div>
 
@@ -63,6 +64,33 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
                 Comparar
               </button>
             )}
+          </div>
+        </div>
+
+        <div className="mb-6 rounded-2xl border border-white/10 p-4 backdrop-blur-md sm:mb-8 sm:p-5" style={{ background: 'rgba(255,255,255,0.03)', boxShadow: '0 1px 0 rgba(255,255,255,0.04) inset' }}>
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <div className="max-w-3xl">
+              <h3 className="text-base font-semibold text-white">{candidateScope.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-neutral-400">{candidateScope.description}</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <a
+                href={candidateScope.referenceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-neutral-200 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+              >
+                Critério: agregador do UOL <ExternalLink size={14} aria-hidden="true" />
+              </a>
+              <a
+                href={candidateScope.tseUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-neutral-200 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+              >
+                Base oficial do TSE <ExternalLink size={14} aria-hidden="true" />
+              </a>
+            </div>
           </div>
         </div>
 

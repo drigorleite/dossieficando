@@ -27,9 +27,6 @@ export default function Footer() {
               <a href="#candidatos" className="text-sm text-neutral-400 transition hover:text-white">
                 Presidenciais
               </a>
-              <a href="#governadores" className="text-sm text-neutral-400 transition hover:text-white">
-                Governadores
-              </a>
               <a href="#propostas" className="text-sm text-neutral-400 transition hover:text-white">
                 Propostas
               </a>

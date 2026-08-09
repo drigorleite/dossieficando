@@ -1,24 +1,8 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Menu, X, Scale, GitCompare, ChevronDown, MapPin, Search } from 'lucide-react';
+import { Menu, X, Scale, GitCompare, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ui/ThemeToggle';
 import { candidates } from '../data/candidates';
-import { governorsByState } from '../data/governors/index';
-
-/* ─── constants ─────────────────────────────────────────────────────────── */
-const STATES_QUICK = [
-  { abbr: 'SP', label: 'São Paulo' },
-  { abbr: 'RJ', label: 'Rio de Janeiro' },
-  { abbr: 'MG', label: 'Minas Gerais' },
-  { abbr: 'SC', label: 'Santa Catarina' },
-  { abbr: 'PR', label: 'Paraná' },
-  { abbr: 'MS', label: 'Mato Grosso do Sul' },
-  { abbr: 'MT', label: 'Mato Grosso' },
-  { abbr: 'MA', label: 'Maranhão' },
-  { abbr: 'PE', label: 'Pernambuco' },
-  { abbr: 'AM', label: 'Amazonas' },
-  { abbr: 'PA', label: 'Pará' },
-];
 
 const navLinks = [
   { href: '#candidatos', label: 'Presidenciais' },
@@ -32,11 +16,6 @@ function buildSearchIndex() {
   const items = [];
   candidates.forEach((c) => {
     items.push({ id: c.slug, name: c.name, party: c.party, role: c.role, type: 'presidential', href: '#candidatos', slug: c.slug });
-  });
-  Object.entries(governorsByState || {}).forEach(([state, govs]) => {
-    (govs || []).forEach((g) => {
-      items.push({ id: `gov-${state}-${g.slug}`, name: g.name, party: g.party, role: `Gov. ${state.toUpperCase()}`, type: 'governor', href: '#governadores', state: state.toUpperCase() });
-    });
   });
   return items;
 }
@@ -129,72 +108,6 @@ function GlobalSearch({ onSelectCandidate, compact }) {
   );
 }
 
-/* ─── GovernorsDropdown ──────────────────────────────────────────────────── */
-function GovernorsDropdown() {
-  const [open, setOpen] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    function handleClick(e) {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
-    }
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
-  }, []);
-
-  return (
-    <div ref={ref} className="relative">
-      <button
-        onClick={() => setOpen((v) => !v)}
-        aria-haspopup="true"
-        aria-expanded={open}
-        className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-neutral-400 transition hover:bg-white/8 hover:text-white"
-      >
-        <MapPin size={12} aria-hidden="true" />
-        Governadores
-        <ChevronDown size={11} className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
-      </button>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.97 }}
-            transition={{ duration: 0.15, ease: 'easeOut' }}
-            role="menu"
-            className="absolute top-full left-0 mt-2 w-64 rounded-2xl border border-white/10 backdrop-blur-xl shadow-2xl shadow-black/50 z-50 overflow-hidden"
-            style={{ background: 'rgba(15,15,18,0.98)' }}
-          >
-            <div className="px-4 py-3 border-b border-white/8">
-              <p className="text-[10px] font-semibold text-zinc-500 uppercase tracking-widest">Selecione o estado</p>
-            </div>
-            <div className="py-2 max-h-72 overflow-y-auto">
-              {STATES_QUICK.map((state) => (
-                <a
-                  key={state.abbr}
-                  href="#governadores"
-                  role="menuitem"
-                  onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 px-4 py-2.5 text-sm text-neutral-400 hover:bg-white/5 hover:text-white transition-colors"
-                >
-                  <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-white/8 text-zinc-300 min-w-[28px] text-center">{state.abbr}</span>
-                  {state.label}
-                </a>
-              ))}
-            </div>
-            <div className="px-4 py-3 border-t border-white/8">
-              <a href="#governadores" onClick={() => setOpen(false)} className="text-xs text-blue-400 hover:text-blue-300 transition-colors">
-                Ver todos os estados →
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
 /* ─── MobileMenu ─────────────────────────────────────────────────────────── */
 function MobileMenu({ open, onClose, onOpenComparison }) {
   return (
@@ -228,23 +141,6 @@ function MobileMenu({ open, onClose, onOpenComparison }) {
                 {label}
               </a>
             ))}
-
-            <div className="mt-2 mb-1 px-4">
-              <p className="text-[10px] font-semibold text-zinc-600 uppercase tracking-widest">Governadores por estado</p>
-            </div>
-            <div className="grid grid-cols-3 gap-1 px-1 mb-2">
-              {STATES_QUICK.map((state) => (
-                <a
-                  key={state.abbr}
-                  href="#governadores"
-                  onClick={onClose}
-                  className="flex flex-col items-center gap-0.5 rounded-2xl px-2 py-2.5 text-center transition hover:bg-white/5"
-                >
-                  <span className="text-xs font-mono font-bold text-zinc-300">{state.abbr}</span>
-                  <span className="text-[9px] text-zinc-600 leading-tight">{state.label.split(' ')[0]}</span>
-                </a>
-              ))}
-            </div>
 
             {onOpenComparison && (
               <button
@@ -378,7 +274,6 @@ export default function Header({ onOpenComparison, onOpenCandidate }) {
                 {label}
               </a>
             ))}
-            <GovernorsDropdown />
           </nav>
 
           {/* ── Right controls ── */}
