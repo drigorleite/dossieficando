@@ -11,7 +11,7 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-900">Candidatos</p>
             <h2 className="mt-2 text-3xl font-bold tracking-tight text-neutral-950">
-              Candidaturas à Presidência
+              Cinco líderes nas pesquisas
             </h2>
           </div>
           <p className="text-sm text-neutral-500" aria-live="polite">
@@ -42,7 +42,7 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
                 rel="noreferrer"
                 className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-sm font-semibold text-neutral-800 transition hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-900/40"
               >
-                Lista de 13 do JOTA <ExternalLink size={14} aria-hidden="true" />
+                Critério: agregador do UOL <ExternalLink size={14} aria-hidden="true" />
               </a>
             </div>
           </div>

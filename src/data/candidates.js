@@ -1223,6 +1223,8 @@ const TSE_CANDIDATES_DATASET_URL =
   'https://dadosabertos.tse.jus.br/dataset/candidatos-2026';
 const JOTA_CANDIDATES_URL =
   'https://www.jota.info/eleicoes/eleicoes-2026/quem-sao-os-pre-candidatos-a-presidencia-da-republica-nas-eleicoes-de-2026';
+const UOL_POLLS_AGGREGATOR_URL =
+  'https://noticias.uol.com.br/eleicoes/agregador-de-pesquisas-eleitorais/';
 
 const enrichments = {
   lula: {
@@ -2331,20 +2333,12 @@ const candidateImages = {
   'samara-martins': new URL('../assets/images/candidatos/samara-martins.jpg', import.meta.url).href,
 };
 
-const PRESIDENTIAL_CANDIDATE_SLUGS = new Set([
-  'augusto-cury',
-  'clariana-barao',
-  'edmilson-costa',
+const TOP_FIVE_PRESIDENTIAL_SLUGS = new Set([
   'flavio-bolsonaro',
-  'hertz-dias',
-  'leonardo-avalanche',
   'lula',
   'renan-santos',
   'romeu-zema',
   'ronaldo-caiado',
-  'rui-costa-pimenta',
-  'samara-martins',
-  'wilson-grassi',
 ]);
 
 const TSE_FILED_PRESIDENTIAL_SLUGS = new Set([
@@ -2368,48 +2362,23 @@ function createCandidatePlaceholder(name) {
 
 export const candidateScope = {
   cutOff: CUT_OFF,
-  title: '13 candidaturas presidenciais acompanhadas',
+  title: 'Os cinco primeiros nas pesquisas nacionais',
   description:
-    `O recorte reúne os 13 nomes listados pelo JOTA até 9 de agosto. Na extração oficial do TSE gerada em ${TSE_DATA_GENERATED_AT}, apenas Lula, Renan Santos, Romeu Zema, Hertz Dias e Samara Martins já apareciam com pedido apresentado; os outros oito são identificados como candidaturas partidárias sem pedido localizado nessa base. Pedido apresentado não significa candidatura deferida, e o prazo para novos registros termina em 15 de agosto.`,
-  referenceUrl: JOTA_CANDIDATES_URL,
+    `O recorte considera exclusivamente os cinco líderes do agregador nacional do UOL, atualizado em 9 de agosto: Lula, Flávio Bolsonaro, Ronaldo Caiado, Renan Santos e Romeu Zema. A ferramenta pondera pesquisas estimuladas, nacionais, registradas no TSE e com pelo menos mil entrevistados. Na extração oficial de candidaturas gerada em ${TSE_DATA_GENERATED_AT}, Lula, Renan e Zema já apareciam com pedido apresentado; Flávio e Caiado ainda recebem o selo de candidatura partidária sem pedido localizado.`,
+  referenceUrl: UOL_POLLS_AGGREGATOR_URL,
   tseUrl: TSE_CANDIDATES_DATASET_URL,
-  excludedLabel: 'Nomes retirados do recorte e motivo',
+  excludedLabel: 'Quem ficou fora do recorte?',
   excluded: [
     {
-      name: 'Ciro Gomes',
-      reason: 'homologado candidato ao governo do Ceará, não à Presidência',
-      url: 'https://noticias.uol.com.br/politica/ultimas-noticias/2026/07/20/psdb-cidadania-confirma-ciro-gomes-como-candidato-ao-governo-do-ceara.htm',
-    },
-    {
-      name: 'Fernando Haddad',
-      reason: 'disputa o governo de São Paulo; a antiga condenação eleitoral exibida no site foi revertida por absolvição unânime do TRE-SP',
-      url: 'https://www.tre-sp.jus.br/comunicacao/noticias/2021/Julho/tre-absolve-fernando-haddad-por-ausencia-de-provas-de-falsidade-ideologica-eleitoral',
-    },
-    {
-      name: 'Aldo Rebelo',
-      reason: 'desistiu da disputa presidencial em julho',
-      url: 'https://www.correiodamanha.com.br/colunistas/paulo-cappelli/2026/07/301550-aldo-rebelo-desiste-de-disputa-por-vaga-como-presidenciavel-e-deve-mirar-camara-dos-deputados.html',
-    },
-    {
-      name: 'Aécio Neves',
-      reason: 'descartou a candidatura e informou que o PSDB não teria nome próprio',
-      url: 'https://www.em.com.br/politica/2026/07/7458418-psdb-desiste-de-candidatura-a-presidencia-e-mira-reconstrucao-da-sigla.html',
-    },
-    {
-      name: 'Joaquim Barbosa',
-      reason: 'desistiu da pré-candidatura do DC em julho e não consta na base presidencial do TSE',
-      url: 'https://www.n3news.com.br/2026/07/joaquim-barbosa-desiste-da-corrida-presidencial',
-    },
-    {
-      name: 'Cabo Daciolo',
-      reason: 'não integra a relação de 13 nomes fornecida pelo JOTA e não constava como pedido presidencial na extração do TSE consultada',
-      url: TSE_CANDIDATES_DATASET_URL,
+      name: 'Augusto Cury, Clariana Barão, Edmilson Costa, Hertz Dias, Leonardo Avalanche, Rui Costa Pimenta, Samara Martins e Wilson Grassi',
+      reason: 'não aparecem entre os cinco primeiros do agregador nacional adotado como critério editorial; seus dados permanecem arquivados, mas não são exibidos no site',
+      url: UOL_POLLS_AGGREGATOR_URL,
     },
   ],
 };
 
 export const candidates = baseCandidates.filter((candidate) =>
-  PRESIDENTIAL_CANDIDATE_SLUGS.has(candidate.slug)
+  TOP_FIVE_PRESIDENTIAL_SLUGS.has(candidate.slug)
 ).map((candidate) => {
   const enrichment = enrichments[candidate.slug];
   const timeline = enrichment?.timeline ?? candidate.timeline;
