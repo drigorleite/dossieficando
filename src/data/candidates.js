@@ -1140,12 +1140,89 @@ const baseCandidates = [
     ],
     sourceLinks: [],
   },
+
+  {
+    id: 15,
+    name: 'Clariana Barão',
+    slug: 'clariana-barao',
+    role: 'Advogada',
+    party: 'DC',
+    image: null,
+    summary:
+      'Advogada e dirigente partidária. O DC anunciou seu nome para a disputa presidencial após a desistência de Joaquim Barbosa.',
+    tags: ['DC', 'Plano pendente'],
+    riskLevel: 'Sem ocorrência jurídica relevante localizada',
+    cases: 0,
+    sources: 0,
+    editorialNote: null,
+    relatedPeople: [],
+    relatedCompanies: [],
+    relatedCases: [],
+    socialLinks: {},
+    videos: [],
+    documents: [],
+    quotes: [],
+    timeline: [],
+    sourceLinks: [],
+  },
+
+  {
+    id: 16,
+    name: 'Leonardo Avalanche',
+    slug: 'leonardo-avalanche',
+    role: 'Empresário e presidente do PRTB',
+    party: 'PRTB',
+    image: null,
+    summary:
+      'Presidente do PRTB. Responde a ação na Justiça Eleitoral de São Paulo relacionada à eleição interna do partido; ele nega as acusações.',
+    tags: ['PRTB', 'Ação eleitoral'],
+    riskLevel: 'Réu em ação eleitoral; sem julgamento',
+    cases: 0,
+    sources: 0,
+    editorialNote: null,
+    relatedPeople: [],
+    relatedCompanies: [],
+    relatedCases: [],
+    socialLinks: {},
+    videos: [],
+    documents: [],
+    quotes: [],
+    timeline: [],
+    sourceLinks: [],
+  },
+
+  {
+    id: 17,
+    name: 'Wilson Grassi',
+    slug: 'wilson-grassi',
+    role: 'Médico-veterinário',
+    party: 'Democrata',
+    image: null,
+    summary:
+      'Médico-veterinário e fundador do primeiro hospital público para cães e gatos de São Paulo. O Democrata apresenta seu nome para a disputa presidencial.',
+    tags: ['Democrata', 'Saúde animal', 'Plano pendente'],
+    riskLevel: 'Sem ocorrência jurídica relevante localizada',
+    cases: 0,
+    sources: 0,
+    editorialNote: null,
+    relatedPeople: [],
+    relatedCompanies: [],
+    relatedCases: [],
+    socialLinks: {},
+    videos: [],
+    documents: [],
+    quotes: [],
+    timeline: [],
+    sourceLinks: [],
+  },
 ];
 
 const CUT_OFF = '9 ago. 2026';
 const TSE_DATA_GENERATED_AT = '8 ago. 2026, 19h30';
 const TSE_CANDIDATES_DATASET_URL =
   'https://dadosabertos.tse.jus.br/dataset/candidatos-2026';
+const JOTA_CANDIDATES_URL =
+  'https://www.jota.info/eleicoes/eleicoes-2026/quem-sao-os-pre-candidatos-a-presidencia-da-republica-nas-eleicoes-de-2026';
 
 const enrichments = {
   lula: {
@@ -1750,14 +1827,14 @@ const enrichments = {
     ],
   },
   'augusto-cury': {
-    role: 'Escritor e pré-candidato à Presidência',
+    role: 'Escritor e candidato à Presidência',
     candidacyStatus: 'Pré-candidatura anunciada; homologação não localizada',
     candidacyStatusType: 'pending',
     candidacyUrl:
       'https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2026/05/06/augusto-cury-lanca-pre-candidatura-a-presidente-prega-pacificacao-e-quer-ser-exemplo-mundial.htm',
     summary:
-      'O Avante anunciou Augusto Cury como pré-candidato. O dossiê não usa críticas genéricas à sua obra como ocorrência jurídica e não localizou processo relevante com situação atual comprovada. A homologação em convenção não foi encontrada até a data de corte.',
-    tags: ['Pré-candidatura', 'Educação', 'Saúde mental'],
+      'O Avante lançou Augusto Cury para a disputa presidencial. O dossiê não usa críticas genéricas à sua obra como ocorrência jurídica e não localizou processo relevante com situação atual comprovada. Seu pedido de registro ainda não aparecia na extração do TSE consultada.',
+    tags: ['Avante', 'Educação', 'Saúde mental'],
     riskLevel: 'Sem ocorrência jurídica relevante localizada',
     editorialNote:
       'Crítica acadêmica, identidade religiosa e êxito editorial não são escândalos. Só entram no dossiê fatos jurídicos ou administrativos relevantes e documentados; nenhum foi localizado nesta revisão.',
@@ -1805,6 +1882,178 @@ const enrichments = {
         vehicle: 'UOL / Estadão Conteúdo',
         reliability: 'alta',
         notes: 'Registra propostas de lançamento; não é plano de governo detalhado.',
+      },
+    ],
+  },
+  'clariana-barao': {
+    role: 'Advogada e candidata à Presidência',
+    candidacyUrl:
+      'https://www.band.com.br/politica/eleicoes/2026/apos-desistencia-de-joaquim-barbosa-dc-lanca-clariana-barao-a-presidencia-202607271834',
+    summary:
+      'Presidente do DC em Mato Grosso e nome lançado pelo partido após a desistência de Joaquim Barbosa. Não foi localizada ocorrência jurídica relevante com situação atual comprovada contra Clariana Barão.',
+    tags: ['DC', 'Direitos das mulheres', 'Plano pendente'],
+    riskLevel: 'Sem ocorrência jurídica relevante localizada',
+    editorialNote:
+      'A busca por ocorrências foi feita em fontes abertas e não funciona como certidão universal. Divergência política ou falta de detalhamento programático não é tratada como irregularidade.',
+    proposalNote:
+      'A candidatura apresentou uma prioridade para os primeiros 100 dias, mas não foi localizado programa presidencial completo com desenho institucional, orçamento e indicadores. A ausência desses elementos limita a análise do “como”.',
+    proposals: [
+      {
+        area: 'Segurança e direitos das mulheres',
+        title: 'Resposta a ameaças e violência nos primeiros 100 dias',
+        promise:
+          'Colocar o combate à violência contra a mulher entre as primeiras prioridades do governo e melhorar a resposta estatal a vítimas ameaçadas.',
+        how:
+          'A manifestação pública fixa a prioridade e uma janela inicial de 100 dias, mas não identifica qual órgão federal coordenaria a política, quais normas seriam alteradas nem como União, estados, polícias e Judiciário atuariam em conjunto.',
+        feasibility: 'insuficiente',
+        feasibilityLabel: 'Prioridade definida; execução ausente',
+        gaps:
+          'Faltam diagnóstico de demanda, orçamento, instrumento jurídico, divisão de responsabilidades, metas de atendimento e proteção, indicadores, cronograma por etapa e mecanismo de prestação de contas.',
+        sourceLabel: 'Entrevista sobre a prioridade dos primeiros 100 dias',
+        sourceUrl:
+          'https://www.fatosdematogrosso.com.br/politica/pre-candidata-ao-planalto-quer-estado-ao-lado-da-vitima-nao-do-agressor/14056',
+      },
+    ],
+    timeline: [],
+    sourceLinks: [
+      {
+        title: 'DC lança Clariana Barão à Presidência após desistência de Barbosa',
+        url: 'https://www.band.com.br/politica/eleicoes/2026/apos-desistencia-de-joaquim-barbosa-dc-lanca-clariana-barao-a-presidencia-202607271834',
+        type: 'notícia',
+        date: 'jul. 2026',
+        vehicle: 'Band',
+        reliability: 'alta',
+        notes: 'Confirma o lançamento partidário e o perfil da candidata.',
+      },
+      {
+        title: 'Clariana apresenta prioridade para o combate à violência contra a mulher',
+        url: 'https://www.fatosdematogrosso.com.br/politica/pre-candidata-ao-planalto-quer-estado-ao-lado-da-vitima-nao-do-agressor/14056',
+        type: 'entrevista',
+        date: 'jul. 2026',
+        vehicle: 'Fatos de Mato Grosso',
+        reliability: 'média',
+        notes: 'Registra a prioridade, mas não traz plano executivo completo.',
+      },
+    ],
+  },
+  'leonardo-avalanche': {
+    role: 'Empresário, presidente do PRTB e candidato à Presidência',
+    candidacyUrl:
+      'https://noticias.uol.com.br/politica/ultimas-noticias/2026/07/14/prtb-anuncia-leonardo-avalanche-como-candidato-a-presidencia-em-2026.ghtm',
+    summary:
+      'Presidente do PRTB e nome anunciado pelo partido. Tornou-se réu na Justiça Eleitoral de São Paulo por acusações ligadas à eleição interna de 2024; não há condenação, e Avalanche nega os fatos e afirma que apresentará sua defesa.',
+    tags: ['PRTB', 'Ação eleitoral', 'Plano incompleto'],
+    riskLevel: 'Réu em ação eleitoral; sem julgamento',
+    editorialNote:
+      'Recebimento de denúncia não equivale a condenação. O dossiê registra a imputação, o estágio processual e a negativa do candidato, sem tratar a acusação como fato provado.',
+    proposalNote:
+      'As medidas localizadas foram divulgadas em entrevistas, sem programa nacional completo. As análises cobram transição tributária, impacto fiscal, base legal, custo, público elegível e controles de execução.',
+    proposals: [
+      {
+        area: 'Economia e tributação',
+        title: 'Imposto único de 3,5% sobre movimentações bancárias',
+        promise:
+          'Substituir a carga tributária atual por uma cobrança única de 3,5% incidente sobre transações bancárias.',
+        how:
+          'A entrevista define a alíquota e a base geral de cobrança, mas não apresenta texto de reforma constitucional, tratamento para dinheiro vivo e criptoativos, incidência em cadeias produtivas, compensação federativa ou transição dos tributos existentes.',
+        feasibility: 'insuficiente',
+        feasibilityLabel: 'Mecanismo geral sem memória de cálculo',
+        gaps:
+          'Faltam estimativa de arrecadação, distribuição entre União, estados e municípios, efeitos cumulativos, impacto distributivo, prevenção à evasão, transição, exceções e demonstração de que 3,5% financiaria as despesas públicas.',
+        sourceLabel: 'Entrevista sobre o imposto único',
+        sourceUrl:
+          'https://www.tribunadosertao.com.br/geral/2026/07/23/945527-avalanche-defende-legado-de-pablo-marcal-e-concorda-em-classificar-pcc-e-cv-como-terroristas',
+      },
+      {
+        area: 'Inclusão digital e empreendedorismo',
+        title: 'Celular e internet após curso de empreendedorismo',
+        promise:
+          'Entregar um smartphone e um ano de acesso à internet a beneficiários que concluam um curso público de empreendedorismo.',
+        how:
+          'A promessa vincula o benefício à conclusão de um curso, porém não identifica órgão executor, currículo, forma de compra, regras de seleção, segurança do aparelho, conectividade contratada ou integração com políticas já existentes.',
+        feasibility: 'insuficiente',
+        feasibilityLabel: 'Benefício anunciado sem desenho operacional',
+        gaps:
+          'Faltam número de beneficiários, custo unitário e total, licitação, fonte de recursos, critérios de elegibilidade, cobertura de rede, metas de empregabilidade e avaliação de resultado.',
+        sourceLabel: 'Declaração pública sobre aparelho e conectividade',
+        sourceUrl:
+          'https://www.meionews.com/politica/pre-candidato-a-presidente-do-brasil-promete-distribuir-iphones-se-for-eleito-570510',
+      },
+    ],
+    timeline: [
+      {
+        year: '2024–2026',
+        type: 'suspeita',
+        title: 'Ação sobre eleição interna do PRTB',
+        text: 'O Ministério Público apresentou denúncia por suposta fraude documental, associação criminosa e violência política no contexto da eleição interna de 2024. A Justiça Eleitoral de São Paulo recebeu a acusação em abril de 2026, tornando Avalanche réu. Ele nega as acusações e diz que se defenderá no processo.',
+        legalStatus: 'réu; ação em curso',
+        source: 'Imirante',
+        sourceType: 'notícia',
+        sourceUrl:
+          'https://imirante.com/noticias/brasil/amp/2026/07/15/ipolitica-pre-candidato-a-presidencia-pelo-prtb-e-reu-por-violencia-politica-e-associacao-criminosa',
+      },
+    ],
+    sourceLinks: [
+      {
+        title: 'Justiça Eleitoral recebe denúncia contra Leonardo Avalanche',
+        url: 'https://imirante.com/noticias/brasil/amp/2026/07/15/ipolitica-pre-candidato-a-presidencia-pelo-prtb-e-reu-por-violencia-politica-e-associacao-criminosa',
+        type: 'notícia',
+        date: 'jul. 2026',
+        vehicle: 'Imirante',
+        reliability: 'alta',
+        notes: 'Informa o recebimento da acusação e registra a negativa do candidato.',
+      },
+      {
+        title: 'PRTB anuncia Leonardo Avalanche como candidato',
+        url: 'https://noticias.uol.com.br/politica/ultimas-noticias/2026/07/14/prtb-anuncia-leonardo-avalanche-como-candidato-a-presidencia-em-2026.ghtm',
+        type: 'notícia',
+        date: 'jul. 2026',
+        vehicle: 'UOL',
+        reliability: 'alta',
+        notes: 'Registra o anúncio partidário.',
+      },
+      {
+        title: 'Avalanche defende imposto único de 3,5%',
+        url: 'https://www.tribunadosertao.com.br/geral/2026/07/23/945527-avalanche-defende-legado-de-pablo-marcal-e-concorda-em-classificar-pcc-e-cv-como-terroristas',
+        type: 'entrevista',
+        date: 'jul. 2026',
+        vehicle: 'Tribuna do Sertão',
+        reliability: 'média',
+        notes: 'Registra a proposta, sem memória de cálculo pública.',
+      },
+      {
+        title: 'Proposta de celular e internet vinculada a curso',
+        url: 'https://www.meionews.com/politica/pre-candidato-a-presidente-do-brasil-promete-distribuir-iphones-se-for-eleito-570510',
+        type: 'notícia',
+        date: 'jul. 2026',
+        vehicle: 'MeioNews',
+        reliability: 'média',
+        notes: 'Reproduz a promessa pública e o público-alvo anunciado.',
+      },
+    ],
+  },
+  'wilson-grassi': {
+    role: 'Médico-veterinário e candidato à Presidência',
+    candidacyUrl: JOTA_CANDIDATES_URL,
+    summary:
+      'Médico-veterinário, fundador do primeiro hospital público para cães e gatos de São Paulo e nome presidencial do Democrata listado pelo JOTA. Não foi localizada ocorrência jurídica relevante com situação atual comprovada.',
+    tags: ['Democrata', 'Saúde animal', 'Plano pendente'],
+    riskLevel: 'Sem ocorrência jurídica relevante localizada',
+    editorialNote:
+      'Atuação profissional, parcerias públicas regulares e derrotas eleitorais anteriores não são escândalos. A ausência de ocorrências neste levantamento é limitada às fontes abertas consultadas e não funciona como certidão universal.',
+    proposalNote:
+      'Não foi localizado plano presidencial oficial que permita avaliar instrumentos legais, custo, fonte de recursos, metas e cronograma. Sem esse material, o dossiê não atribui propostas por inferência a partir da atuação profissional do candidato.',
+    proposals: [],
+    timeline: [],
+    sourceLinks: [
+      {
+        title: 'Lista de candidaturas presidenciais acompanhadas em 2026',
+        url: JOTA_CANDIDATES_URL,
+        type: 'notícia',
+        date: 'ago. 2026',
+        vehicle: 'JOTA',
+        reliability: 'alta',
+        notes: 'Fonte indicada pelo usuário para o recorte de 13 nomes.',
       },
     ],
   },
@@ -2071,6 +2320,7 @@ const enrichments = {
 
 const candidateImages = {
   lula: new URL('../assets/images/candidatos/luiz-lula.jpg', import.meta.url).href,
+  'augusto-cury': new URL('../assets/images/candidatos/augusto-cury.jpg', import.meta.url).href,
   'flavio-bolsonaro': new URL('../assets/images/candidatos/flavio-bolsonaro-optimized.jpg', import.meta.url).href,
   'romeu-zema': new URL('../assets/images/candidatos/romeu-zema-optimized.jpg', import.meta.url).href,
   'ronaldo-caiado': new URL('../assets/images/candidatos/ronaldo-caiado-optimized.jpg', import.meta.url).href,
@@ -2081,32 +2331,50 @@ const candidateImages = {
   'samara-martins': new URL('../assets/images/candidatos/samara-martins.jpg', import.meta.url).href,
 };
 
-const REGISTERED_PRESIDENTIAL_SLUGS = new Set([
-  'lula',
-  'romeu-zema',
-  'renan-santos',
+const PRESIDENTIAL_CANDIDATE_SLUGS = new Set([
+  'augusto-cury',
+  'clariana-barao',
+  'edmilson-costa',
+  'flavio-bolsonaro',
   'hertz-dias',
+  'leonardo-avalanche',
+  'lula',
+  'renan-santos',
+  'romeu-zema',
+  'ronaldo-caiado',
+  'rui-costa-pimenta',
+  'samara-martins',
+  'wilson-grassi',
+]);
+
+const TSE_FILED_PRESIDENTIAL_SLUGS = new Set([
+  'hertz-dias',
+  'lula',
+  'renan-santos',
+  'romeu-zema',
   'samara-martins',
 ]);
 
+function createCandidatePlaceholder(name) {
+  const initials = name
+    .split(' ')
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join('');
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800"><rect width="640" height="800" fill="#eff6ff"/><circle cx="320" cy="290" r="125" fill="#bfdbfe"/><path d="M95 800c15-190 102-285 225-285s210 95 225 285" fill="#bfdbfe"/><text x="320" y="745" text-anchor="middle" font-family="Arial,sans-serif" font-size="84" font-weight="700" fill="#172554">${initials}</text></svg>`;
+
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+}
+
 export const candidateScope = {
   cutOff: CUT_OFF,
-  title: '5 pedidos de registro localizados no TSE',
+  title: '13 candidaturas presidenciais acompanhadas',
   description:
-    `Na última extração diária disponível na data de corte, gerada em ${TSE_DATA_GENERATED_AT}, a base oficial contém pedidos para Lula, Renan Santos, Romeu Zema, Hertz Dias e Samara Martins. A lista de 13 divulgada antes das convenções era de pré-candidaturas, não de registros. Pedido apresentado também não significa candidatura deferida: o TSE ainda precisa julgá-lo, e o prazo para novos pedidos termina em 15 de agosto.`,
+    `O recorte reúne os 13 nomes listados pelo JOTA até 9 de agosto. Na extração oficial do TSE gerada em ${TSE_DATA_GENERATED_AT}, apenas Lula, Renan Santos, Romeu Zema, Hertz Dias e Samara Martins já apareciam com pedido apresentado; os outros oito são identificados como candidaturas partidárias sem pedido localizado nessa base. Pedido apresentado não significa candidatura deferida, e o prazo para novos registros termina em 15 de agosto.`,
+  referenceUrl: JOTA_CANDIDATES_URL,
   tseUrl: TSE_CANDIDATES_DATASET_URL,
-  excludedLabel: 'Por que a lista não tem 13 nomes?',
+  excludedLabel: 'Nomes retirados do recorte e motivo',
   excluded: [
-    {
-      name: 'Flávio Bolsonaro, Ronaldo Caiado, Edmilson Costa e Rui Costa Pimenta',
-      reason: 'tinham candidatura homologada ou lançamento partidário, mas ainda não constavam como pedidos presidenciais na extração oficial consultada',
-      url: TSE_CANDIDATES_DATASET_URL,
-    },
-    {
-      name: 'Augusto Cury, Cabo Daciolo e Leonardo Avalanche',
-      reason: 'foram divulgados como pré-candidatos, mas não constavam como pedidos presidenciais na base oficial consultada',
-      url: TSE_CANDIDATES_DATASET_URL,
-    },
     {
       name: 'Ciro Gomes',
       reason: 'homologado candidato ao governo do Ceará, não à Presidência',
@@ -2132,29 +2400,42 @@ export const candidateScope = {
       reason: 'desistiu da pré-candidatura do DC em julho e não consta na base presidencial do TSE',
       url: 'https://www.n3news.com.br/2026/07/joaquim-barbosa-desiste-da-corrida-presidencial',
     },
+    {
+      name: 'Cabo Daciolo',
+      reason: 'não integra a relação de 13 nomes fornecida pelo JOTA e não constava como pedido presidencial na extração do TSE consultada',
+      url: TSE_CANDIDATES_DATASET_URL,
+    },
   ],
 };
 
 export const candidates = baseCandidates.filter((candidate) =>
-  REGISTERED_PRESIDENTIAL_SLUGS.has(candidate.slug)
+  PRESIDENTIAL_CANDIDATE_SLUGS.has(candidate.slug)
 ).map((candidate) => {
   const enrichment = enrichments[candidate.slug];
   const timeline = enrichment?.timeline ?? candidate.timeline;
   const sourceLinks = (enrichment?.sourceLinks ?? candidate.sourceLinks).filter(
     (source) => source.url
   );
+  const hasTseFiling = TSE_FILED_PRESIDENTIAL_SLUGS.has(candidate.slug);
 
   return {
     ...candidate,
     ...(enrichment ?? {}),
-    image: candidateImages[candidate.slug] ?? candidate.image,
-    candidacyStatus: 'Pedido apresentado ao TSE; julgamento pendente',
-    candidacyStatusType: 'filed',
-    candidacyUrl: TSE_CANDIDATES_DATASET_URL,
+    image:
+      candidateImages[candidate.slug] ??
+      candidate.image ??
+      createCandidatePlaceholder(candidate.name),
+    candidacyStatus: hasTseFiling
+      ? 'Pedido apresentado ao TSE; julgamento pendente'
+      : 'Candidatura partidária; pedido no TSE não localizado',
+    candidacyStatusType: hasTseFiling ? 'filed' : 'pending',
+    candidacyUrl: hasTseFiling
+      ? TSE_CANDIDATES_DATASET_URL
+      : enrichment?.candidacyUrl ?? JOTA_CANDIDATES_URL,
     updatedAt: CUT_OFF,
     cases: timeline.length,
     sources: sourceLinks.length,
     timeline,
     sourceLinks,
   };
-});
+}).sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
