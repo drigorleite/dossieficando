@@ -11,6 +11,12 @@ import SourcesList from './SourcesList';
 import EditorialNotice from './EditorialNotice';
 import ProposalAnalysis from './ProposalAnalysis';
 
+const candidacyStatusClasses = {
+  official: 'border-emerald-200 bg-emerald-50 text-emerald-950 hover:bg-emerald-100',
+  filed: 'border-blue-200 bg-blue-50 text-blue-950 hover:bg-blue-100',
+  pending: 'border-amber-200 bg-amber-50 text-amber-950 hover:bg-amber-100',
+};
+
 const CATEGORIES = [
   { type: 'suspeita', label: 'Apurações e alegações', accent: 'text-amber-700' },
   { type: 'fato', label: 'Fatos e decisões documentados', accent: 'text-blue-900' },
@@ -104,11 +110,7 @@ export default function CandidateExpanded({ candidate, onClose }) {
                 href={candidate.candidacyUrl}
                 target="_blank"
                 rel="noreferrer"
-                className={`mt-3 inline-flex min-h-11 w-fit items-center rounded-full border px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-900/40 ${
-                  candidate.candidacyStatusType === 'official'
-                    ? 'border-emerald-200 bg-emerald-50 text-emerald-950 hover:bg-emerald-100'
-                    : 'border-amber-200 bg-amber-50 text-amber-950 hover:bg-amber-100'
-                }`}
+                className={`mt-3 inline-flex min-h-11 w-fit items-center rounded-full border px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-900/40 ${candidacyStatusClasses[candidate.candidacyStatusType] ?? candidacyStatusClasses.pending}`}
               >
                 {candidate.candidacyStatus}
               </a>

@@ -2,6 +2,12 @@ import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import Badge from './ui/Badge';
 
+const candidacyStatusClasses = {
+  official: 'border-emerald-200 bg-emerald-50 text-emerald-900',
+  filed: 'border-blue-200 bg-blue-50 text-blue-950',
+  pending: 'border-amber-200 bg-amber-50 text-amber-900',
+};
+
 export default function CandidateCard({ candidate, onOpen, priority = false }) {
   return (
     <motion.button
@@ -33,11 +39,7 @@ export default function CandidateCard({ candidate, onOpen, priority = false }) {
       <div className="flex flex-col p-5 sm:p-6">
         {candidate.candidacyStatus && (
           <span
-            className={`mb-3 inline-flex w-fit rounded-full border px-3 py-1 text-xs font-semibold ${
-              candidate.candidacyStatusType === 'official'
-                ? 'border-emerald-200 bg-emerald-50 text-emerald-900'
-                : 'border-amber-200 bg-amber-50 text-amber-900'
-            }`}
+            className={`mb-3 inline-flex w-fit rounded-full border px-3 py-1 text-xs font-semibold ${candidacyStatusClasses[candidate.candidacyStatusType] ?? candidacyStatusClasses.pending}`}
           >
             {candidate.candidacyStatus}
           </span>

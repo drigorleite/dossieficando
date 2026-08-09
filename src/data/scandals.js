@@ -29,7 +29,7 @@ export const recentScandals = [
       'O Banco Central liquidou instituições do conglomerado Master em novembro de 2025 após identificar graves inconsistências e insubsistência de ativos em carteiras cedidas ao BRB. A investigação alcançou banqueiros, executivos e agentes políticos de campos distintos.',
     caution:
       'Reunião, doação, contrato ou relação política devem ser descritos individualmente. O dossiê não transforma proximidade em prova de participação na fraude bancária.',
-    candidates: ['Lula', 'Flávio Bolsonaro'],
+    candidates: ['Lula'],
     sources: [
       {
         label: 'Banco Central — liquidação extrajudicial',

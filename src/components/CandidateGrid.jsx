@@ -11,7 +11,7 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-900">Candidatos</p>
             <h2 className="mt-2 text-3xl font-bold tracking-tight text-neutral-950">
-              Presidenciáveis mapeados
+              Pedidos presidenciais no TSE
             </h2>
           </div>
           <p className="text-sm text-neutral-500" aria-live="polite">
@@ -33,13 +33,13 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
               rel="noreferrer"
               className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start rounded-full border border-blue-200 px-4 py-2 text-sm font-semibold text-blue-950 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-900/40"
             >
-              Regra do TSE <ExternalLink size={14} aria-hidden="true" />
+              Dados oficiais do TSE <ExternalLink size={14} aria-hidden="true" />
             </a>
           </div>
 
           <details className="mt-4 border-t border-neutral-200 pt-4 text-sm">
             <summary className="min-h-11 cursor-pointer select-none py-2 font-medium text-neutral-700 hover:text-blue-950">
-              Nomes retirados do recorte e motivo
+              {candidateScope.excludedLabel}
             </summary>
             <ul className="mt-2 space-y-3 text-neutral-600">
               {candidateScope.excluded.map((item) => (

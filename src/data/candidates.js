@@ -1143,6 +1143,9 @@ const baseCandidates = [
 ];
 
 const CUT_OFF = '9 ago. 2026';
+const TSE_DATA_GENERATED_AT = '8 ago. 2026, 19h30';
+const TSE_CANDIDATES_DATASET_URL =
+  'https://dadosabertos.tse.jus.br/dataset/candidatos-2026';
 
 const enrichments = {
   lula: {
@@ -2078,26 +2081,32 @@ const candidateImages = {
   'samara-martins': new URL('../assets/images/candidatos/samara-martins.jpg', import.meta.url).href,
 };
 
-const ACTIVE_PRESIDENTIAL_SLUGS = new Set([
+const REGISTERED_PRESIDENTIAL_SLUGS = new Set([
   'lula',
-  'flavio-bolsonaro',
   'romeu-zema',
-  'ronaldo-caiado',
   'renan-santos',
-  'edmilson-costa',
   'hertz-dias',
-  'rui-costa-pimenta',
   'samara-martins',
 ]);
 
 export const candidateScope = {
   cutOff: CUT_OFF,
-  title: 'Recorte eleitoral verificável',
+  title: '5 pedidos de registro localizados no TSE',
   description:
-    'A lista reúne nomes escolhidos em convenção ou lançados publicamente pelo partido para a Presidência até 9 de agosto de 2026. Homologação partidária não equivale a registro deferido: os pedidos ao TSE podem ser apresentados até 15 de agosto.',
-  tseUrl:
-    'https://www.tse.jus.br/comunicacao/noticias/2026/Junho/por-dentro-das-eleicoes-saiba-como-funciona-o-registro-de-candidaturas',
+    `Na última extração diária disponível na data de corte, gerada em ${TSE_DATA_GENERATED_AT}, a base oficial contém pedidos para Lula, Renan Santos, Romeu Zema, Hertz Dias e Samara Martins. A lista de 13 divulgada antes das convenções era de pré-candidaturas, não de registros. Pedido apresentado também não significa candidatura deferida: o TSE ainda precisa julgá-lo, e o prazo para novos pedidos termina em 15 de agosto.`,
+  tseUrl: TSE_CANDIDATES_DATASET_URL,
+  excludedLabel: 'Por que a lista não tem 13 nomes?',
   excluded: [
+    {
+      name: 'Flávio Bolsonaro, Ronaldo Caiado, Edmilson Costa e Rui Costa Pimenta',
+      reason: 'tinham candidatura homologada ou lançamento partidário, mas ainda não constavam como pedidos presidenciais na extração oficial consultada',
+      url: TSE_CANDIDATES_DATASET_URL,
+    },
+    {
+      name: 'Augusto Cury, Cabo Daciolo e Leonardo Avalanche',
+      reason: 'foram divulgados como pré-candidatos, mas não constavam como pedidos presidenciais na base oficial consultada',
+      url: TSE_CANDIDATES_DATASET_URL,
+    },
     {
       name: 'Ciro Gomes',
       reason: 'homologado candidato ao governo do Ceará, não à Presidência',
@@ -2119,15 +2128,15 @@ export const candidateScope = {
       url: 'https://www.em.com.br/politica/2026/07/7458418-psdb-desiste-de-candidatura-a-presidencia-e-mira-reconstrucao-da-sigla.html',
     },
     {
-      name: 'Augusto Cury, Cabo Daciolo e Leonardo Avalanche',
-      reason: 'foram anunciados como pré-candidatos, mas não foi localizada homologação em convenção até a data de corte',
-      url: 'https://www.tse.jus.br/comunicacao/noticias/2026/Julho/eleicoes-2026-convencoes-partidarias-para-escolha-de-candidatos-comecam-na-segunda-20',
+      name: 'Joaquim Barbosa',
+      reason: 'desistiu da pré-candidatura do DC em julho e não consta na base presidencial do TSE',
+      url: 'https://www.n3news.com.br/2026/07/joaquim-barbosa-desiste-da-corrida-presidencial',
     },
   ],
 };
 
 export const candidates = baseCandidates.filter((candidate) =>
-  ACTIVE_PRESIDENTIAL_SLUGS.has(candidate.slug)
+  REGISTERED_PRESIDENTIAL_SLUGS.has(candidate.slug)
 ).map((candidate) => {
   const enrichment = enrichments[candidate.slug];
   const timeline = enrichment?.timeline ?? candidate.timeline;
@@ -2139,6 +2148,9 @@ export const candidates = baseCandidates.filter((candidate) =>
     ...candidate,
     ...(enrichment ?? {}),
     image: candidateImages[candidate.slug] ?? candidate.image,
+    candidacyStatus: 'Pedido apresentado ao TSE; julgamento pendente',
+    candidacyStatusType: 'filed',
+    candidacyUrl: TSE_CANDIDATES_DATASET_URL,
     updatedAt: CUT_OFF,
     cases: timeline.length,
     sources: sourceLinks.length,
