@@ -19,14 +19,14 @@ export default function SourceCard({ source }) {
   return (
     <Wrapper
       {...wrapperProps}
-      className="group flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm transition hover:bg-white/[0.07]"
+      className="group flex items-start justify-between gap-4 rounded-xl border border-neutral-200 bg-neutral-50/60 p-4 text-sm transition hover:border-neutral-300 hover:bg-neutral-50"
     >
       <div className="flex items-start gap-3">
-        <div className="mt-0.5 shrink-0 text-neutral-500 transition group-hover:text-neutral-300">
+        <div className="mt-0.5 shrink-0 text-neutral-500 transition group-hover:text-blue-800">
           <Icon size={16} aria-hidden="true" />
         </div>
         <div>
-          <p className="font-medium text-neutral-200 transition group-hover:text-white">
+          <p className="font-medium text-neutral-900 transition group-hover:text-blue-950">
             {source.title}
           </p>
           {(source.vehicle || source.date) && (
@@ -38,7 +38,7 @@ export default function SourceCard({ source }) {
           )}
           {source.type && <Badge className="mt-2">{source.type}</Badge>}
           {source.notes && (
-            <p className="mt-3 text-xs leading-5 text-neutral-400">{source.notes}</p>
+            <p className="mt-3 text-xs leading-5 text-neutral-600">{source.notes}</p>
           )}
         </div>
       </div>
@@ -46,7 +46,7 @@ export default function SourceCard({ source }) {
       {isLink && (
         <ExternalLink
           size={16}
-          className="shrink-0 text-neutral-600 transition group-hover:text-neutral-300"
+          className="shrink-0 text-neutral-400 transition group-hover:text-blue-800"
           aria-hidden="true"
         />
       )}

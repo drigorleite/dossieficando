@@ -24,19 +24,19 @@ export default function Header() {
   }, [mobileOpen]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-neutral-950/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur-xl">
       <Container className="py-4">
         <div className="flex items-center justify-between">
           <a href="#topo" className="rounded-lg" aria-label="Dossiê Público — início">
-            <p className="text-xs uppercase tracking-[0.35em] text-neutral-500">Dossiê Público</p>
-            <h1 className="text-lg font-semibold tracking-tight text-white sm:text-xl">
-              Sem lente ideológica
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-900">Dossiê Público</p>
+            <h1 className="text-lg font-semibold tracking-tight text-neutral-950 sm:text-xl">
+              Fatos, decisões e fontes
             </h1>
           </a>
 
-          <nav className="hidden items-center gap-6 text-sm text-neutral-400 md:flex" aria-label="Navegação principal">
+          <nav className="hidden items-center gap-6 text-sm font-medium text-neutral-600 md:flex" aria-label="Navegação principal">
             {navLinks.map(({ href, label }) => (
-              <a key={href} href={href} className="transition hover:text-white">
+              <a key={href} href={href} className="transition hover:text-blue-900">
                 {label}
               </a>
             ))}
@@ -44,7 +44,7 @@ export default function Header() {
 
           <button
             onClick={() => setMobileOpen((v) => !v)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition hover:bg-white/10 md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-neutral-200 bg-white text-neutral-900 transition hover:bg-neutral-100 md:hidden"
             aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={mobileOpen}
             aria-controls="menu-mobile"
@@ -55,14 +55,14 @@ export default function Header() {
       </Container>
 
       {mobileOpen && (
-        <div id="menu-mobile" className="border-t border-white/10 bg-neutral-950/95 px-4 py-3 md:hidden">
-          <nav className="flex flex-col text-sm text-neutral-300" aria-label="Navegação mobile">
+        <div id="menu-mobile" className="border-t border-neutral-200 bg-white px-4 py-3 shadow-lg md:hidden">
+          <nav className="flex flex-col text-sm font-medium text-neutral-700" aria-label="Navegação mobile">
             {navLinks.map(({ href, label }) => (
               <a
                 key={href}
                 href={href}
                 onClick={() => setMobileOpen(false)}
-                className="flex min-h-11 items-center rounded-lg px-2 transition hover:bg-white/5 hover:text-white"
+                className="flex min-h-11 items-center rounded-lg px-2 transition hover:bg-neutral-100 hover:text-blue-900"
               >
                 {label}
               </a>

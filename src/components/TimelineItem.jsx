@@ -4,8 +4,8 @@ import Badge from './ui/Badge';
 
 export default function TimelineItem({ item }) {
   return (
-    <motion.div variants={staggerItem} className="relative border-l border-white/10 pl-6">
-      <div className="absolute -left-1.5 top-1.5 h-3 w-3 rounded-full bg-white" />
+    <motion.div variants={staggerItem} className="relative border-l border-neutral-300 pl-6">
+      <div className="absolute -left-1.5 top-1.5 h-3 w-3 rounded-full bg-blue-900 ring-4 ring-blue-50" />
 
       <div className="flex flex-wrap items-center gap-2">
         {item.year && (
@@ -18,23 +18,23 @@ export default function TimelineItem({ item }) {
         )}
       </div>
 
-      <h4 className="mt-2 text-base font-semibold text-white sm:text-lg">{item.title}</h4>
-      <p className="mt-2 text-sm leading-6 text-neutral-400">{item.text}</p>
+      <h4 className="mt-2 text-base font-semibold text-neutral-950 sm:text-lg">{item.title}</h4>
+      <p className="mt-2 text-sm leading-6 text-neutral-600">{item.text}</p>
 
       {item.source && (
-        <p className="mt-2 text-xs text-neutral-600">
+        <p className="mt-2 text-xs text-neutral-500">
           Fonte:{' '}
           {item.sourceUrl ? (
             <a
               href={item.sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-11 items-center text-neutral-400 underline transition hover:text-white"
+              className="inline-flex min-h-11 items-center text-blue-800 underline transition hover:text-blue-950"
             >
               {item.source}
             </a>
           ) : (
-            <span className="text-neutral-500">{item.source}</span>
+            <span className="text-neutral-600">{item.source}</span>
           )}
         </p>
       )}

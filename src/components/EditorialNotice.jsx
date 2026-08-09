@@ -7,11 +7,11 @@ const DEFAULT_NOTE =
 export default function EditorialNotice({ note }) {
   return (
     <Card>
-      <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white text-black">
+      <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-900">
         <ShieldCheck size={18} aria-hidden="true" />
       </div>
-      <h3 className="text-base font-semibold text-white">Nota editorial</h3>
-      <p className="mt-3 text-sm leading-6 text-neutral-400">{note ?? DEFAULT_NOTE}</p>
+      <h3 className="text-base font-semibold text-neutral-950">Nota editorial</h3>
+      <p className="mt-3 text-sm leading-6 text-neutral-600">{note ?? DEFAULT_NOTE}</p>
     </Card>
   );
 }

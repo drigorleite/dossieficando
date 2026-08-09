@@ -5,15 +5,15 @@ import SearchInput from './ui/SearchInput';
 
 export default function Hero({ query, setQuery }) {
   return (
-    <section id="topo" className="relative scroll-mt-20 overflow-hidden border-b border-white/10 bg-neutral-950 py-10 text-white sm:py-12 lg:py-20">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.12),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
+    <section id="topo" className="relative scroll-mt-20 overflow-hidden border-b border-neutral-200 bg-white py-12 text-neutral-950 sm:py-16 lg:py-24">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(30,58,138,0.09),transparent_32%),linear-gradient(to_right,rgba(229,229,229,0.45)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,229,229,0.45)_1px,transparent_1px)] bg-[size:auto,32px_32px,32px_32px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]" />
 
       <Container className="relative">
         <div className="max-w-3xl">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.25em] text-neutral-300"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-blue-900"
           >
             <ShieldCheck size={14} aria-hidden="true" /> Pesquisa pública verificável
           </motion.p>
@@ -22,7 +22,7 @@ export default function Hero({ query, setQuery }) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 }}
-            className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-7xl"
+            className="max-w-4xl text-4xl font-bold tracking-[-0.04em] text-neutral-950 sm:text-5xl lg:text-7xl"
           >
             Políticos, fatos e fontes. Sem torcida.
           </motion.h2>
@@ -31,10 +31,10 @@ export default function Hero({ query, setQuery }) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="mt-5 max-w-2xl text-base leading-7 text-neutral-300 sm:text-lg"
+            className="mt-6 max-w-2xl text-base leading-7 text-neutral-600 sm:text-lg"
           >
-            Uma interface limpa para consultar históricos públicos, controvérsias, decisões
-            judiciais, notícias e documentos relacionados a figuras políticas brasileiras.
+            Consulte históricos públicos, decisões judiciais, respostas dos citados e planos de
+            governo. Cada afirmação relevante aponta para uma fonte verificável.
           </motion.p>
 
           <motion.div

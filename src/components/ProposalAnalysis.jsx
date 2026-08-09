@@ -3,10 +3,10 @@ import Badge from './ui/Badge';
 import Card from './ui/Card';
 
 const feasibilityStyles = {
-  parcial: 'border-amber-500/30 bg-amber-500/10 text-amber-300',
-  insuficiente: 'border-orange-500/30 bg-orange-500/10 text-orange-300',
-  crítica: 'border-red-500/30 bg-red-500/10 text-red-300',
-  detalhada: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300',
+  parcial: 'border-amber-300 bg-amber-50 text-amber-800',
+  insuficiente: 'border-orange-300 bg-orange-50 text-orange-800',
+  crítica: 'border-red-300 bg-red-50 text-red-800',
+  detalhada: 'border-emerald-300 bg-emerald-50 text-emerald-800',
 };
 
 export default function ProposalAnalysis({ proposals, note }) {
@@ -16,24 +16,24 @@ export default function ProposalAnalysis({ proposals, note }) {
     <Card>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-900">
             Promessa versus execução
           </p>
-          <h3 className="mt-2 text-2xl font-bold text-white">Propostas: qual é o “como”?</h3>
+          <h3 className="mt-2 text-2xl font-bold text-neutral-950">Propostas: qual é o “como”?</h3>
         </div>
         <Badge>Análise até 9 ago. 2026</Badge>
       </div>
 
       {note && (
-        <div className="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4">
-          <p className="text-sm leading-6 text-neutral-300">{note}</p>
+        <div className="mt-5 rounded-xl border border-blue-100 bg-blue-50/60 p-4">
+          <p className="text-sm leading-6 text-neutral-700">{note}</p>
         </div>
       )}
 
       {!proposals?.length ? (
-        <div className="mt-5 flex gap-3 rounded-2xl border border-orange-500/25 bg-orange-500/5 p-4">
-          <CircleAlert className="mt-0.5 shrink-0 text-orange-400" size={18} />
-          <p className="text-sm leading-6 text-neutral-300">
+        <div className="mt-5 flex gap-3 rounded-xl border border-orange-200 bg-orange-50 p-4">
+          <CircleAlert className="mt-0.5 shrink-0 text-orange-700" size={18} />
+          <p className="text-sm leading-6 text-neutral-700">
             Sem material executivo suficiente para uma avaliação proposta por proposta.
             Promessas soltas não foram tratadas como plano de governo.
           </p>
@@ -41,7 +41,7 @@ export default function ProposalAnalysis({ proposals, note }) {
       ) : (
         <div className="mt-6 space-y-5">
           {proposals.map((proposal) => (
-            <article key={`${proposal.area}-${proposal.title}`} className="rounded-2xl border border-white/10 p-5">
+            <article key={`${proposal.area}-${proposal.title}`} className="rounded-xl border border-neutral-200 bg-neutral-50/50 p-5">
               <div className="flex flex-wrap items-center gap-2">
                 <Badge>{proposal.area}</Badge>
                 <span
@@ -52,7 +52,7 @@ export default function ProposalAnalysis({ proposals, note }) {
                   {proposal.feasibilityLabel}
                 </span>
               </div>
-              <h4 className="mt-3 text-lg font-semibold text-white">{proposal.title}</h4>
+              <h4 className="mt-3 text-lg font-semibold text-neutral-950">{proposal.title}</h4>
 
               <div className="mt-5 grid gap-4">
                 <div className="flex gap-3">
@@ -61,25 +61,25 @@ export default function ProposalAnalysis({ proposals, note }) {
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">
                       O que promete
                     </p>
-                    <p className="mt-1 text-sm leading-6 text-neutral-300">{proposal.promise}</p>
+                    <p className="mt-1 text-sm leading-6 text-neutral-700">{proposal.promise}</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <Cog className="mt-1 shrink-0 text-cyan-400" size={17} />
+                  <Cog className="mt-1 shrink-0 text-blue-800" size={17} />
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-400">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-800">
                       Como pretende fazer
                     </p>
-                    <p className="mt-1 text-sm leading-6 text-neutral-300">{proposal.how}</p>
+                    <p className="mt-1 text-sm leading-6 text-neutral-700">{proposal.how}</p>
                   </div>
                 </div>
-                <div className="flex gap-3 rounded-xl border border-red-500/20 bg-red-500/5 p-4">
-                  <Landmark className="mt-1 shrink-0 text-red-400" size={17} />
+                <div className="flex gap-3 rounded-xl border border-red-200 bg-red-50 p-4">
+                  <Landmark className="mt-1 shrink-0 text-red-700" size={17} />
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-red-300">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-red-800">
                       O que falta demonstrar
                     </p>
-                    <p className="mt-1 text-sm leading-6 text-neutral-300">{proposal.gaps}</p>
+                    <p className="mt-1 text-sm leading-6 text-neutral-700">{proposal.gaps}</p>
                   </div>
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default function ProposalAnalysis({ proposals, note }) {
                 href={proposal.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl px-2 text-sm font-medium text-neutral-300 transition hover:bg-white/5 hover:text-white"
+                className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl px-2 text-sm font-medium text-blue-800 transition hover:bg-blue-50 hover:text-blue-950"
               >
                 {proposal.sourceLabel}
                 <ArrowUpRight size={14} />

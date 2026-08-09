@@ -51,10 +51,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 font-sans text-white">
+    <div className="min-h-screen bg-white font-sans text-neutral-950">
       <a
         href="#conteudo-principal"
-        className="fixed left-4 top-3 z-100 -translate-y-20 rounded-xl bg-white px-4 py-3 text-sm font-semibold text-black transition focus:translate-y-0"
+        className="fixed left-4 top-3 z-100 -translate-y-20 rounded-lg bg-blue-950 px-4 py-3 text-sm font-semibold text-white shadow-lg transition focus:translate-y-0"
       >
         Pular para o conteúdo
       </a>

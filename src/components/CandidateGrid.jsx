@@ -3,12 +3,12 @@ import CandidateCard from './CandidateCard';
 
 export default function CandidateGrid({ filteredCandidates, setSelectedCandidate }) {
   return (
-    <section id="candidatos" className="bg-neutral-950 py-10 lg:py-14">
+    <section id="candidatos" className="bg-neutral-50 py-12 lg:py-16">
       <Container>
         <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-neutral-500">Candidatos</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-white">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-900">Candidatos</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-neutral-950">
               Presidenciáveis mapeados
             </h2>
           </div>
@@ -29,8 +29,8 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
             ))}
           </div>
         ) : (
-          <div className="rounded-4xl border border-white/10 bg-white/[0.03] p-10 text-center">
-            <p className="text-neutral-400">Nenhum candidato encontrado para essa busca.</p>
+          <div className="rounded-2xl border border-neutral-200 bg-white p-10 text-center shadow-sm">
+            <p className="text-neutral-600">Nenhum candidato encontrado para essa busca.</p>
           </div>
         )}
       </Container>

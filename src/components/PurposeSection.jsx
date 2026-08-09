@@ -3,14 +3,14 @@ import SectionTitle from './ui/SectionTitle';
 
 export default function PurposeSection() {
   return (
-    <section id="proposito" className="border-t border-white/10 bg-neutral-950 py-14">
+    <section id="proposito" className="border-t border-neutral-200 bg-neutral-50 py-14">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <SectionTitle
             eyebrow="Propósito"
             heading="Um arquivo público, não um palanque."
           />
-          <div className="space-y-5 text-sm leading-7 text-neutral-300 sm:text-base">
+          <div className="space-y-5 text-sm leading-7 text-neutral-700 sm:text-base">
             <p>
               O objetivo é organizar fatos públicos sobre figuras políticas de maneira acessível,
               verificável e separada por categorias — sem narrativa partidária, sem adjetivação

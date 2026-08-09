@@ -12,10 +12,10 @@ import EditorialNotice from './EditorialNotice';
 import ProposalAnalysis from './ProposalAnalysis';
 
 const CATEGORIES = [
-  { type: 'suspeita', label: 'Suspeitas', accent: 'text-amber-400' },
-  { type: 'fato', label: 'Fatos Concretos', accent: 'text-blue-400' },
-  { type: 'curiosidade', label: 'Casos Curiosos', accent: 'text-purple-400' },
-  { type: 'ligação', label: 'Ligações (Entorno)', accent: 'text-neutral-400' },
+  { type: 'suspeita', label: 'Apurações e alegações', accent: 'text-amber-700' },
+  { type: 'fato', label: 'Fatos e decisões documentados', accent: 'text-blue-900' },
+  { type: 'curiosidade', label: 'Contexto público relevante', accent: 'text-violet-700' },
+  { type: 'ligação', label: 'Relações relevantes', accent: 'text-neutral-600' },
 ];
 
 export default function CandidateExpanded({ candidate, onClose }) {
@@ -65,21 +65,22 @@ export default function CandidateExpanded({ candidate, onClose }) {
       aria-modal="true"
       aria-labelledby={`candidate-title-${candidate.slug}`}
       aria-describedby={`candidate-summary-${candidate.slug}`}
-      className="fixed inset-0 z-50 overflow-y-auto bg-neutral-950 text-white"
+      className="fixed inset-0 z-50 overflow-y-auto bg-white text-neutral-950"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.25 }}
     >
-      <motion.div layoutId={`candidate-${candidate.slug}`} className="min-h-screen bg-neutral-950">
-        <div className="relative min-h-[58vh] overflow-hidden border-b border-white/10">
+      <motion.div layoutId={`candidate-${candidate.slug}`} className="min-h-screen bg-neutral-50">
+        <div className="relative min-h-[58vh] overflow-hidden border-b border-neutral-200 bg-white">
           <img
             src={candidate.image}
             alt={candidate.name}
             loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover grayscale"
+            className="absolute inset-0 h-full w-full object-cover grayscale opacity-45"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/70 to-black/40" />
+          <div className="absolute inset-0 bg-linear-to-r from-white via-white/94 to-white/25" />
+          <div className="absolute inset-0 bg-linear-to-t from-white via-transparent to-transparent" />
 
           <Button
             ref={closeButtonRef}
@@ -97,16 +98,16 @@ export default function CandidateExpanded({ candidate, onClose }) {
                 <Badge key={tag}>{tag}</Badge>
               ))}
             </div>
-            <p className="text-sm uppercase tracking-[0.3em] text-neutral-400">{candidate.party}</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-900">{candidate.party}</p>
             <h2
               id={`candidate-title-${candidate.slug}`}
-              className="mt-3 max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-6xl"
+              className="mt-3 max-w-4xl text-4xl font-bold tracking-tight text-neutral-950 sm:text-6xl"
             >
               {candidate.name}
             </h2>
             <p
               id={`candidate-summary-${candidate.slug}`}
-              className="mt-4 max-w-2xl text-base leading-7 text-neutral-300 sm:text-lg"
+              className="mt-4 max-w-2xl text-base leading-7 text-neutral-700 sm:text-lg"
             >
               {candidate.summary}
             </p>
@@ -120,24 +121,24 @@ export default function CandidateExpanded({ candidate, onClose }) {
 
         <nav
           aria-label="Seções do dossiê"
-          className="sticky top-0 z-40 border-b border-white/10 bg-neutral-950/95 backdrop-blur-xl"
+          className="sticky top-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur-xl"
         >
           <Container className="flex gap-2 overflow-x-auto py-2 pl-16 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:pl-6 lg:pl-8">
-            <a href="#resumo-candidato" className="inline-flex min-h-11 shrink-0 items-center rounded-full px-4 text-sm text-neutral-300 hover:bg-white/10 hover:text-white">
+            <a href="#resumo-candidato" className="inline-flex min-h-11 shrink-0 items-center rounded-full px-4 text-sm font-medium text-neutral-600 hover:bg-neutral-100 hover:text-blue-900">
               Resumo
             </a>
             {(candidate.proposals?.length > 0 || candidate.proposalNote) && (
-              <a href="#propostas-candidato" className="inline-flex min-h-11 shrink-0 items-center rounded-full px-4 text-sm text-neutral-300 hover:bg-white/10 hover:text-white">
+              <a href="#propostas-candidato" className="inline-flex min-h-11 shrink-0 items-center rounded-full px-4 text-sm font-medium text-neutral-600 hover:bg-neutral-100 hover:text-blue-900">
                 Propostas
               </a>
             )}
             {candidate.timeline?.length > 0 && (
-              <a href="#dossie-candidato" className="inline-flex min-h-11 shrink-0 items-center rounded-full px-4 text-sm text-neutral-300 hover:bg-white/10 hover:text-white">
+              <a href="#dossie-candidato" className="inline-flex min-h-11 shrink-0 items-center rounded-full px-4 text-sm font-medium text-neutral-600 hover:bg-neutral-100 hover:text-blue-900">
                 Dossiê
               </a>
             )}
             {candidate.sourceLinks?.length > 0 && (
-              <a href="#fontes-candidato" className="inline-flex min-h-11 shrink-0 items-center rounded-full px-4 text-sm text-neutral-300 hover:bg-white/10 hover:text-white">
+              <a href="#fontes-candidato" className="inline-flex min-h-11 shrink-0 items-center rounded-full px-4 text-sm font-medium text-neutral-600 hover:bg-neutral-100 hover:text-blue-900">
                 Fontes
               </a>
             )}
@@ -158,7 +159,7 @@ export default function CandidateExpanded({ candidate, onClose }) {
             />
             <InfoCard
               icon={<Scale size={18} aria-hidden="true" />}
-              label="Classificação"
+              label="Situação jurídica"
               value={candidate.riskLevel}
             />
             <EditorialNotice note={candidate.editorialNote} />
@@ -166,8 +167,8 @@ export default function CandidateExpanded({ candidate, onClose }) {
 
           <main className="order-1 space-y-6 lg:order-2">
             <Card id="resumo-candidato" className="scroll-mt-20">
-              <h3 className="text-2xl font-bold text-white">Resumo do dossiê</h3>
-              <p className="mt-4 text-sm leading-7 text-neutral-300 sm:text-base">
+              <h3 className="text-2xl font-bold text-neutral-950">Resumo do dossiê</h3>
+              <p className="mt-4 text-sm leading-7 text-neutral-700 sm:text-base">
                 {candidate.summary}
               </p>
             </Card>
@@ -180,7 +181,7 @@ export default function CandidateExpanded({ candidate, onClose }) {
 
             {candidate.timeline?.length > 0 && (
               <Card id="dossie-candidato" className="scroll-mt-20">
-                <h3 className="mb-6 text-2xl font-bold text-white">Dossiê</h3>
+                <h3 className="mb-6 text-2xl font-bold text-neutral-950">Dossiê</h3>
                 <div className="space-y-8">
                   {CATEGORIES.map(({ type, label, accent }) => {
                     const items = candidate.timeline.filter((item) => item.type === type);
@@ -200,7 +201,7 @@ export default function CandidateExpanded({ candidate, onClose }) {
 
             {candidate.sourceLinks?.length > 0 && (
               <Card id="fontes-candidato" className="scroll-mt-20">
-                <h3 className="mb-5 text-2xl font-bold text-white">Fontes e documentos</h3>
+                <h3 className="mb-5 text-2xl font-bold text-neutral-950">Fontes e documentos</h3>
                 <SourcesList sources={candidate.sourceLinks} />
               </Card>
             )}
