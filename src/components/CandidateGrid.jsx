@@ -9,19 +9,22 @@ export default function CandidateGrid({ filteredCandidates, setSelectedCandidate
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-neutral-500">Candidatos</p>
             <h2 className="mt-2 text-3xl font-bold tracking-tight text-white">
-              Pré-candidatos mapeados
+              Presidenciáveis mapeados
             </h2>
           </div>
-          <p className="text-sm text-neutral-500">{filteredCandidates.length} resultado(s)</p>
+          <p className="text-sm text-neutral-500" aria-live="polite">
+            {filteredCandidates.length} {filteredCandidates.length === 1 ? 'resultado' : 'resultados'}
+          </p>
         </div>
 
         {filteredCandidates.length > 0 ? (
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredCandidates.map((candidate) => (
+            {filteredCandidates.map((candidate, index) => (
               <CandidateCard
                 key={candidate.slug}
                 candidate={candidate}
                 onOpen={setSelectedCandidate}
+                priority={index === 0}
               />
             ))}
           </div>

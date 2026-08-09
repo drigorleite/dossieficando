@@ -2,7 +2,7 @@ import { ShieldCheck } from 'lucide-react';
 import Card from './ui/Card';
 
 const DEFAULT_NOTE =
-  'Este dossiê separa fato de opinião, acusação de condenação, e decisão judicial de narrativa pública. Todas as informações possuem fonte rastreável.';
+  'Este dossiê separa acusação, investigação, denúncia, condenação, absolvição, arquivamento, anulação e prescrição. Uma acusação absolvida no mérito não é reapresentada como fato; uma anulação processual também não é chamada de absolvição.';
 
 export default function EditorialNotice({ note }) {
   return (

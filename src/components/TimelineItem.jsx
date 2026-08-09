@@ -29,7 +29,7 @@ export default function TimelineItem({ item }) {
               href={item.sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-500 underline hover:text-neutral-300 transition"
+              className="inline-flex min-h-11 items-center text-neutral-400 underline transition hover:text-white"
             >
               {item.source}
             </a>

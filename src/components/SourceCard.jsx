@@ -37,6 +37,9 @@ export default function SourceCard({ source }) {
             </p>
           )}
           {source.type && <Badge className="mt-2">{source.type}</Badge>}
+          {source.notes && (
+            <p className="mt-3 text-xs leading-5 text-neutral-400">{source.notes}</p>
+          )}
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-export const candidates = [
+const baseCandidates = [
   {
     id: 1,
     name: 'Luiz Inácio Lula da Silva',
@@ -1141,3 +1141,415 @@ export const candidates = [
     sourceLinks: [],
   },
 ];
+
+const CUT_OFF = '9 ago. 2026';
+
+const enrichments = {
+  lula: {
+    role: 'Presidente da República e candidato à reeleição',
+    summary:
+      'Presidente e candidato à reeleição. As condenações da Lava Jato foram anuladas por incompetência da vara e suspeição do juiz, sem julgamento absolutório do mérito. Seu governo é alcançado politicamente pelas apurações do INSS e do Banco Master, sem imputação criminal pessoal a Lula nesses casos até 9 de agosto de 2026.',
+    tags: ['Lava Jato', 'INSS', 'Banco Master'],
+    riskLevel: 'Condenações anuladas; sem absolvição de mérito',
+    cases: 11,
+    sources: 58,
+    editorialNote:
+      'Anulação não é absolvição. Sem condenação válida, prevalece juridicamente a presunção de inocência; isso não equivale a dizer que o mérito das acusações foi julgado improcedente.',
+    proposalNote:
+      'Até a data de corte, não foi localizado neste levantamento um plano de governo de 2026 com memória de cálculo, metas, cronograma e mecanismos de execução verificáveis. O dossiê não reutiliza automaticamente o programa de 2022 como se fosse o plano da nova eleição.',
+    timeline: [
+      {
+        year: '2025–2026',
+        type: 'suspeita',
+        title: 'INSS: falha estatal e alcance político',
+        text: 'A Operação Sem Desconto apura descontos associativos não autorizados em benefícios. A CGU e a PF informaram que o problema atravessou diferentes governos; o Executivo suspendeu os acordos e iniciou ressarcimentos. Frei Chico, irmão de Lula e dirigente de entidade investigada, integra o entorno político do caso, mas isso não constitui imputação criminal a Lula.',
+        legalStatus: 'investigação',
+        source: 'CGU — Operação Sem Desconto',
+        sourceType: 'oficial',
+        sourceUrl:
+          'https://www.gov.br/cgu/pt-br/assuntos/noticias/2025/11/cgu-e-policia-federal-deflagram-nova-fase-da-operacao-sem-desconto',
+      },
+      {
+        year: '2024–2026',
+        type: 'ligação',
+        title: 'Banco Master: reunião fora da agenda e aliados investigados',
+        text: 'Lula confirmou encontro em dezembro de 2024 com Daniel Vorcaro e disse ter defendido apuração técnica pelo Banco Central. Em 2026, a PF fez buscas contra o senador Jaques Wagner, líder do PT e aliado do presidente, por suspeitas relacionadas ao Master. Até a data de corte, as fontes consultadas não indicam que Lula seja investigado criminalmente no caso.',
+        legalStatus: 'investigação',
+        source: 'Folha e Associated Press',
+        sourceType: 'notícia',
+        sourceUrl:
+          'https://www1.folha.uol.com.br/mercado/2026/02/nao-havia-investigacao-formal-sobre-carteiras-do-master-quando-lula-se-encontrou-com-vorcaro.shtml',
+      },
+    ],
+    sourceLinks: [
+      {
+        title: 'STF anula atos nos casos do sítio e do Instituto Lula por suspeição de Moro',
+        url: 'https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=468184&ori=1',
+        type: 'judicial',
+        date: 'jun. 2021',
+        vehicle: 'STF',
+        reliability: 'alta',
+        notes: 'Decisão processual; não houve absolvição de mérito.',
+      },
+      {
+        title: 'CGU e PF: nova fase da Operação Sem Desconto',
+        url: 'https://www.gov.br/cgu/pt-br/assuntos/noticias/2025/11/cgu-e-policia-federal-deflagram-nova-fase-da-operacao-sem-desconto',
+        type: 'oficial',
+        date: 'nov. 2025',
+        vehicle: 'CGU',
+        reliability: 'alta',
+        notes: null,
+      },
+      {
+        title: 'Encontro de Lula com Vorcaro e cronologia da apuração do Master',
+        url: 'https://www1.folha.uol.com.br/mercado/2026/02/nao-havia-investigacao-formal-sobre-carteiras-do-master-quando-lula-se-encontrou-com-vorcaro.shtml',
+        type: 'notícia',
+        date: 'fev. 2026',
+        vehicle: 'Folha de S.Paulo',
+        reliability: 'alta',
+        notes: 'Lula afirmou que a análise deveria ser técnica e negou favorecimento.',
+      },
+    ],
+  },
+  'flavio-bolsonaro': {
+    role: 'Senador e candidato à Presidência',
+    summary:
+      'Candidato do PL à Presidência. A denúncia da rachadinha foi arquivada depois que provas foram anuladas — não houve absolvição após julgamento do mérito. Em 2026, tornou-se alvo de inquérito por calúnia e das apurações sobre repasses do Banco Master para um filme sobre Jair Bolsonaro.',
+    tags: ['Banco Master', 'Rachadinha', 'STF'],
+    riskLevel: 'Inquéritos ativos; rachadinha arquivada sem mérito',
+    cases: 10,
+    sources: 49,
+    editorialNote:
+      'No caso da rachadinha, “arquivado após anulação de provas” é o desfecho correto. O arquivo não o apresenta como absolvição, nem reapresenta a acusação como condenação.',
+    proposalNote:
+      'Há um plano setorial de segurança, mas o programa econômico consultado ainda era material de assessores sujeito à aprovação do candidato. Uma plataforma nacional completa e custeada não foi localizada até a data de corte.',
+    proposals: [
+      {
+        area: 'Segurança pública',
+        title: 'Brasil sem Medo — 12 medidas',
+        promise:
+          'Criar cinco presídios federais de segurança máxima, endurecer penas e regras de execução, reduzir a maioridade penal em crimes graves e ampliar instrumentos tecnológicos de vigilância e combate às facções.',
+        how:
+          'O material apresenta medidas legislativas e administrativas, participação federal e expansão do sistema penitenciário. Algumas dependem de PEC ou lei aprovada pelo Congresso; outras exigem obras, pessoal e integração com estados.',
+        feasibility: 'parcial',
+        feasibilityLabel: 'Como parcial',
+        gaps:
+          'Faltam memória de cálculo pública, custo de construção e operação dos presídios, fonte orçamentária, cronograma, estimativa de vagas e avaliação de impacto sobre a população carcerária. A redução da maioridade exige mudança constitucional e maioria qualificada.',
+        sourceLabel: 'Plano Brasil sem Medo — síntese das 12 medidas',
+        sourceUrl:
+          'https://www.poder360.com.br/poder-eleicoes/flavio-apresenta-plano-para-a-seguranca-leia-as-12-medidas/',
+      },
+    ],
+    timeline: [
+      {
+        year: '2022',
+        type: 'fato',
+        title: 'Rachadinha arquivada após anulação de provas',
+        text: 'O TJRJ rejeitou e arquivou a denúncia depois de decisões que invalidaram relatórios e provas usados pelo Ministério Público. Não houve sentença absolutória sobre o mérito da acusação.',
+        legalStatus: 'arquivamento',
+        source: 'STF — HC 201965',
+        sourceType: 'judicial',
+        sourceUrl:
+          'https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=477496&ori=1',
+      },
+      {
+        year: '2025–2026',
+        type: 'suspeita',
+        title: 'Banco Master e financiamento de filme',
+        text: 'Mensagens e áudios indicam que Flávio negociou com Daniel Vorcaro até R$ 134 milhões para um filme sobre Jair Bolsonaro, com cerca de R$ 61 milhões repassados segundo as reportagens. A PF apura o destino do dinheiro e eventual compra de influência. Flávio confirmou contatos e encontro posterior à primeira prisão de Vorcaro, mas nega crime e afirma que os valores financiaram a produção.',
+        legalStatus: 'investigação',
+        source: 'Agência Brasil',
+        sourceType: 'notícia',
+        sourceUrl:
+          'https://agenciabrasil.ebc.com.br/politica/noticia/2026-05/flavio-confirma-encontro-com-vorcaro-apos-banqueiro-ter-sido-preso',
+      },
+    ],
+    sourceLinks: [
+      {
+        title: 'STF anula relatórios que embasaram denúncia da rachadinha',
+        url: 'https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=477496&ori=1',
+        type: 'judicial',
+        date: 'nov. 2021',
+        vehicle: 'STF',
+        reliability: 'alta',
+        notes: 'O posterior arquivamento não decorreu de absolvição de mérito.',
+      },
+      {
+        title: 'Flávio confirma encontro com Vorcaro após prisão do banqueiro',
+        url: 'https://agenciabrasil.ebc.com.br/politica/noticia/2026-05/flavio-confirma-encontro-com-vorcaro-apos-banqueiro-ter-sido-preso',
+        type: 'notícia',
+        date: 'mai. 2026',
+        vehicle: 'Agência Brasil',
+        reliability: 'alta',
+        notes: 'O senador nega irregularidade.',
+      },
+      {
+        title: 'Áudios sobre negociação de recursos para filme de Jair Bolsonaro',
+        url: 'https://www.intercept.com.br/2026/05/13/audio-flavio-negociou-vorcaro-milhoes/',
+        type: 'reportagem',
+        date: 'mai. 2026',
+        vehicle: 'Intercept Brasil',
+        reliability: 'alta',
+        notes: 'Apuração jornalística baseada em mensagens e áudios.',
+      },
+    ],
+  },
+  'romeu-zema': {
+    role: 'Ex-governador de Minas Gerais e candidato à Presidência',
+    summary:
+      'Candidato do NOVO. Questionamentos recentes alcançam benefício fiscal concedido à Eletrozema, empresa da qual é acionista, operações da Zema Crédito examinadas pela CPMI do INSS e contratos da Educação. As apurações citadas não equivalem a condenação pessoal de Zema.',
+    tags: ['Eletrozema', 'INSS', 'Contratos públicos'],
+    riskLevel: 'Conflitos de interesse e apurações em curso',
+    cases: 8,
+    sources: 31,
+    editorialNote:
+      'Benefício econômico e vínculo societário são fatos documentáveis; favorecimento ilícito exige prova. O dossiê registra o possível conflito, a apuração e a resposta de Zema sem antecipar culpa.',
+    proposalNote:
+      'O NOVO publicou diretrizes em cinco pilares, mas diretriz não equivale a projeto executivo. A análise cobra instrumento jurídico, transição, impacto fiscal, governança e indicadores.',
+    proposals: [
+      {
+        area: 'Judiciário',
+        title: 'Mandato e idade mínima para ministros do STF',
+        promise:
+          'Criar idade mínima de 60 anos e mandato máximo de 15 anos para ministros do Supremo, além de limitar decisões monocráticas.',
+        how:
+          'A mudança teria de ser enviada como PEC e aprovada em dois turnos por três quintos dos votos na Câmara e no Senado. Limites a decisões individuais também exigem desenho constitucional ou legal compatível com a separação dos Poderes.',
+        feasibility: 'parcial',
+        feasibilityLabel: 'Via jurídica indicada; articulação ausente',
+        gaps:
+          'As diretrizes não apresentam texto de PEC, regra de transição para ministros atuais, estimativa de apoio congressual nem tratamento para eventual resistência constitucional.',
+        sourceLabel: 'NOVO — diretrizes apresentadas por Zema',
+        sourceUrl: 'https://novo.org.br/noticias/zema-diretrizes-novo-brasil-evento/',
+      },
+      {
+        area: 'Economia e trabalho',
+        title: 'Privatizações e flexibilização trabalhista',
+        promise:
+          'Ampliar privatizações, reduzir o peso estatal e flexibilizar relações de trabalho, inclusive vinculando parte da remuneração ao desempenho.',
+        how:
+          'As diretrizes mencionam mudanças legais e venda de estatais, mas não apresentam lista definitiva de ativos, modelo de avaliação, destinação dos recursos ou texto da reforma trabalhista.',
+        feasibility: 'insuficiente',
+        feasibilityLabel: 'Como insuficiente',
+        gaps:
+          'Sem ativos, valores, etapas regulatórias, proteção ao trabalhador, impacto arrecadatório e cronograma, não é possível testar a viabilidade fiscal ou operacional da promessa.',
+        sourceLabel: 'Apresentação pública das diretrizes do plano',
+        sourceUrl:
+          'https://noticias.uol.com.br/politica/ultimas-noticias/2026/04/16/zema-plano-governo-sobe-tom-stf.ghtm',
+      },
+    ],
+    timeline: [
+      {
+        year: '2026',
+        type: 'suspeita',
+        title: 'Benefício fiscal à Eletrozema durante a gestão',
+        text: 'Dados divulgados após disputa por transparência mostraram benefício fiscal de R$ 2,28 milhões à Eletrozema, empresa de Zema e familiares, durante seu governo. Zema respondeu que o regime especial existia desde 2008, foi criado antes de sua gestão e seguia regras disponíveis a outras empresas. O episódio levanta questão de conflito de interesses, sem condenação por favorecimento ilícito até a data de corte.',
+        legalStatus: 'investigação',
+        source: 'Folha de S.Paulo',
+        sourceType: 'notícia',
+        sourceUrl:
+          'https://www1.folha.uol.com.br/poder/2026/06/empresa-de-zema-recebeu-beneficio-fiscal-durante-governo-dele-em-minas.shtml',
+      },
+      {
+        year: '2025–2026',
+        type: 'suspeita',
+        title: 'Zema Crédito na CPMI do INSS',
+        text: 'A CPMI aprovou a convocação de Zema para explicar operações de crédito consignado da empresa familiar. O requerimento aponta participação societária e questiona práticas dirigidas a aposentados. Convocação parlamentar não significa indiciamento nem comprova desconto associativo ilegal.',
+        legalStatus: 'investigação',
+        source: 'CPMI do INSS — requerimento',
+        sourceType: 'legislativo',
+        sourceUrl: 'https://legis.senado.leg.br/sdleg-getter/documento?dm=10118296',
+      },
+      {
+        year: '2026',
+        type: 'suspeita',
+        title: 'Contrato de R$ 348,4 milhões na Educação',
+        text: 'A Secretaria de Educação contratou a Fazer Educação por R$ 348,4 milhões para livros. Reportagem apontou que o dono da fornecedora havia sido indiciado em outro estado; uma deputada protocolou representação no MPF. Isso não demonstra participação de Zema na suposta fraude e o procedimento deve ser tratado como questionamento sob apuração.',
+        legalStatus: 'investigação',
+        source: 'Intercept Brasil',
+        sourceType: 'reportagem',
+        sourceUrl:
+          'https://www.intercept.com.br/2026/04/20/helder-barbalho-romeu-zema-secretario-educacao-contratos-850-milhoes-empresa-suspeita-fraude/',
+      },
+    ],
+    sourceLinks: [
+      {
+        title: 'Eletrozema recebeu benefício fiscal durante o governo Zema',
+        url: 'https://www1.folha.uol.com.br/poder/2026/06/empresa-de-zema-recebeu-beneficio-fiscal-durante-governo-dele-em-minas.shtml',
+        type: 'notícia',
+        date: 'jun. 2026',
+        vehicle: 'Folha de S.Paulo',
+        reliability: 'alta',
+        notes: 'Inclui a resposta de Zema sobre a origem anterior do regime.',
+      },
+      {
+        title: 'Requerimento da CPMI sobre a Zema Crédito',
+        url: 'https://legis.senado.leg.br/sdleg-getter/documento?dm=10118296',
+        type: 'legislativo',
+        date: 'dez. 2025',
+        vehicle: 'Congresso Nacional',
+        reliability: 'alta',
+        notes: 'Requerimento político-investigativo, não decisão judicial.',
+      },
+      {
+        title: 'Contratos da Educação com empresa cujo dono foi indiciado',
+        url: 'https://www.intercept.com.br/2026/04/20/helder-barbalho-romeu-zema-secretario-educacao-contratos-850-milhoes-empresa-suspeita-fraude/',
+        type: 'reportagem',
+        date: 'abr. 2026',
+        vehicle: 'Intercept Brasil',
+        reliability: 'alta',
+        notes: 'Não imputa participação direta a Zema.',
+      },
+    ],
+  },
+  'ronaldo-caiado': {
+    role: 'Ex-governador de Goiás e candidato à Presidência',
+    summary:
+      'Candidato do PSD. O dossiê acompanha pedidos de apuração sobre negócios minerais e contratos estaduais com organização cujo dirigente foi investigado, distinguindo os atos do governo de eventual responsabilidade pessoal. Não há condenação de Caiado nesses episódios até 9 de agosto de 2026.',
+    riskLevel: 'Questionamentos sem condenação pessoal',
+    editorialNote:
+      'Contratos firmados por uma administração não tornam automaticamente o governador autor de eventual ilícito. Atribuição pessoal só é feita quando houver ato, investigação ou decisão nominalmente documentados.',
+    proposalNote:
+      'O PSD informou em abril que a elaboração do plano estava começando, dividida em eixos temáticos. Até a data de corte, o material localizado descreve processo e temas, não metas, custos ou execução. Portanto, ainda não há “como” público suficiente para avaliar.',
+  },
+  'renan-santos': {
+    role: 'Candidato à Presidência',
+    summary:
+      'Fundador do MBL e candidato do Partido Missão. Sua plataforma reúne propostas de segurança, ajuste fiscal, urbanização, reformas institucionais e desenvolvimento tecnológico. O principal teste do dossiê é separar mecanismo anunciado de retórica e identificar custos, competências e riscos constitucionais omitidos.',
+    tags: ['Livro Amarelo', 'Segurança', 'Ajuste fiscal'],
+    riskLevel: 'Propostas com riscos jurídicos e lacunas fiscais',
+    proposalNote:
+      'O site renansantospropostas.com.br é uma compilação independente, sem vínculo oficial com Renan ou o Partido Missão. O Livro Amarelo se apresenta como plano partidário, mas sua edição definitiva só teria envio após 16 de agosto de 2026. A avaliação abaixo usa as descrições públicas disponíveis até o dia 9.',
+    proposals: [
+      {
+        area: 'Segurança pública',
+        title: 'Retomada territorial e “Direito Penal do Inimigo”',
+        promise:
+          'Retomar em um ano áreas controladas por facções, classificar integrantes como inimigos do Estado, reduzir garantias processuais e usar Estado de Defesa em territórios específicos.',
+        how:
+          'O plano cita mudanças legislativas, Estado de Defesa, integração de COAF e PF e operações federais. O Estado de Defesa depende de decreto presidencial, consulta aos Conselhos da República e de Defesa Nacional e controle do Congresso, além dos limites do artigo 136 da Constituição.',
+        feasibility: 'crítica',
+        feasibilityLabel: 'Como descrito, incompatível em pontos centrais',
+        gaps:
+          'Eliminar presunção de inocência, mandado individual e garantias de defesa colide com cláusulas constitucionais e tratados de direitos humanos. Não há efetivo necessário, orçamento, regras de identificação de faccionados, controle de erros, reparação a inocentes ou plano pós-ocupação. Comparar o Brasil a El Salvador não substitui análise constitucional e operacional.',
+        sourceLabel: 'Compilação pública — Fim do domínio das facções',
+        sourceUrl: 'https://renansantospropostas.com.br/seguranca-publica',
+      },
+      {
+        area: 'Economia',
+        title: 'Ajuste fiscal de R$ 3,3 trilhões em dez anos',
+        promise:
+          'Desindexar aposentadorias e BPC do salário mínimo, rever pisos de saúde e educação, cortar benefícios do alto funcionalismo, reformar a Previdência e extinguir renúncias fiscais.',
+        how:
+          'A proposta aponta uma PEC já protocolada como veículo e enumera grupos de despesas. A desindexação e as vinculações constitucionais exigem PEC; reforma previdenciária, revisão de benefícios e renúncias dependem de legislação e transição.',
+        feasibility: 'parcial',
+        feasibilityLabel: 'Há instrumentos, falta memória de cálculo',
+        gaps:
+          'O material não abre os R$ 3,3 trilhões por medida e por ano, não estima impacto distributivo sobre aposentados e beneficiários do BPC, não apresenta regra de transição nem demonstra quanto seria reinvestido. Também trata queda de juros como consequência praticamente automática, embora dependa de inflação, política monetária e cenário externo.',
+        sourceLabel: 'Compilação pública — A dívida que engessa o Brasil',
+        sourceUrl: 'https://renansantospropostas.com.br/reforma-fiscal',
+      },
+      {
+        area: 'Habitação e urbanismo',
+        title: '“Fim das favelas” em dez anos',
+        promise:
+          'Urbanizar assentamentos, titular imóveis, abrir vias, instalar infraestrutura, realocar famílias de áreas de risco e criar zonas econômicas especiais.',
+        how:
+          'O candidato estima cerca de R$ 900 bilhões em dez anos e descreve urbanização, verticalização local, indenizações e titulação. A execução exigiria coordenação com municípios e estados, regularização fundiária, licenciamento, desapropriações e contratação de obras.',
+        feasibility: 'parcial',
+        feasibilityLabel: 'Custo agregado existe; financiamento não',
+        gaps:
+          'R$ 90 bilhões anuais exigiriam fonte permanente e capacidade de execução não demonstradas. Faltam universo de famílias, custo por unidade e por comunidade, critérios de prioridade, divisão federativa, proteção contra expulsão por valorização imobiliária, cronograma e indicadores. O uso de Estado de Defesa não é mecanismo urbanístico ordinário.',
+        sourceLabel: 'Compilação pública — Fim das favelas em 10 anos',
+        sourceUrl: 'https://renansantospropostas.com.br/desfavelizacao',
+      },
+      {
+        area: 'Programa geral',
+        title: 'Livro Amarelo definitivo',
+        promise:
+          'Organizar 14 capítulos sobre ajuste fiscal, segurança, pacto federativo, saúde, educação, infraestrutura, indústria, política externa e urbanização.',
+        how:
+          'Até a data de corte, o site público mostrava o índice e vendia a edição, com envio previsto a partir de 16 de agosto. O conteúdo integral verificável não estava disponível na página consultada.',
+        feasibility: 'insuficiente',
+        feasibilityLabel: 'Documento integral indisponível na data de corte',
+        gaps:
+          'Sem acesso aos capítulos não é possível confirmar cálculos, fontes, bibliografia, metas, projetos de lei, cronograma ou compatibilidade entre propostas. Alegar mais de dois anos de estudo não substitui publicação auditável.',
+        sourceLabel: 'Livro Amarelo — página do plano partidário',
+        sourceUrl: 'https://livroamarelo.org.br/',
+      },
+    ],
+    sourceLinks: [
+      {
+        title: 'Compilação independente das propostas de Renan Santos',
+        url: 'https://renansantospropostas.com.br/#propostas',
+        type: 'plataforma',
+        date: 'ago. 2026',
+        vehicle: 'Renan Santos — Propostas',
+        reliability: 'média',
+        notes: 'O próprio site declara não ter vínculo oficial com o candidato ou o partido.',
+      },
+      {
+        title: 'Livro Amarelo — plano do Partido Missão',
+        url: 'https://livroamarelo.org.br/',
+        type: 'programa',
+        date: 'ago. 2026',
+        vehicle: 'Partido Missão',
+        reliability: 'alta',
+        notes: 'Na data de corte, a página exibia o índice; o envio da edição começaria em 16 de agosto.',
+      },
+    ],
+  },
+};
+
+const supersededTimelineTitles = {
+  lula: ['Irregularidades no INSS'],
+  'flavio-bolsonaro': [
+    'Rachadinha – Assembleia Legislativa do Rio',
+    'Sem condenações definitivas até maio de 2026',
+  ],
+  'romeu-zema': [
+    'Zema Crédito – CPMI do INSS',
+    'Sem condenações ou denúncias formais',
+  ],
+  'ronaldo-caiado': ['Sem condenações ou acusações formais'],
+};
+
+const candidateImages = {
+  lula: new URL('../assets/images/candidatos/luiz-lula.jpg', import.meta.url).href,
+  'flavio-bolsonaro': new URL('../assets/images/candidatos/flavio-bolsonaro-optimized.jpg', import.meta.url).href,
+  'romeu-zema': new URL('../assets/images/candidatos/romeu-zema-optimized.jpg', import.meta.url).href,
+  'ronaldo-caiado': new URL('../assets/images/candidatos/ronaldo-caiado-optimized.jpg', import.meta.url).href,
+  'ciro-gomes': new URL('../assets/images/candidatos/ciro-gomes.jpg', import.meta.url).href,
+  'fernando-haddad': new URL('../assets/images/candidatos/fernando-haddad.jpg', import.meta.url).href,
+  'aldo-rebelo': new URL('../assets/images/candidatos/aldo-rebelo.jpg', import.meta.url).href,
+  'renan-santos': new URL('../assets/images/candidatos/renan-santos.jpg.webp', import.meta.url).href,
+  'cabo-daciolo': new URL('../assets/images/candidatos/cabo-daciolo-optimized.jpg', import.meta.url).href,
+  'augusto-cury': new URL('../assets/images/candidatos/augusto-cury.jpg', import.meta.url).href,
+  'edmilson-costa': new URL('../assets/images/candidatos/edmilson-costa.jpg', import.meta.url).href,
+  'hertz-dias': new URL('../assets/images/candidatos/hertz-dias.jpg', import.meta.url).href,
+  'rui-costa-pimenta': new URL('../assets/images/candidatos/rui-costa-pimenta.jpg', import.meta.url).href,
+  'samara-martins': new URL('../assets/images/candidatos/samara-martins.jpg', import.meta.url).href,
+};
+
+export const candidates = baseCandidates.map((candidate) => {
+  const enrichment = enrichments[candidate.slug];
+  const superseded = supersededTimelineTitles[candidate.slug] ?? [];
+  const timeline = [
+    ...(enrichment?.timeline ?? []),
+    ...candidate.timeline.filter((item) => !superseded.includes(item.title)),
+  ];
+  const sourceLinks = [
+    ...(enrichment?.sourceLinks ?? []),
+    ...candidate.sourceLinks,
+  ].filter((source) => source.url);
+
+  return {
+    ...candidate,
+    ...(enrichment ?? {}),
+    image: candidateImages[candidate.slug] ?? candidate.image,
+    updatedAt: CUT_OFF,
+    cases: timeline.length,
+    sources: sourceLinks.length,
+    timeline,
+    sourceLinks,
+  };
+});

@@ -5,7 +5,7 @@ import SearchInput from './ui/SearchInput';
 
 export default function Hero({ query, setQuery }) {
   return (
-    <section className="relative overflow-hidden border-b border-white/10 bg-neutral-950 py-12 text-white lg:py-20">
+    <section id="topo" className="relative scroll-mt-20 overflow-hidden border-b border-white/10 bg-neutral-950 py-10 text-white sm:py-12 lg:py-20">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.12),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
 
       <Container className="relative">
@@ -50,6 +50,7 @@ export default function Hero({ query, setQuery }) {
               id="hero-search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
+              onClear={() => setQuery('')}
               placeholder="Buscar por nome, partido, tema..."
             />
           </motion.div>
