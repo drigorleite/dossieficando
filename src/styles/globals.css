@@ -68,6 +68,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Desloca os alvos de âncora para não ficarem sob o header fixo (ilha ~64px + margem) */
+  scroll-padding-top: 88px;
   overflow-x: hidden;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;

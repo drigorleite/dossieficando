@@ -1,9 +1,9 @@
-import { Sun, Moon, Type } from 'lucide-react';
+import { Type } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useState } from 'react';
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme, fontSize, setFontSize } = useTheme();
+  const { fontSize, setFontSize } = useTheme();
   const [showFontMenu, setShowFontMenu] = useState(false);
 
   const fontOptions = [
@@ -49,20 +49,6 @@ export default function ThemeToggle() {
           </div>
         )}
       </div>
-
-      {/* Dark/light toggle */}
-      <button
-        onClick={toggleTheme}
-        aria-label={theme === 'dark' ? 'Mudar para modo claro' : 'Mudar para modo escuro'}
-        title={theme === 'dark' ? 'Modo claro' : 'Modo escuro'}
-        className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-400 transition hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-blue-400"
-      >
-        {theme === 'dark' ? (
-          <Sun size={15} aria-hidden="true" />
-        ) : (
-          <Moon size={15} aria-hidden="true" />
-        )}
-      </button>
     </div>
   );
 }

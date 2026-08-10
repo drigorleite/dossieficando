@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { lazy, Suspense, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft, FileText, Scale, Newspaper, Lightbulb, BookOpen,
@@ -10,7 +10,6 @@ import {
 import Container from './ui/Container';
 import Badge from './ui/Badge';
 import Card from './ui/Card';
-import InfoCard from './InfoCard';
 import Timeline from './Timeline';
 import SourcesList from './SourcesList';
 import EditorialNotice from './EditorialNotice';
@@ -18,22 +17,26 @@ import LegalNotice from './dossier/LegalNotice';
 import ProposalCard from './dossier/ProposalCard';
 import SectionRenderer from './dossier/SectionRenderer';
 import TrajectorySection from './dossier/TrajectorySection';
-import PromisesVsReality from './features/PromisesVsReality';
-import PositionShifts from './features/PositionShifts';
-import TrustIndex from './features/TrustIndex';
-import InteractiveTimeline from './features/InteractiveTimeline';
-import InvestigationRadar from './features/InvestigationRadar';
-import VotingHistory from './features/VotingHistory';
-import PoliticianInNumbers from './features/PoliticianInNumbers';
-import IdeologyProfile from './features/IdeologyProfile';
-import AllianceMap from './features/AllianceMap';
-import WhoAppointedWhom from './features/WhoAppointedWhom';
-import HowItAffectsYou from './features/HowItAffectsYou';
-import WhatHappenedAfter from './features/WhatHappenedAfter';
-import EconomicExplainer from './features/EconomicExplainer';
-import PartyCorruptionHistory from './features/PartyCorruptionHistory';
+import LazyFallback from './ui/LazyFallback';
+import { useModalBehavior } from '../hooks/useModalBehavior';
 import { modularCandidates } from '../data/candidates/index';
 import { SECTION_TYPES } from '../constants/sectionTypes';
+
+// Features pesadas (gráficos/visualizações) — cada aba carrega seu próprio chunk sob demanda.
+const PromisesVsReality = lazy(() => import('./features/PromisesVsReality'));
+const PositionShifts = lazy(() => import('./features/PositionShifts'));
+const TrustIndex = lazy(() => import('./features/TrustIndex'));
+const InteractiveTimeline = lazy(() => import('./features/InteractiveTimeline'));
+const InvestigationRadar = lazy(() => import('./features/InvestigationRadar'));
+const VotingHistory = lazy(() => import('./features/VotingHistory'));
+const PoliticianInNumbers = lazy(() => import('./features/PoliticianInNumbers'));
+const IdeologyProfile = lazy(() => import('./features/IdeologyProfile'));
+const AllianceMap = lazy(() => import('./features/AllianceMap'));
+const WhoAppointedWhom = lazy(() => import('./features/WhoAppointedWhom'));
+const HowItAffectsYou = lazy(() => import('./features/HowItAffectsYou'));
+const WhatHappenedAfter = lazy(() => import('./features/WhatHappenedAfter'));
+const EconomicExplainer = lazy(() => import('./features/EconomicExplainer'));
+const PartyCorruptionHistory = lazy(() => import('./features/PartyCorruptionHistory'));
 
 const CATEGORIES = [
   { type: 'suspeita', label: 'Suspeitas', accent: 'text-amber-400', border: 'border-amber-500/20', bg: 'bg-amber-500/5' },
@@ -179,6 +182,8 @@ function TabGroupNav({ groups, activeTab, onTabChange }) {
 
 export default function CandidateExpanded({ candidate, onClose }) {
   const [activeTab, setActiveTab] = useState('dossie');
+  const backBtnRef = useRef(null);
+  useModalBehavior(onClose, backBtnRef);
 
   // Enrich with modular data if available
   const modular = modularCandidates.find((m) => m.slug === candidate.slug);
@@ -260,10 +265,11 @@ export default function CandidateExpanded({ candidate, onClose }) {
 
           {/* Back button */}
           <button
+            ref={backBtnRef}
             onClick={onClose}
             className="fixed left-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-2xl border border-white/12 text-white backdrop-blur-md transition hover:bg-white/10 hover:border-white/20"
             style={{ background: 'rgba(13,13,15,0.80)', boxShadow: '0 4px 16px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.06) inset' }}
-            aria-label="Voltar"
+            aria-label="Voltar (Esc)"
           >
             <ArrowLeft size={18} aria-hidden="true" />
           </button>
@@ -386,6 +392,7 @@ export default function CandidateExpanded({ candidate, onClose }) {
 
         {/* ── Tab Content ── */}
         <Container className="py-10 lg:py-14">
+          <Suspense fallback={<LazyFallback variant="inline" />}>
           <AnimatePresence mode="wait">
 
             {/* ── DOSSIÊ TAB ── */}
@@ -826,6 +833,7 @@ export default function CandidateExpanded({ candidate, onClose }) {
             )}
 
           </AnimatePresence>
+          </Suspense>
         </Container>
       </motion.div>
     </motion.div>

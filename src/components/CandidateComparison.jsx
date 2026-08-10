@@ -1,5 +1,6 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useModalBehavior } from '../hooks/useModalBehavior';
 import {
   X,
   GitCompare,
@@ -229,6 +230,8 @@ function TimelineComparison({ timelineA, timelineB }) {
 export default function CandidateComparison({ candidates, onClose, onOpenCandidate }) {
   const [candidateA, setCandidateA] = useState(null);
   const [candidateB, setCandidateB] = useState(null);
+  const closeBtnRef = useRef(null);
+  useModalBehavior(onClose, closeBtnRef);
 
   const modularA = candidateA ? modularCandidates.find((m) => m.slug === candidateA.slug) : null;
   const modularB = candidateB ? modularCandidates.find((m) => m.slug === candidateB.slug) : null;
@@ -260,9 +263,10 @@ export default function CandidateComparison({ candidates, onClose, onOpenCandida
             </div>
           </div>
           <button
+            ref={closeBtnRef}
             onClick={onClose}
             className="flex h-9 w-9 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-neutral-400 transition hover:bg-white/10 hover:text-white hover:border-white/20"
-            aria-label="Fechar comparação"
+            aria-label="Fechar comparação (Esc)"
           >
             <X size={18} />
           </button>

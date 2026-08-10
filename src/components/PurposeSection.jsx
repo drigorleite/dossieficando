@@ -1,5 +1,6 @@
 import Container from './ui/Container';
 import SectionTitle from './ui/SectionTitle';
+import Reveal from './ui/Reveal';
 
 const principles = [
   {
@@ -24,7 +25,7 @@ export default function PurposeSection() {
   return (
     <section id="proposito" className="border-t border-white/10 bg-neutral-950 py-14">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <Reveal className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <SectionTitle
             eyebrow="Propósito"
             heading="Um arquivo público, não um palanque."
@@ -55,7 +56,7 @@ export default function PurposeSection() {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
       </Container>
     </section>
   );
